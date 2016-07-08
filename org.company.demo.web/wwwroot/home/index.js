@@ -1,0 +1,4 @@
+﻿export class Index
+{
+    constructor(){}
+}

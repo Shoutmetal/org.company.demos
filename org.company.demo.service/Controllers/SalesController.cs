@@ -21,15 +21,15 @@ namespace org.company.demo.service.Controllers
         // GET: api/Sales
         public IEnumerable<string> Get()
         {
-            Product product = new Product() {
-                Name = "Spaguetti",
-                Price = 19.21M,
-                Stock = 2000,
-                ProductTypeId = 1
-            };
+            //Product product = new Product() {
+            //    Name = "Spaguetti",
+            //    Price = 19.21M,
+            //    Stock = 2000,
+            //    ProductTypeId = 1
+            //};
 
 
-            _service.AddProduct(product);
+            //_service.AddProduct(product);
 
             return new string[] { "value1", "value2" };
         }
