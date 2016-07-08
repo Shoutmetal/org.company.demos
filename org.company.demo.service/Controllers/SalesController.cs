@@ -25,11 +25,7 @@ namespace org.company.demo.service.Controllers
                 Name = "Spaguetti",
                 Price = 19.21M,
                 Stock = 2000,
-                ProductType = new ProductType() {
-                       Id = 1,
-                       Name = "Cereal",
-                       IsActive = true
-                }
+                ProductTypeId = 1
             };
 
 
