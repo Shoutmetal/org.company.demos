@@ -1,0 +1,1 @@
+module.exports = require("npm:css-modules-loader-core@1.0.0/lib/index.js");

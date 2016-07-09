@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../../css-modules/jspm-demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../jspm-loader-css-modules" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../jspm-loader-jsx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../jspm-server" vcs="Git" />
+  </component>
+</project>

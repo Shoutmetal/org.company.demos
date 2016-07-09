@@ -1,0 +1,1 @@
+module.exports = require("npm:fastparse@1.1.1/lib/Parser.js");

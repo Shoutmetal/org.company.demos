@@ -1,0 +1,1 @@
+module.exports = require("npm:postcss-modules-values@1.1.0/lib/index.js");
