@@ -43,11 +43,6 @@
     <Compile Include="Client.cs">
       <DependentUpon>DemoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DemoModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>DemoModel.tt</DependentUpon>
     </Compile>
