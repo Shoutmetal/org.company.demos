@@ -165,17 +165,17 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\org.company.demo.application\org.company.demo.application.csproj">
+    <ProjectReference Include="..\org.company.demo.application\org.company.sales.application.csproj">
       <Project>{e92f1831-8fd1-467d-a517-a0d0c9657c50}</Project>
-      <Name>org.company.demo.application</Name>
+      <Name>org.company.sales.application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.communication\org.company.demo.communication.csproj">
+    <ProjectReference Include="..\org.company.demo.communication\org.company.sales.communication.csproj">
       <Project>{ede34621-a873-4fed-938f-f268de6a3861}</Project>
-      <Name>org.company.demo.communication</Name>
+      <Name>org.company.sales.communication</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.entities\org.company.demo.entities.csproj">
+    <ProjectReference Include="..\org.company.demo.entities\org.company.sales.entities.csproj">
       <Project>{281a75bb-d090-4bb4-a582-4e6a1160f130}</Project>
-      <Name>org.company.demo.entities</Name>
+      <Name>org.company.sales.entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

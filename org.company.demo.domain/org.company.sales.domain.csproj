@@ -40,18 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="contracts\IProductRepository.cs" />
-    <Compile Include="contracts\IProductTypeRepository.cs" />
+    <Compile Include="contracts\repository\IProductRepository.cs" />
+    <Compile Include="contracts\repository\IProductTypeRepository.cs" />
     <Compile Include="contracts\generic\IGenericRepository.cs" />
     <Compile Include="contracts\generic\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="services\IProductService.cs" />
+    <Compile Include="contracts\service\IProductService.cs" />
+    <Compile Include="contracts\service\IProductTypeService.cs" />
     <Compile Include="services\ProductService.cs" />
+    <Compile Include="services\ProductTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\org.company.demo.entities\org.company.demo.entities.csproj">
+    <ProjectReference Include="..\org.company.demo.entities\org.company.sales.entities.csproj">
       <Project>{281a75bb-d090-4bb4-a582-4e6a1160f130}</Project>
-      <Name>org.company.demo.entities</Name>
+      <Name>org.company.sales.entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

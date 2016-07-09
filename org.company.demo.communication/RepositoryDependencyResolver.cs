@@ -1,11 +1,11 @@
-﻿using org.company.demo.domain.contracts;
-using org.company.demo.domain.generic;
-using org.company.demo.repository;
-using org.company.demo.repository.generic;
+﻿using org.company.sales.domain.contracts.repository;
+using org.company.sales.domain.generic;
+using org.company.sales.repository;
+using org.company.sales.repository.generic;
 using SimpleInjector;
 using System.Data.Entity;
 
-namespace org.company.demo.communication
+namespace org.company.sales.communication
 {
     public class RepositoryDependencyResolver
     {

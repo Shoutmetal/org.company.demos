@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace org.company.demo.repository
+namespace org.company.sales.repository
 {
     using entities;
     using System;

@@ -81,13 +81,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\org.company.demo.domain\org.company.demo.domain.csproj">
+    <ProjectReference Include="..\org.company.demo.domain\org.company.sales.domain.csproj">
       <Project>{f6217348-0bd5-4b1d-9269-6ff291c4f75b}</Project>
-      <Name>org.company.demo.domain</Name>
+      <Name>org.company.sales.domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.entities\org.company.demo.entities.csproj">
+    <ProjectReference Include="..\org.company.demo.entities\org.company.sales.entities.csproj">
       <Project>{281a75bb-d090-4bb4-a582-4e6a1160f130}</Project>
-      <Name>org.company.demo.entities</Name>
+      <Name>org.company.sales.entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

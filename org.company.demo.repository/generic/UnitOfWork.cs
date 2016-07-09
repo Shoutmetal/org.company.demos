@@ -1,8 +1,8 @@
-﻿using org.company.demo.domain.generic;
+﻿using org.company.sales.domain.generic;
 using System;
 using System.Data.Entity;
 
-namespace org.company.demo.repository.generic
+namespace org.company.sales.repository.generic
 {
     public class UnitOfWork : IUnitOfWork
     {

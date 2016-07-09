@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 
-namespace org.company.demo.service
+namespace org.company.sales.service
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

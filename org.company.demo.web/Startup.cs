@@ -8,7 +8,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.StaticFiles;
 
-namespace org.company.demo.web
+namespace org.company.sales.web
 {
     public class Startup
     {

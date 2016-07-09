@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace org.company.sales.domain.generic
+namespace org.company.sales.domain.contracts.services
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IProductTypeService
     {
-        void Commit();
     }
 }

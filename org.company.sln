@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Modeling", "0. Modeling", "{2C071EDA-50C2-45C3-B565-DAEA2D2295A0}"
 EndProject
@@ -21,17 +21,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2.1. Security", "5.2.1. S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2.2. Communication", "5.2.2. Communication", "{824319AC-CC07-4B56-BA3F-2B510FE01B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.repository", "org.company.demo.repository\org.company.demo.repository.csproj", "{58C48344-05E0-4F33-AD92-FE9D92AB6686}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.repository", "org.company.demo.repository\org.company.sales.repository.csproj", "{58C48344-05E0-4F33-AD92-FE9D92AB6686}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.domain", "org.company.demo.domain\org.company.demo.domain.csproj", "{F6217348-0BD5-4B1D-9269-6FF291C4F75B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.domain", "org.company.demo.domain\org.company.sales.domain.csproj", "{F6217348-0BD5-4B1D-9269-6FF291C4F75B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.communication", "org.company.demo.communication\org.company.demo.communication.csproj", "{EDE34621-A873-4FED-938F-F268DE6A3861}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.communication", "org.company.demo.communication\org.company.sales.communication.csproj", "{EDE34621-A873-4FED-938F-F268DE6A3861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.application", "org.company.demo.application\org.company.demo.application.csproj", "{E92F1831-8FD1-467D-A517-A0D0C9657C50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.application", "org.company.demo.application\org.company.sales.application.csproj", "{E92F1831-8FD1-467D-A517-A0D0C9657C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.service", "org.company.demo.service\org.company.demo.service.csproj", "{529797B9-EDE1-42A4-9288-4B3188C2453F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.service", "org.company.demo.service\org.company.sales.service.csproj", "{529797B9-EDE1-42A4-9288-4B3188C2453F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.demo.entities", "org.company.demo.entities\org.company.demo.entities.csproj", "{281A75BB-D090-4BB4-A582-4E6A1160F130}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.sales.entities", "org.company.demo.entities\org.company.sales.entities.csproj", "{281A75BB-D090-4BB4-A582-4E6A1160F130}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2. Cross Cutting", "5.2. Cross Cutting", "{EF8CC3C5-B523-4C9F-8335-F703C8B3141B}"
 EndProject
@@ -39,9 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		org.company,demo.web\global.json = org.company,demo.web\global.json
 		WebApplication1\global.json = WebApplication1\global.json
+		org.company.demo.web\global.json = org.company.demo.web\global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.demo.web", "org.company.demo.web\org.company.demo.web.xproj", "{D4A5AEDA-AB1A-49FE-8E40-2C942053F10D}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.sales.web", "org.company.demo.web\org.company.sales.web.xproj", "{D4A5AEDA-AB1A-49FE-8E40-2C942053F10D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

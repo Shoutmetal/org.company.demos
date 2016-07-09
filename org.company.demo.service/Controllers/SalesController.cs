@@ -1,13 +1,8 @@
-﻿using org.company.demo.application;
-using org.company.demo.entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using org.company.sales.application;
+using org.company.sales.entities;
 using System.Web.Http;
 
-namespace org.company.demo.service.Controllers
+namespace org.company.sales.service.Controllers
 {
     [RoutePrefix("api/sales")]
     public class SalesController : ApiController

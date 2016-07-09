@@ -1,10 +1,10 @@
-﻿using org.company.demo.domain.contracts;
-using org.company.demo.domain.generic;
-using org.company.demo.entities;
+﻿using org.company.sales.domain.contracts.repository;
+using org.company.sales.domain.contracts.services;
+using org.company.sales.entities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace org.company.demo.domain.services
+namespace org.company.sales.domain.services
 {
     public class ProductService : IProductService
     {

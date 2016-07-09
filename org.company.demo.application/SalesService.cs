@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using org.company.demo.entities;
-using org.company.demo.domain.services;
-using org.company.demo.domain.generic;
+﻿using org.company.sales.domain.contracts.services;
+using org.company.sales.domain.generic;
+using org.company.sales.entities;
+using System.Collections.Generic;
 
-namespace org.company.demo.application
+namespace org.company.sales.application
 {
     public class SalesService : ISalesService
     {
