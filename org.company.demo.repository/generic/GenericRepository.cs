@@ -1,11 +1,11 @@
-﻿using org.company.demo.domain.bases;
+﻿using org.company.demo.domain.generic;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace org.company.demo.repository.core
+namespace org.company.demo.repository.generic
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

@@ -1,7 +1,7 @@
 ﻿using org.company.demo.domain.contracts;
-using org.company.demo.domain.core;
+using org.company.demo.domain.generic;
 using org.company.demo.repository;
-using org.company.demo.repository.core;
+using org.company.demo.repository.generic;
 using SimpleInjector;
 using System.Data.Entity;
 

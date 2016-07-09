@@ -7,6 +7,7 @@ LogManager.setLevel(LogManager.logLevel.error);
 export function configure(aurelia){
 
     aurelia.use.standardConfiguration();
-    aurelia.start().then(a => a.setRoot("menu", document.body))
+    aurelia.use.plugin('aurelia-binding-loader');
+    aurelia.start().then(a => a.setRoot("home/menu", document.body))
 
 }

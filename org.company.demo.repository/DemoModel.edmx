@@ -80,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DemoDbContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DemoDbContext" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" />
           <AssociationSet Name="Product_FK_ProductType" Association="Self.Product_FK_ProductType">

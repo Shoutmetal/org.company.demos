@@ -10,5 +10,8 @@ namespace org.company.demo.domain.services
     public interface IProductService
     {
         void AddProduct(Product product);
+        IEnumerable<Product> GetProducts();
+        Product GetProductById(int id);
+        void UpdateProduct(Product product);
     }
 }

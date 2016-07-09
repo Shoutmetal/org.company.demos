@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace org.company.demo.service.Controllers
 {
+    [RoutePrefix("api/sales")]
     public class SalesController : ApiController
     {
         private readonly ISalesService _service;
@@ -18,41 +19,41 @@ namespace org.company.demo.service.Controllers
             _service = service;
         }
 
-        // GET: api/Sales
-        public IEnumerable<string> Get()
+        [HttpGet]
+        [Route("products")]
+        public IHttpActionResult Get()
         {
-            //Product product = new Product() {
-            //    Name = "Spaguetti",
-            //    Price = 19.21M,
-            //    Stock = 2000,
-            //    ProductTypeId = 1
-            //};
+            var result = _service.GetProducts();
 
-
-            //_service.AddProduct(product);
-
-            return new string[] { "value1", "value2" };
+            return Ok(result);
         }
 
-        // GET: api/Sales/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("product/{id}")]
+        public Product Get(int id)
         {
-            return "value";
+            return _service.GetProductById(id);
         }
 
-        // POST: api/Sales
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("product")]
+        public void Post([FromBody]Product product)
         {
+            _service.AddProduct(product);
         }
 
-        // PUT: api/Sales/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("product")]
+        public void Put(int id, [FromBody]Product product)
         {
+            _service.UpdateProduct(product);
         }
 
-        // DELETE: api/Sales/5
+        [HttpDelete]
+        [Route("product")]
         public void Delete(int id)
         {
+            _service.UpdateProduct(new Product() { Id = id });
         }
     }
 }

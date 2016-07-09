@@ -11,6 +11,9 @@ namespace org.company.demo.application
     {
 
         void AddProduct(Product product);
+        IEnumerable<Product> GetProducts();
+        Product GetProductById(int id);
+        void UpdateProduct(Product product);
 
     }
 }

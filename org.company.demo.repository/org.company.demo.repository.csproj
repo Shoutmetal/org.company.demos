@@ -51,8 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="core\GenericRepository.cs" />
-    <Compile Include="core\UnitOfWork.cs" />
+    <Compile Include="generic\GenericRepository.cs" />
+    <Compile Include="generic\UnitOfWork.cs" />
     <Compile Include="DemoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
