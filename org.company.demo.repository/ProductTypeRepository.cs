@@ -1,9 +1,9 @@
-﻿using org.company.sales.domain.contracts.repository;
-using org.company.sales.entities;
-using org.company.sales.repository.generic;
+﻿using org.company.order.domain.contracts.repository;
+using org.company.order.entities;
+using org.company.order.repository.generic;
 using System.Data.Entity;
 
-namespace org.company.sales.repository
+namespace org.company.order.repository
 {
     public class ProductTypeRepository : GenericRepository<ProductType>, IProductTypeRepository
     {

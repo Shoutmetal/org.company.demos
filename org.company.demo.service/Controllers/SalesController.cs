@@ -1,10 +1,11 @@
-﻿using org.company.sales.application;
-using org.company.sales.entities;
+﻿
+using org.company.order.application.contracts;
+using org.company.order.entities;
 using System.Web.Http;
 
-namespace org.company.sales.service.Controllers
+namespace org.company.order.service.Controllers
 {
-    [RoutePrefix("api/sales")]
+    [RoutePrefix("api/order")]
     public class SalesController : ApiController
     {
         private readonly ISalesService _service;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace org.company.sales.service
+namespace org.company.order.service
 {
     public static class WebApiConfig
     {

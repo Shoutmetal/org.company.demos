@@ -1,9 +1,10 @@
-﻿using org.company.sales.domain.contracts.services;
-using org.company.sales.domain.generic;
-using org.company.sales.entities;
+﻿using org.company.order.application.contracts;
+using org.company.order.domain.contracts.services;
+using org.company.order.domain.generic;
+using org.company.order.entities;
 using System.Collections.Generic;
 
-namespace org.company.sales.application
+namespace org.company.order.application.implementation
 {
     public class SalesService : ISalesService
     {

@@ -135,8 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,24 +156,22 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\org.company.demo.application\org.company.sales.application.csproj">
+    <ProjectReference Include="..\org.company.demo.application\org.company.order.application.csproj">
       <Project>{e92f1831-8fd1-467d-a517-a0d0c9657c50}</Project>
-      <Name>org.company.sales.application</Name>
+      <Name>org.company.order.application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.communication\org.company.sales.communication.csproj">
+    <ProjectReference Include="..\org.company.demo.communication\org.company.order.communication.csproj">
       <Project>{ede34621-a873-4fed-938f-f268de6a3861}</Project>
-      <Name>org.company.sales.communication</Name>
+      <Name>org.company.order.communication</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.entities\org.company.sales.entities.csproj">
+    <ProjectReference Include="..\org.company.demo.entities\org.company.order.entities.csproj">
       <Project>{281a75bb-d090-4bb4-a582-4e6a1160f130}</Project>
-      <Name>org.company.sales.entities</Name>
+      <Name>org.company.order.entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,11 +1,11 @@
-﻿using org.company.sales.domain.generic;
+﻿using org.company.order.domain.generic;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace org.company.sales.repository.generic
+namespace org.company.order.repository.generic
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace org.company.sales.domain.generic
+namespace org.company.order.domain.generic
 {
     public interface IUnitOfWork : IDisposable
     {

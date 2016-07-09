@@ -1,7 +1,8 @@
-﻿using org.company.sales.application;
+﻿using org.company.order.application.contracts;
+using org.company.order.application.implementation;
 using SimpleInjector;
 
-namespace org.company.sales.communication
+namespace org.company.order.communication
 {
     public class ApplicationDependencyResolver
     {

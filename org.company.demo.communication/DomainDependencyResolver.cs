@@ -1,10 +1,10 @@
 ﻿
-using org.company.sales.domain.contracts.services;
-using org.company.sales.domain.services;
+using org.company.order.domain.contracts.services;
+using org.company.order.domain.services;
 using SimpleInjector;
 
 
-namespace org.company.sales.communication
+namespace org.company.order.communication
 {
     public class DomainDependencyResolver
     {

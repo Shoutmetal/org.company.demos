@@ -1,11 +1,11 @@
-﻿using org.company.sales.entities;
+﻿using org.company.order.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace org.company.sales.domain.contracts.services
+namespace org.company.order.domain.contracts.services
 {
     public interface IProductService
     {
@@ -13,5 +13,7 @@ namespace org.company.sales.domain.contracts.services
         IEnumerable<Product> GetProducts();
         Product GetProductById(int id);
         void UpdateProduct(Product product);
+
+        IEnumerable<ProductType> GetProductTypes();
     }
 }

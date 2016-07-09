@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace org.company.sales.entities
+namespace org.company.order.entities
 {
     using System;
     using System.Collections.Generic;

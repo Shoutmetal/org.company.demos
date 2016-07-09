@@ -1,14 +1,16 @@
-﻿using org.company.sales.domain.contracts.repository;
-using org.company.sales.domain.contracts.services;
-using org.company.sales.entities;
+﻿using org.company.order.domain.contracts.repository;
+using org.company.order.domain.contracts.services;
+using org.company.order.entities;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
-namespace org.company.sales.domain.services
+namespace org.company.order.domain.services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _repository;
+        private readonly IProductTypeRepository _repositoryProductType;
         public ProductService(IProductRepository repository)
         {
             _repository = repository;
@@ -19,6 +21,8 @@ namespace org.company.sales.domain.services
         public Product GetProductById(int id) => _repository.GetSingle(p => p.Id == id);
 
         public IEnumerable<Product> GetProducts() => _repository.GetAll().OrderBy( p => p.Name);
+
+        public IEnumerable<ProductType> GetProductTypes() => _repositoryProductType.GetAll().OrderBy(p => p.Name);
 
         public void UpdateProduct(Product product) => _repository.Update(product);
 

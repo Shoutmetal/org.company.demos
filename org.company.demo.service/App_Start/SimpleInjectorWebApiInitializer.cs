@@ -1,6 +1,6 @@
-[assembly: WebActivator.PostApplicationStartMethod(typeof(org.company.sales.service.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof(org.company.order.service.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 
-namespace org.company.sales.service.App_Start
+namespace org.company.order.service.App_Start
 {
     using System.Web.Http;
     using SimpleInjector;

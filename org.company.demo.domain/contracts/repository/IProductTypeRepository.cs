@@ -1,9 +1,9 @@
 ﻿
-using org.company.sales.domain.generic;
-using org.company.sales.entities;
+using org.company.order.domain.generic;
+using org.company.order.entities;
 
 
-namespace org.company.sales.domain.contracts.repository
+namespace org.company.order.domain.contracts.repository
 {
     public interface IProductTypeRepository : IGenericRepository<ProductType>
     {
