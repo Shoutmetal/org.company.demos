@@ -1,6 +1,6 @@
-﻿using org.company.order.domain.contracts.repository;
+﻿using org.company.order.repository;
+using org.company.order.domain.contracts.repository;
 using org.company.order.domain.generic;
-using org.company.order.repository;
 using org.company.order.repository.generic;
 using SimpleInjector;
 using System.Data.Entity;

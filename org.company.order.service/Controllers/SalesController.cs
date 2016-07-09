@@ -49,7 +49,7 @@ namespace org.company.order.service.Controllers
         [Route("product")]
         public void Delete(int id)
         {
-            _service.UpdateProduct(new Product() { Id = id });
+            _service.UpdateProduct(new Product() { ProductId = id });
         }
     }
 }

@@ -11,14 +11,15 @@ namespace org.company.order.domain.services
     {
         private readonly IProductRepository _repository;
         private readonly IProductTypeRepository _repositoryProductType;
-        public ProductService(IProductRepository repository)
+        public ProductService(IProductRepository repository, IProductTypeRepository repositoryProductType)
         {
             _repository = repository;
+            _repositoryProductType = repositoryProductType;
         }
 
         public void AddProduct(Product product) => _repository.Add(product);
 
-        public Product GetProductById(int id) => _repository.GetSingle(p => p.Id == id);
+        public Product GetProductById(int id) => _repository.GetSingle(p => p.ProductId == id);
 
         public IEnumerable<Product> GetProducts() => _repository.GetAll().OrderBy( p => p.Name);
 

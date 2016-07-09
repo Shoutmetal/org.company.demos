@@ -20,9 +20,9 @@ namespace org.company.order.entities
             this.Product = new HashSet<Product>();
         }
     
-        public int Id { get; set; }
+        public int ProductTypeId { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

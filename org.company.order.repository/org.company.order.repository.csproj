@@ -7,8 +7,8 @@
     <ProjectGuid>{58C48344-05E0-4F33-AD92-FE9D92AB6686}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>org.company.demo.repository</RootNamespace>
-    <AssemblyName>org.company.demo.repository</AssemblyName>
+    <RootNamespace>org.company.order.repository</RootNamespace>
+    <AssemblyName>org.company.order.repository</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -81,11 +81,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\org.company.demo.domain\org.company.order.domain.csproj">
+    <ProjectReference Include="..\org.company.order.domain\org.company.order.domain.csproj">
       <Project>{f6217348-0bd5-4b1d-9269-6ff291c4f75b}</Project>
       <Name>org.company.order.domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\org.company.demo.entities\org.company.order.entities.csproj">
+    <ProjectReference Include="..\org.company.order.entities\org.company.order.entities.csproj">
       <Project>{281a75bb-d090-4bb4-a582-4e6a1160f130}</Project>
       <Name>org.company.order.entities</Name>
     </ProjectReference>

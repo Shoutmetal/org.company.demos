@@ -14,12 +14,20 @@ namespace org.company.order.entities
     
     public partial class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<int> Stock { get; set; }
-        public Nullable<int> ProductTypeId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.Order = new HashSet<Order>();
+        }
     
+        public int ProductId { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Stock { get; set; }
+        public int ProductTypeId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
         public virtual ProductType ProductType { get; set; }
     }
 }
