@@ -5,12 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c29cc22ac34749a3878facfc9d83aa3a" Name="Diagram1">
-        <EntityTypeShape EntityType="DbDemoModel.Client" Width="1.5" PointX="3" PointY="5.125" />
-        <EntityTypeShape EntityType="DbDemoModel.Order" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="DbDemoModel.Client" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="DbDemoModel.Order" Width="1.5" PointX="3.875" PointY="5.75" />
+        <EntityTypeShape EntityType="DbDemoModel.OrderLine" Width="1.5" PointX="5.875" PointY="3" />
+        <EntityTypeShape EntityType="DbDemoModel.Product" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DbDemoModel.ProductType" Width="1.5" PointX="0.75" PointY="1.25" />
         <AssociationConnector Association="DbDemoModel.FK_Order_ClientId" />
-        <EntityTypeShape EntityType="DbDemoModel.Product" Width="1.5" PointX="4.5" PointY="0.875" />
-        <EntityTypeShape EntityType="DbDemoModel.ProductType" Width="1.5" PointX="1.25" PointY="1.125" />
-        <AssociationConnector Association="DbDemoModel.FK_Order_ProductId" ></AssociationConnector>
+        <AssociationConnector Association="DbDemoModel.FK__OrderLine__Order__3F466844" />
+        <AssociationConnector Association="DbDemoModel.FK__OrderLine__Produ__403A8C7D" />
         <AssociationConnector Association="DbDemoModel.Product_FK_ProductType" />
       </Diagram>
     </edmx:Diagrams>

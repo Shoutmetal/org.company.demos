@@ -14,15 +14,20 @@ namespace org.company.order.entities
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderLine = new HashSet<OrderLine>();
+        }
+    
         public int OrderId { get; set; }
         public int ClientId { get; set; }
-        public int ProductId { get; set; }
         public string Number { get; set; }
-        public int Quantity { get; set; }
         public System.DateTime OrderDate { get; set; }
         public bool IsActive { get; set; }
     
         public virtual Client Client { get; set; }
-        public virtual Product Product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderLine> OrderLine { get; set; }
     }
 }

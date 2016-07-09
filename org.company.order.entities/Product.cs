@@ -17,7 +17,7 @@ namespace org.company.order.entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Order = new HashSet<Order>();
+            this.OrderLine = new HashSet<OrderLine>();
         }
     
         public int ProductId { get; set; }
@@ -27,7 +27,7 @@ namespace org.company.order.entities
         public int ProductTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<OrderLine> OrderLine { get; set; }
         public virtual ProductType ProductType { get; set; }
     }
 }

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientRepository.cs" />
     <Compile Include="generic\GenericRepository.cs" />
     <Compile Include="generic\UnitOfWork.cs" />
     <Compile Include="DemoModel.Context.cs">
@@ -63,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OrderRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="ProductTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

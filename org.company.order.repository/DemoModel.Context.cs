@@ -12,6 +12,7 @@ namespace org.company.order.repository
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using org.company.order.entities;
     
     public partial class DemoDbContext : DbContext
     {
@@ -26,9 +27,10 @@ namespace org.company.order.repository
             throw new UnintentionalCodeFirstException();
         }
     
-        //public virtual DbSet<Client> Client { get; set; }
-        //public virtual DbSet<Order> Order { get; set; }
-        //public virtual DbSet<Product> Product { get; set; }
-        //public virtual DbSet<ProductType> ProductType { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderLine> OrderLine { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductType> ProductType { get; set; }
     }
 }
