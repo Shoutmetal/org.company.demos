@@ -10,6 +10,8 @@
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-rc.1.0.1",
       "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-rc.1.0.0",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-rc.1.0.0",
+      "aurelia-validatejs": "npm:aurelia-validatejs@^0.6.0",
+      "aurelia-validation": "npm:aurelia-validation@^0.10.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "module": "npm:jspm-loader-css-modules@^1.0.1-beta1",
       "moment": "npm:moment@^2.14.1",

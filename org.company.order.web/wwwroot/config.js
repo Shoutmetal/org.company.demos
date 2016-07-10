@@ -22,6 +22,8 @@ System.config({
     "aurelia-framework": "npm:aurelia-framework@1.0.0-rc.1.0.1",
     "aurelia-http-client": "npm:aurelia-http-client@1.0.0-rc.1.0.0",
     "aurelia-logging": "npm:aurelia-logging@1.0.0-rc.1.0.0",
+    "aurelia-validatejs": "npm:aurelia-validatejs@0.6.0",
+    "aurelia-validation": "npm:aurelia-validation@0.10.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
@@ -183,6 +185,18 @@ System.config({
       "aurelia-path": "npm:aurelia-path@1.0.0-rc.1.0.0",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-rc.1.0.0"
     },
+    "npm:aurelia-validatejs@0.6.0": {
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-rc.1.0.0",
+      "aurelia-validation": "npm:aurelia-validation@0.10.0",
+      "validate.js": "npm:validate.js@0.10.0"
+    },
+    "npm:aurelia-validation@0.10.0": {
+      "aurelia-binding": "npm:aurelia-binding@1.0.0-rc.1.0.2",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-rc.1.0.0",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-rc.1.0.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-rc.1.0.0",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-rc.1.0.0"
+    },
     "npm:babel-runtime@5.8.38": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -292,6 +306,9 @@ System.config({
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:validate.js@0.10.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:vm-browserify@0.0.4": {

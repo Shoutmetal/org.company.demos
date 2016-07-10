@@ -6,12 +6,18 @@ export class Service
 {
     constructor(service){
         this.service = service;
-        //this.data = {};
-        //this.service.get("order/orders/1").then((data) => {this.data = data; });
     }
 
-    save(){
-        this.service.post("order/save", {}).then((data) => {this.data = data; });
+    save(order){
+        return this.service.post("order/save", order).then(response => response);
     }
+
+    getOrdersByClient(id){
+        return this.service.get("order/orders/" + id).then(response => response );
+    }
+
+    getOrderById(id){
+        return this.service.get("order/order/" + id).then(response => response );
+    }   
 
 }

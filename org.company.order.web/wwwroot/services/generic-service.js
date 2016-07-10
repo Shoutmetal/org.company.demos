@@ -10,8 +10,6 @@ export class GenericService
         this.http = http;
         this.config = config;
 
-        console.log(this.config.get('baseUrl'))
-
         this.http.configure(x => {
             x.withBaseUrl(this.config.get('baseUrl'));
             x.withHeader('accept', 'application/json');
@@ -25,7 +23,7 @@ export class GenericService
             http.createRequest(url)
 				.asGet()
 				.send()
-				.then(response => resolve(response.content), err => reject());
+				.then(response => resolve(response.content), err => reject(err));
         });
         return promise;
     }
@@ -38,7 +36,7 @@ export class GenericService
 				.asPost()
 				.withContent(data)
 				.send()
-				.then(response => resolve(response.content), err => reject());
+				.then(response => resolve(response.content), err => reject(err));
         });
 
         return promise;

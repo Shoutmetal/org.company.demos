@@ -12,6 +12,7 @@
         config.map([
             { route: "", moduleId: 'home/index', name:"Home", title:"Home", nav:true },
             { route: "order", moduleId: 'order/index', name:"Order", title:"Order", nav:true },
+            { route: "search", moduleId: 'order/order-search', name:"Search", title:"Search", nav:true },
             { route: "reports", moduleId: 'reports/index', name:"Reports", title:"Reports", nav:true }
         ])
 

@@ -8,11 +8,17 @@ LogManager.setLevel(LogManager.logLevel.error);
 export function configure(aurelia){
     
     aurelia.use.standardConfiguration();
-    aurelia.use.plugin('aurelia-binding-loader');
     aurelia.use.plugin('aurelia-configuration', config => {
         config.setDirectory('common'); 
         config.setConfig('global-variables.json');
     });
+
+    aurelia.use.plugin('aurelia-binding-loader');
+    aurelia.use.plugin('resources');
+    aurelia.use.plugin('aurelia-validation')
+    aurelia.use.plugin('aurelia-validatejs')
+    aurelia.use.feature('bootstrap-validation');
+    
 
     aurelia.start().then(a => a.setRoot("home/menu", document.body))
 

@@ -5,6 +5,7 @@ using org.company.order.domain.contracts.repository;
 using org.company.order.service.dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace org.company.order.application.implementation
 {
@@ -25,7 +26,8 @@ namespace org.company.order.application.implementation
         {
             Order order = new Order(orderDTO.Number, orderDTO.ClientId);
 
-            orderDTO.Products.ForEach(prod => {
+            orderDTO.Products.ForEach(prod =>
+            {
 
                 //Get product
                 var product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId);
@@ -47,7 +49,9 @@ namespace org.company.order.application.implementation
 
         public IEnumerable<Order> GetOrdersByClient(int id)
         {
-            return _repository.GetList(o => o.ClientId == id, o => o.OrderProduct);
+            return _repository.GetList(o => o.ClientId == id,
+                o => o.OrderProduct.Select(p => p.Product),
+                c => c.Client);
         }
 
         public Order GetOrderById(int id)
