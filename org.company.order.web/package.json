@@ -6,9 +6,14 @@
     "dependencies": {
       "aurelia-binding-loader": "npm:aurelia-binding-loader@^1.1.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-rc.1.0.1",
+      "aurelia-configuration": "github:vheissu/aurelia-configuration@1.0.4",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-rc.1.0.1",
+      "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-rc.1.0.0",
+      "aurelia-logging": "npm:aurelia-logging@^1.0.0-rc.1.0.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
-      "module": "npm:jspm-loader-css-modules@^1.0.1-beta1"
+      "module": "npm:jspm-loader-css-modules@^1.0.1-beta1",
+      "moment": "npm:moment@^2.14.1",
+      "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="contracts\ISalesService.cs" />
+    <Compile Include="contracts\IOrderService.cs" />
+    <Compile Include="contracts\IProductService.cs" />
+    <Compile Include="dtos\OrderDTO.cs" />
+    <Compile Include="implementation\OrderService.cs" />
+    <Compile Include="mapper\IGenericMapper.cs" />
+    <Compile Include="mapper\OrderMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="implementation\SalesService.cs" />
+    <Compile Include="implementation\ProductsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\org.company.order.domain\org.company.order.domain.csproj">

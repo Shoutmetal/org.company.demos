@@ -1,1 +1,0 @@
-module.exports = require("npm:postcss-modules-local-by-default@1.0.0/index");

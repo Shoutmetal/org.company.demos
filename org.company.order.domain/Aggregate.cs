@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace org.company.order.domain
 {
-    public class Aggregate
+    public abstract class Aggregate
     {
-        public Guid Id { get; private set; }
+        //public Guid Id { get; protected set; }
+
+        //public int Version { get; protected set; }
+
+        //private List<DomainEvent> _events = new List<DomainEvent>();
+
+        //public enum DomainEvent
+        //{
+        //    draft,
+        //    submitted
+        //}
     }
 }

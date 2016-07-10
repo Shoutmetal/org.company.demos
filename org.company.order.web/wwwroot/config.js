@@ -11,19 +11,24 @@ System.config({
     ]
   },
   paths: {
-    "github:*": "libs/github/*",
-    "npm:*": "libs/npm/*"
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
     "aurelia-binding-loader": "npm:aurelia-binding-loader@1.1.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-rc.1.0.1",
+    "aurelia-configuration": "github:vheissu/aurelia-configuration@1.0.4",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-rc.1.0.1",
+    "aurelia-http-client": "npm:aurelia-http-client@1.0.0-rc.1.0.0",
+    "aurelia-logging": "npm:aurelia-logging@1.0.0-rc.1.0.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "module": "npm:jspm-loader-css-modules@1.0.1-beta1",
+    "moment": "npm:moment@2.14.1",
+    "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -44,6 +49,11 @@ System.config({
     },
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "npm:jquery@2.2.4"
+    },
+    "github:vheissu/aurelia-configuration@1.0.4": {
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-rc.1.0.0",
+      "aurelia-loader": "npm:aurelia-loader@1.0.0-rc.1.0.0",
+      "aurelia-path": "npm:aurelia-path@1.0.0-rc.1.0.0"
     },
     "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -98,6 +108,10 @@ System.config({
     "npm:aurelia-history-browser@1.0.0-rc.1.0.0": {
       "aurelia-history": "npm:aurelia-history@1.0.0-rc.1.0.0",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
+    },
+    "npm:aurelia-http-client@1.0.0-rc.1.0.0": {
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0",
+      "aurelia-path": "npm:aurelia-path@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-loader-default@1.0.0-rc.1.0.0": {
       "aurelia-loader": "npm:aurelia-loader@1.0.0-rc.1.0.0",
@@ -223,6 +237,9 @@ System.config({
       "debounce": "npm:debounce@1.0.0",
       "path": "npm:path@0.12.7",
       "toposort": "npm:toposort@0.2.12"
+    },
+    "npm:numeral@1.5.3": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

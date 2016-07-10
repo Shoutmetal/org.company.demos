@@ -52,33 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientRepository.cs" />
+    <Compile Include="DemoDbContext.cs" />
     <Compile Include="generic\GenericRepository.cs" />
     <Compile Include="generic\UnitOfWork.cs" />
-    <Compile Include="DemoModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DemoModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="OrderRepository.cs" />
     <Compile Include="ProductRepository.cs" />
-    <Compile Include="ProductTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-    </None>
-    <EntityDeploy Include="DemoModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DemoModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DemoModel.edmx.diagram">
-      <DependentUpon>DemoModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -94,13 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DemoModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DemoModel.edmx</DependentUpon>
-      <LastGenOutput>DemoModel.Context.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
