@@ -4,10 +4,13 @@ import {validateTrigger} from 'aurelia-validation';
 
 export class Order
 {
-    @required number;
+    @required number = "";
+    @required productId = "";
+    @required quantity = "";
+
 
     constructor(controller) {
-       
+        this.products = [];
         this.controller = controller;
         this.controller.validateTrigger = validateTrigger.change;  
     }

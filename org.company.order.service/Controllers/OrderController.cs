@@ -36,6 +36,14 @@ namespace org.company.order.service.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("products")]
+        public IHttpActionResult GetProducts()
+        {
+            var result = _service.GetProducts();
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("save")]
         public void Post([FromBody]OrderDTO order)

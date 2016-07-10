@@ -2,34 +2,36 @@
     <require from="./index.css!module!bind" as="style" scope=""></require>
 
     <form class="form-horizontal col-lg-12 col-sm-12" submit.delegate="save()" validation-renderer="bootstrap-form">
+        <div class="container container-fluid">
+            <div class="col-lg-6 col-sm-12">
+                <div class="form-group col-lg-12">
+                    <label class="control-label" for="type">Type</label>
+                    <select value.bind="order.productId & validate" class="form-control" id="type">
+                        <option value="">Select</option>
+                        <option repeat.for="product of products" value.bind="product.productId">${product.name}</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="control-label" for="name">Number</label>
+                    <input type="text" class="form-control " id="name" value.bind="order.number & validate">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="form-group col-lg-12">
+                    <label class="control-label" for="quantity">Quantity</label>
+                    <input type="text" class="form-control" id="quantity" value.bind="order.quantity & validate">
+                </div>
+            </div>
+        </div>
 
-        <div class="col-lg-6 col-sm-12">
-            <div class="form-group col-lg-12">
-                <label class="control-label" for="name">Number</label>
-                <input type="text" class="form-control " id="name" value.bind="order.number & validate">
-            </div>
-            <div class="form-group col-lg-12">
-                <label class="control-label" for="price">Price</label>
-                <input type="text" class="form-control" id="price" value.bind="lastName">
-            </div>
+        <div class="clearfix"></div>
+        <div class="container-fluid row right">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+            <input type="button" value="Cancel" class="btn btn-default" />
         </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="form-group col-lg-12">
-                <label class="control-label" for="stock">Stock</label>
-                <input type="text" class="form-control" id="stock">
-            </div>
-            <div class="form-group col-lg-12">
-                <label class="control-label" for="type">Type</label>
-                <select class="form-control" id="type">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-        <input type="submit" value="Submit" />
     </form>
+
+
+
 
 </template>

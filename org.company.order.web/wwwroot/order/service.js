@@ -20,4 +20,8 @@ export class Service
         return this.service.get("order/order/" + id).then(response => response );
     }   
 
+    getProducts(){
+        return this.service.get("order/products").then(response => response );
+    } 
+
 }

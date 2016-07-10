@@ -14,7 +14,7 @@ namespace org.company.order.application.contracts
 
         IEnumerable<Order> GetOrdersByClient(int id);
         Order GetOrderById(int id);
-   
-        
+
+        IEnumerable<Product> GetProducts();
     }
 }

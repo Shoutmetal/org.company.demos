@@ -59,6 +59,9 @@ namespace org.company.order.application.implementation
             return _repository.GetSingle(o => o.OrderId == id);
         }
 
-
+        public IEnumerable<Product> GetProducts()
+        {
+            return _productRepository.GetAll();
+        }
     }
 }
