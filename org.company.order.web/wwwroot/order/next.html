@@ -1,0 +1,39 @@
+﻿<template>
+    <table class="table table-bordered">
+        <thead class="${style.orderHeader}">
+            <tr>
+                <th>ID</th>
+                <th>CLIENT</th>
+                <th>PRODUCTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${client.clientId}</td>
+                <td>${client.name + ' ' + client.lastName}</td>
+                <td>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>PRICE</th>
+                                <th>STOCK</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr repeat.for="product of products">
+                                <td>${product.productId}</td>
+                                <td>${product.name}</td>
+                                <td>${product.price | currencyFormat }</td>
+                                <td>${product.stock}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    ${total | currencyFormat }
+</template>
