@@ -14,11 +14,13 @@ export class Next
 
         this.products = params.order.products;
 
-        this.service.getOrdersByClient(params.order.clientId).then(response => { 
-            this.orders = response 
-            this.client = this.orders[0].client;
+        console.log(this.products)
 
-            this.total = this.products.reduce( (sum, current) => { return sum + current } , 0 );
+        this.service.getClientById(params.order.clientId).then(response => { 
+
+            this.client = response
+
+            this.total = this.products.reduce( (sum, current) => { return sum + parseFloat(current.price) } , 0 );
         });
 
         

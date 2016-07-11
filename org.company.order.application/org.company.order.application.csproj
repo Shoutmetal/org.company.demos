@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="contracts\IClientService.cs" />
     <Compile Include="contracts\IOrderService.cs" />
     <Compile Include="contracts\IProductService.cs" />
     <Compile Include="dtos\OrderDTO.cs" />
+    <Compile Include="implementation\ClientService.cs" />
     <Compile Include="implementation\OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="implementation\ProductsService.cs" />

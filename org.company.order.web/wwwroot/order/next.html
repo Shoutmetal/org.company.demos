@@ -1,4 +1,6 @@
 ﻿<template>
+    <require from="./next.css!module!bind" as="style"></require>
+
     <table class="table table-bordered">
         <thead class="${style.orderHeader}">
             <tr>
@@ -28,6 +30,11 @@
                                 <td>${product.price | currencyFormat }</td>
                                 <td>${product.stock}</td>
                             </tr>
+                            <tr>
+                                <td colspan="2"><span class.bind="style.right">Total</span></td>
+                                <td>${total | currencyFormat }</td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -35,5 +42,5 @@
             </tr>
         </tbody>
     </table>
-    ${total | currencyFormat }
+    
 </template>

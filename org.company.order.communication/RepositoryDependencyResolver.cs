@@ -16,6 +16,7 @@ namespace org.company.order.communication
 
             container.RegisterSingleton<IProductRepository, ProductRepository>();
             container.RegisterSingleton<IOrderRepository, OrderRepository>();
+            container.RegisterSingleton<IClientRepository, ClientRepository>();
         }
     }
 }
