@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Domain", "4. Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Infraestructure", "5. Infraestructure", "{EA5982F8-2A09-484D-973E-53755FDC4275}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1. Data Access", "5.1. Data Access", "{5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1. Repository", "5.1. Repository", "{5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2.1. Security", "5.2.1. Security", "{38116A84-9DEA-46AB-9748-B07644DD0AC9}"
 EndProject
@@ -43,6 +43,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.order.communication", "org.company.order.communication\org.company.order.communication.csproj", "{EDE34621-A873-4FED-938F-F268DE6A3861}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.order.repository", "org.company.order.repository\org.company.order.repository.csproj", "{58C48344-05E0-4F33-AD92-FE9D92AB6686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3. Database", "5.3. Database", "{F90EA994-BB95-4F59-8C13-7093BD9B0BBE}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "org.company.order.database", "org.company.order.database\org.company.order.database.sqlproj", "{5E1FADB6-0953-4267-B080-2D8A926AFEE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +82,12 @@ Global
 		{58C48344-05E0-4F33-AD92-FE9D92AB6686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58C48344-05E0-4F33-AD92-FE9D92AB6686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58C48344-05E0-4F33-AD92-FE9D92AB6686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +104,7 @@ Global
 		{281A75BB-D090-4BB4-A582-4E6A1160F130} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
 		{EDE34621-A873-4FED-938F-F268DE6A3861} = {824319AC-CC07-4B56-BA3F-2B510FE01B24}
 		{58C48344-05E0-4F33-AD92-FE9D92AB6686} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
+		{F90EA994-BB95-4F59-8C13-7093BD9B0BBE} = {EA5982F8-2A09-484D-973E-53755FDC4275}
+		{5E1FADB6-0953-4267-B080-2D8A926AFEE7} = {F90EA994-BB95-4F59-8C13-7093BD9B0BBE}
 	EndGlobalSection
 EndGlobal
