@@ -24,7 +24,7 @@ namespace org.company.order.application.implementation
 
         public void AddOrder(OrderDTO orderDTO)
         {
-            Order order = new Order(orderDTO.Number, orderDTO.ClientId);
+            Order order = new Order(orderDTO.ClientId);
 
             orderDTO.Products.ForEach(prod =>
             {

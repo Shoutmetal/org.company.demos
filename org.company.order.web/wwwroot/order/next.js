@@ -6,28 +6,20 @@ export class Next
 {
     constructor(service){
         this.service = service;
-        this.orders = [];
         this.client = {}
     }
 
-    activate(params){
-
-        this.products = params.order.products;
-
-        console.log(this.products)
-
-        this.service.getClientById(params.order.clientId).then(response => { 
-
+    activate(params, router){
+        this.order = router.params;
+        this.products = this.order.products;
+        this.service.getClientById(this.order.clientId).then(response => { 
             this.client = response
-
             this.total = this.products.reduce( (sum, current) => { return sum + parseFloat(current.price) } , 0 );
         });
-
-        
     }
 
     save(){
-        
+        this.service.saveOrder(this.order);
     }
 
 }

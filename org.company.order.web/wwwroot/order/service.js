@@ -28,4 +28,8 @@ export class Service
         return this.service.get("client/client/"+ id).then(response => response );
     }
 
+    saveOrder(order)
+    {
+        return this.service.post("order/save", order);
+    }
 }

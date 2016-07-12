@@ -25,7 +25,7 @@ namespace org.company.order.repository.generic
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include<T, object>(navigationProperty);
 
-            return dbQuery.AsNoTracking().ToList<T>();
+            return dbQuery.ToList<T>();
         }
 
         public virtual IList<T> GetList(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
@@ -37,7 +37,7 @@ namespace org.company.order.repository.generic
 
             dbQuery = dbQuery.Where(where);
 
-            return dbQuery.AsNoTracking().ToList<T>();
+            return dbQuery.ToList<T>();
         }
 
         public virtual T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties)
@@ -47,7 +47,7 @@ namespace org.company.order.repository.generic
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include<T, object>(navigationProperty);
 
-            return dbQuery.AsNoTracking().FirstOrDefault(where);
+            return dbQuery.FirstOrDefault(where);
         }
 
         public virtual void Add(params T[] items)

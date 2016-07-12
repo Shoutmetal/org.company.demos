@@ -29,8 +29,9 @@ export class Index
         this.errorMessage = false;
 
         let order = new Order(1, this.orderProducts);
-
-        this.router.navigateToRoute("order-next",{ order : order }, {replace: true});
+        let routerParams = this.router.routes.find(x => x.name === 'order-next');
+        routerParams.params = order;
+        this.router.navigateToRoute("order-next");
     }
 
     addProduct(){

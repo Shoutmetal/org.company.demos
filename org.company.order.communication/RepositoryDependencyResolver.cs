@@ -14,9 +14,9 @@ namespace org.company.order.communication
             container.Register<DbContext, DemoDbContext>(Lifestyle.Singleton);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Singleton);
 
-            container.RegisterSingleton<IProductRepository, ProductRepository>();
-            container.RegisterSingleton<IOrderRepository, OrderRepository>();
-            container.RegisterSingleton<IClientRepository, ClientRepository>();
+            container.Register<IProductRepository, ProductRepository>(Lifestyle.Singleton);
+            container.Register<IOrderRepository, OrderRepository>(Lifestyle.Singleton);
+            container.Register<IClientRepository, ClientRepository>(Lifestyle.Singleton);
         }
     }
 }
