@@ -17,13 +17,11 @@
             { route: "reports", moduleId: 'reports/index', name:"reports", title:"Reports", nav:true }
         ]);
 
-        //override navigateToRouter
         this.router.navigateWithParams = (routeName, params) => {
             let routerParams = this.router.routes.find(x => x.name === routeName);
             routerParams.data = params;
-            this.router.navigateToRoute(routeName);
+            this.router.navigate(routeName);
         }
-
     }
 
 
