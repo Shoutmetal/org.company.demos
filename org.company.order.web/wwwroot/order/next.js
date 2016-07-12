@@ -10,7 +10,7 @@ export class Next
     }
 
     activate(params, router){
-        this.order = router.params;
+        this.order = router.data;
         this.products = this.order.products;
         this.service.getClientById(this.order.clientId).then(response => { 
             this.client = response

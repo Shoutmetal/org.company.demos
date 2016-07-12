@@ -25,25 +25,22 @@ export class Index
             this.errorMessage = true;
             return;
         }
-
         this.errorMessage = false;
-
         let order = new Order(1, this.orderProducts);
-        let routerParams = this.router.routes.find(x => x.name === 'order-next');
-        routerParams.params = order;
-        this.router.navigateToRoute("order-next");
+        this.router.navigateWithParams("order-next", order);
     }
 
     addProduct(){
         if(!this.order.controller.validate().length){
             let product = this.products.filter(p => p.productId == this.order.productId)[0];
             product.quantity = this.order.quantity;
-
             this.orderProducts.push(product);
-
-            //clean 
-            this.order.productId = "";
-            this.order.quantity = "";
+            this.clean();
         }
+    }
+
+    clean(){
+        this.order.productId = "";
+        this.order.quantity = "";
     }
 }
