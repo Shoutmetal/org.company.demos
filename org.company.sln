@@ -23,13 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2.2. Communication", "5.2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2. Cross Cutting", "5.2. Cross Cutting", "{EF8CC3C5-B523-4C9F-8335-F703C8B3141B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B08866D-93CB-4CA1-9878-47B45632EAF4}"
-	ProjectSection(SolutionItems) = preProject
-		org.company,demo.web\global.json = org.company,demo.web\global.json
-		WebApplication1\global.json = WebApplication1\global.json
-		org.company.demo.web\global.json = org.company.demo.web\global.json
-	EndProjectSection
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.web", "org.company.order.web\org.company.order.web.xproj", "{D4A5AEDA-AB1A-49FE-8E40-2C942053F10D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.company.order.service", "org.company.order.service\org.company.order.service.csproj", "{529797B9-EDE1-42A4-9288-4B3188C2453F}"

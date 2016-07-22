@@ -4,6 +4,7 @@
       "baseURL": "wwwroot"
     },
     "dependencies": {
+      "aurelia-auth": "npm:aurelia-auth@^3.0.2",
       "aurelia-binding-loader": "npm:aurelia-binding-loader@^1.1.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-rc.1.0.1",
       "aurelia-configuration": "github:vheissu/aurelia-configuration@1.0.4",
