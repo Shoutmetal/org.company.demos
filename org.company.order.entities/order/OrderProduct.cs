@@ -13,10 +13,13 @@ namespace org.company.order.entities
             this.Quantity = quantity;
         }
 
-        [Column(Order = 0), Key, ForeignKey("Order")]
+        [Column(Order = 0), Key]
+        public int OrderProductId { get; set; }
+
+        [Column(Order = 1), ForeignKey("Order")]
         public int OrderId { get; set; }
 
-        [Column(Order = 1), Key, ForeignKey("Product")]
+        [Column(Order = 2), ForeignKey("Product")]
         public int ProductId { get; set; }
         public int Quantity { get; set; }
 
