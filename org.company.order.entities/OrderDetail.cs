@@ -10,15 +10,9 @@ namespace org.company.order.entities
         public int OrderId { get; set; }
         [Key, Column(Order = 1)]
         public int ProductId { get; set; }
-
-        public int CustomerId { get; set; }
         public int Quantity { get; set; }
-        public DateTime OrderDate { get; set; }
 
         public Order Order { get; set; }
         public Product Product { get; set; }
-        public Customer Customer { get; set; }
-
-
     }
 }

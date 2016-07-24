@@ -33,8 +33,8 @@ namespace org.company.order.application.implementation
 
         public void AddOrder(OrderDTO orderDTO)
         {
-            //1) save the order
-            Order order = new Order(orderDTO.OrderNumber, (int)OrderStatus.InProgress);
+            //1) create an order
+            Order order = new Order(orderDTO.CustomerId, orderDTO.OrderNumber, (int)OrderStatus.Created);
 
             //2) add details to the order
             orderDTO.Products.ForEach( prod =>
@@ -43,9 +43,7 @@ namespace org.company.order.application.implementation
                 {
                     Order = order,
                     ProductId = prod.ProductId,
-                    CustomerId = orderDTO.CustomerId,
-                    Quantity = prod.Quantity,
-                    OrderDate = DateTime.Now
+                    Quantity = prod.Quantity
                 };
 
                 _orderDetailRepository.Add(orderDetail);
@@ -62,7 +60,9 @@ namespace org.company.order.application.implementation
 
         public IEnumerable<Order> GetOrdersByCustomerId(int customerId)
         {
-            return null;
+            return _orderRepository.GetList(o => o.CustomerId == customerId,
+                o => o.OrderDetail.Select(p => p.Product),
+                c => c.Customer);
         }
 
         public Order GetOrderById(int id)
@@ -77,7 +77,7 @@ namespace org.company.order.application.implementation
 
         public enum OrderStatus
         {
-            InProgress = 1,
+            Created = 1,
             Completed = 2
         }
     }

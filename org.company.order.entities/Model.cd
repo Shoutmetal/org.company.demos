@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="org.company.order.entities.Customer">
-    <Position X="3" Y="0.75" Width="1.5" />
+    <Position X="9" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAQAAAAAABAgAAAAAAAAAAg=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="org.company.order.entities.Order">
-    <Position X="9.25" Y="0.75" Width="1.75" />
+    <Position X="8.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAMAAAAAAAAAFAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>GAEAAAAMAAAAAAAAAFAAAAAAAAAAABAgAAAAAAAAAAA=</HashCode>
       <FileName>Order.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Status" />
+      <Property Name="Customer" />
     </ShowAsAssociation>
   </Class>
   <Class Name="org.company.order.entities.OrderDetail">
-    <Position X="6.75" Y="0.75" Width="1.5" />
+    <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GAECAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgAAAAAA=</HashCode>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>OrderDetail.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Order" />
       <Property Name="Product" />
-      <Property Name="Customer" />
     </ShowAsAssociation>
   </Class>
   <Class Name="org.company.order.entities.Product">
-    <Position X="6.75" Y="4" Width="1.5" />
+    <Position X="4.75" Y="3.25" Width="1.5" />
     <NestedTypes>
       <Class Name="org.company.order.entities.Product.EmptyStockException" Collapsed="true">
         <TypeIdentifier>
@@ -47,7 +47,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="org.company.order.entities.ProductType">
-    <Position X="6.75" Y="6.75" Width="1.5" />
+    <Position X="4.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>ProductType.cs</FileName>
@@ -61,14 +61,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="org.company.order.entities.Warehouse">
-    <Position X="2.5" Y="6.75" Width="1.5" />
+    <Position X="1.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAAQAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Warehouse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="org.company.order.entities.Inventory">
-    <Position X="2.75" Y="4" Width="1.5" />
+    <Position X="1.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAACAAAABAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
