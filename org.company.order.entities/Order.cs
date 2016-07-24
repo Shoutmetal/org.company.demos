@@ -28,7 +28,7 @@ namespace org.company.order.entities
         public int StatusId { get; set; }
         public string Number { get; private set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         

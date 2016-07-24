@@ -1,29 +1,34 @@
 ﻿<template>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
-            </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
-                        <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" href.bind="route.href">
-                            ${route.title}
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="page-sidebar navbar-collapse collapse">
+        <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="sidebar-toggler-wrapper">
+                <div class="sidebar-toggler">
+                </div>
+            </li>
+            <li class="sidebar-search-wrapper">
+                <form class="sidebar-search " action="extra_search.html" method="POST">
+                    <a href="javascript:;" class="remove">
+                        <i class="icon-close"></i>
+                    </a>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                        </span>
+                    </div>
+                </form>
+            </li>
+            <li repeat.for="route of router.navigation" class="${route.isActive ? 'start active open' : ''}">
+                <a href.bind="route.href">
+                    <i class="${route.config.icon}"></i>
+                    <span class="title">${route.title}</span>
+                    <span class="${route.isActive ? 'selected': ''}"></span>
+                </a>
+            </li>
+
+            
+        </ul>
+    </div>
 
 </template>

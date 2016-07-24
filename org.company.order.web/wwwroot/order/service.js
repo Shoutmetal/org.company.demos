@@ -8,7 +8,7 @@ export class Service
         this.service = service;
     }
 
-    getOrdersByClient(id){
+    getOrdersByCustomerId(id){
         return this.service.get("order/orders/" + id).then(response => response );
     }
 
