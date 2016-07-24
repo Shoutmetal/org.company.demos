@@ -19,7 +19,11 @@ export class Next
     }
 
     save(){
-        this.service.saveOrder(this.order);
+        this.service.saveOrder(this.order).then((response) => {
+            
+            console.log("save successful -> ", response)
+
+        });
     }
 
 }

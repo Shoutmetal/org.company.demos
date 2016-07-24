@@ -1,9 +1,5 @@
 ﻿export class Menu
 {
-    constructor(){
-    
-    }
-
     configureRouter(config, router){
         this.router = router;
 
@@ -16,8 +12,6 @@
             { route: "order-search", moduleId: 'order/order-search', name:"order-search", title:"Search", nav:true, icon:"icon-rocket" },
             { route: "reports", moduleId: 'reports/index', name:"reports", title:"Reports", nav:true, icon:"icon-diamond" }
         ]);
-
-        console.log(this.router.navigation)
 
         this.router.navigateWithParams = (routeName, params) => {
             let routerParams = this.router.routes.find(x => x.name === routeName);

@@ -26,6 +26,6 @@ export class Service
 
     saveOrder(order)
     {
-        this.service.post("order/save", order);
+        return this.service.post("order/save", order).then( response => response );
     }
 }
