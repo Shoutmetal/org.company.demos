@@ -8,10 +8,6 @@ export class Service
         this.service = service;
     }
 
-    save(order){
-        return this.service.post("order/save", order).then(response => response);
-    }
-
     getOrdersByClient(id){
         return this.service.get("order/orders/" + id).then(response => response );
     }
@@ -20,7 +16,7 @@ export class Service
         return this.service.get("order/order/" + id).then(response => response );
     }   
 
-    getProducts(){
+    getProducts(param){
         return this.service.get("order/products").then(response => response );
     } 
 
@@ -30,6 +26,6 @@ export class Service
 
     saveOrder(order)
     {
-        return this.service.post("order/save", order);
+        this.service.post("order/save", order);
     }
 }

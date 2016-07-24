@@ -49,7 +49,7 @@ namespace org.company.order.application.implementation
                 _orderDetailRepository.Add(orderDetail);
 
                 //3)Adjust the Stock
-                Product product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId);
+                Product product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId, i => i.Inventories);
                 Inventory inventory = product.AdjustStock(prod.Quantity);
                 _inventoryRepository.Update(inventory);
 

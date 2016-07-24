@@ -11,14 +11,16 @@ namespace org.company.order.communication
     {
         public static void RegisterServices(Container container)
         {
-            container.Register<DbContext, DemoDbContext>(Lifestyle.Singleton);
-            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Singleton);
+            
 
-            container.Register<IProductRepository, ProductRepository>(Lifestyle.Singleton);
-            container.Register<IOrderRepository, OrderRepository>(Lifestyle.Singleton);
-            container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Singleton);
-            container.Register<IOrderDetailRepository, OrderDetailRepository>(Lifestyle.Singleton);
-            container.Register<IInventoryRepository, InventoryRepository>(Lifestyle.Singleton);
+            container.Register<DbContext, DemoDbContext>(Lifestyle.Scoped);
+            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+
+            container.Register<IProductRepository, ProductRepository>(Lifestyle.Scoped);
+            container.Register<IOrderRepository, OrderRepository>(Lifestyle.Scoped);
+            container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Scoped);
+            container.Register<IOrderDetailRepository, OrderDetailRepository>(Lifestyle.Scoped);
+            container.Register<IInventoryRepository, InventoryRepository>(Lifestyle.Scoped);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace org.company.order.communication
     {
         public static void RegisterServices(Container container)
         {
-            container.RegisterSingleton<IProductService, ProductsService>();
-            container.RegisterSingleton<IOrderService, OrderService>();
-            container.RegisterSingleton<ICustomerService, CustomerService>();
+            container.Register<IProductService, ProductsService>(Lifestyle.Scoped);
+            container.Register<IOrderService, OrderService>(Lifestyle.Scoped);
+            container.Register<ICustomerService, CustomerService>(Lifestyle.Scoped);
         }
     }
 }
