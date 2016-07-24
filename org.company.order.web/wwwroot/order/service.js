@@ -24,8 +24,8 @@ export class Service
         return this.service.get("order/products").then(response => response );
     } 
 
-    getClientById(id){
-        return this.service.get("client/client/"+ id).then(response => response );
+    getCustomerById(id){
+        return this.service.get("customer/customer/"+ id).then(response => response );
     }
 
     saveOrder(order)

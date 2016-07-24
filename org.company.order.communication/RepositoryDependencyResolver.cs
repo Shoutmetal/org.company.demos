@@ -16,7 +16,9 @@ namespace org.company.order.communication
 
             container.Register<IProductRepository, ProductRepository>(Lifestyle.Singleton);
             container.Register<IOrderRepository, OrderRepository>(Lifestyle.Singleton);
-            container.Register<IClientRepository, ClientRepository>(Lifestyle.Singleton);
+            container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Singleton);
+            container.Register<IOrderDetailRepository, OrderDetailRepository>(Lifestyle.Singleton);
+            container.Register<IInventoryRepository, InventoryRepository>(Lifestyle.Singleton);
         }
     }
 }

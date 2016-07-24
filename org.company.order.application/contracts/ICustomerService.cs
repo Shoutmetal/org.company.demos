@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace org.company.order.application.contracts
 {
-    public interface IClientService
+    public interface ICustomerService
     {
-        void AddClient(Client client);
-        IEnumerable<Client> GetClients();
-        Client GetClientById(int id);
-        void UpdateClient(Client client);
+        void AddCustomer(Customer customer);
+        IEnumerable<Customer> GetCustomers();
+        Customer GetCustomerById(int id);
+        void UpdateCustomer(Customer customer);
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 using org.company.order.application.contracts;
 using org.company.order.entities;
-using org.company.order.service.dtos;
+using org.company.order.service.model;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -21,9 +21,9 @@ namespace org.company.order.service.Controllers
 
         [HttpGet]
         [Route("orders/{id}")]
-        public IHttpActionResult GetOrdersByClient(int id)
+        public IHttpActionResult GetOrdersByCustomer(int id)
         {
-            var result = _service.GetOrdersByClient(id);
+            var result = _service.GetOrdersByCustomerId(id);
             return Ok(result);
         }
 

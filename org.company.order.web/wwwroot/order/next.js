@@ -6,14 +6,14 @@ export class Next
 {
     constructor(service){
         this.service = service;
-        this.client = {}
+        this.customer = {}
     }
 
     activate(params, router){
         this.order = router.data;
         this.products = this.order.products;
-        this.service.getClientById(this.order.clientId).then(response => { 
-            this.client = response
+        this.service.getCustomerById(this.order.customerId).then(response => { 
+            this.customer = response
             this.total = this.products.reduce( (sum, current) => { return sum + parseFloat(current.price) } , 0 );
         });
     }

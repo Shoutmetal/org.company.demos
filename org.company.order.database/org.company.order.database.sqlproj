@@ -63,8 +63,11 @@
   <ItemGroup>
     <Build Include="dbo\Tables\ProductType.sql" />
     <Build Include="dbo\Tables\Product.sql" />
-    <Build Include="dbo\Tables\OrderProduct.sql" />
     <Build Include="dbo\Tables\Order.sql" />
-    <Build Include="dbo\Tables\Client.sql" />
+    <Build Include="dbo\Tables\Warehouse.sql" />
+    <Build Include="dbo\Tables\Status.sql" />
+    <Build Include="dbo\Tables\OrderDetail.sql" />
+    <Build Include="dbo\Tables\Inventory.sql" />
+    <Build Include="dbo\Tables\Customer.sql" />
   </ItemGroup>
 </Project>

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace org.company.order.entities
 {
-    public abstract class Aggregate
+    public class Warehouse
     {
-        public Guid Id => new Guid();
+        public int WarehouseId { get; set; }
+        public string Name { get; set; }
+        public bool Active { get; set; }
     }
 }

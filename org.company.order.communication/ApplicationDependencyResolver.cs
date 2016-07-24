@@ -10,7 +10,7 @@ namespace org.company.order.communication
         {
             container.RegisterSingleton<IProductService, ProductsService>();
             container.RegisterSingleton<IOrderService, OrderService>();
-            container.RegisterSingleton<IClientService, ClientService>();
+            container.RegisterSingleton<ICustomerService, CustomerService>();
         }
     }
 }

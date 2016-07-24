@@ -1,5 +1,5 @@
 ﻿using org.company.order.entities;
-using org.company.order.service.dtos;
+using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,8 @@ namespace org.company.order.application.contracts
     {
         void AddOrder(OrderDTO order);
 
-        IEnumerable<Order> GetOrdersByClient(int id);
-        Order GetOrderById(int id);
+        IEnumerable<Order> GetOrdersByCustomerId(int customerId);
+        Order GetOrderById(int orderId);
 
         IEnumerable<Product> GetProducts();
     }

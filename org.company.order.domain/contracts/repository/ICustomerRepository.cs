@@ -3,7 +3,7 @@ using org.company.order.entities;
 
 namespace org.company.order.domain.contracts.repository
 {
-    public interface IClientRepository : IGenericRepository<Client>
+    public interface ICustomerRepository : IGenericRepository<Customer>
     {
     }
 }

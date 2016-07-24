@@ -6,8 +6,8 @@ using System.Data.Entity;
 
 namespace org.company.order.repository
 {
-    public class ClientRepository : GenericRepository<Client>, IClientRepository
+    public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
-        public ClientRepository(DbContext context) : base(context) { }
+        public CustomerRepository(DbContext context) : base(context) { }
     }
 }

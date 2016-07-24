@@ -42,17 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aggregate.cs" />
-    <Compile Include="client\Client.cs" />
-    <Compile Include="order\Order.cs" />
-    <Compile Include="order\OrderProduct.cs" />
-    <Compile Include="product\Product.cs" />
-    <Compile Include="product\ProductType.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetail.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Model.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

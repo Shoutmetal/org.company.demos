@@ -21,14 +21,15 @@
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
-
-            //throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
+
+        
     }
 }

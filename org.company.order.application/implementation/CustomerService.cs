@@ -10,36 +10,36 @@ using org.company.order.domain.generic;
 
 namespace org.company.order.application.implementation
 {
-    public class ClientService : IClientService
+    public class CustomerService : ICustomerService
     {
-        private readonly IClientRepository _repository;
+        private readonly ICustomerRepository _repository;
         private readonly IUnitOfWork _uof;
 
-        public ClientService(IClientRepository repository, IUnitOfWork uof)
+        public CustomerService(ICustomerRepository repository, IUnitOfWork uof)
         {
             _repository = repository;
             _uof = uof;
         }
 
-        public void AddClient(Client client)
+        public void AddCustomer(Customer customer)
         {
-            _repository.Add(client);
+            _repository.Add(customer);
             _uof.Commit();
         }
 
-        public IEnumerable<Client> GetClients()
+        public IEnumerable<Customer> GetCustomers()
         {
             return _repository.GetAll();
         }
 
-        public Client GetClientById(int id)
+        public Customer GetCustomerById(int id)
         {
-            return _repository.GetSingle(c => c.ClientId == id);
+            return _repository.GetSingle(c => c.CustomerId == id);
         }
 
-        public void UpdateClient(Client client)
+        public void UpdateCustomer(Customer customer)
         {
-            _repository.Update(client);
+            _repository.Update(customer);
         }
     }
 }

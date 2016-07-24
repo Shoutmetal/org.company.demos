@@ -40,12 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="contracts\repository\IClientRepository.cs" />
+    <Compile Include="contracts\repository\ICustomerRepository.cs" />
+    <Compile Include="contracts\repository\IInventoryRepository.cs" />
+    <Compile Include="contracts\repository\IOrderDetailRepository.cs" />
     <Compile Include="contracts\repository\IOrderRepository.cs" />
     <Compile Include="contracts\repository\IProductRepository.cs" />
     <Compile Include="contracts\generic\IGenericRepository.cs" />
     <Compile Include="contracts\generic\IUnitOfWork.cs" />
-    <Compile Include="Aggregate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,10 +55,7 @@
       <Name>org.company.order.entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="contracts\service\" />
-    <Folder Include="services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

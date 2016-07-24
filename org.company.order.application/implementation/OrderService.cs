@@ -2,7 +2,7 @@
 using org.company.order.entities;
 using org.company.order.domain.generic;
 using org.company.order.domain.contracts.repository;
-using org.company.order.service.dtos;
+using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,57 +11,74 @@ namespace org.company.order.application.implementation
 {
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepository _repository;
+        private readonly IOrderRepository _orderRepository;
+        public readonly IOrderDetailRepository _orderDetailRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IInventoryRepository _inventoryRepository;
         private readonly IUnitOfWork _uof;
 
-        public OrderService(IOrderRepository repository, IProductRepository productRepository, IUnitOfWork uof)
+        public OrderService(
+            IOrderRepository orderRepository,
+            IOrderDetailRepository orderDetailRepository,
+            IProductRepository productRepository,
+            IInventoryRepository inventoryRepository,
+            IUnitOfWork uof)
         {
-            _repository = repository;
+            _orderRepository = orderRepository;
+            _orderDetailRepository = orderDetailRepository;
             _productRepository = productRepository;
+            _inventoryRepository = inventoryRepository;
             _uof = uof;
         }
 
         public void AddOrder(OrderDTO orderDTO)
         {
-            Order order = new Order(orderDTO.ClientId);
+            //1) save the order
+            Order order = new Order(orderDTO.OrderNumber, (int)OrderStatus.InProgress);
 
-            orderDTO.Products.ForEach(prod =>
+            //2) add details to the order
+            orderDTO.Products.ForEach( prod =>
             {
+                OrderDetail orderDetail = new OrderDetail()
+                {
+                    Order = order,
+                    ProductId = prod.ProductId,
+                    CustomerId = orderDTO.CustomerId,
+                    Quantity = prod.Quantity,
+                    OrderDate = DateTime.Now
+                };
 
-                //Get product
-                var product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId);
+                _orderDetailRepository.Add(orderDetail);
 
-                //Reduce Stock
-                product.ReduceStock(prod.Quantity);
-
-                //Add to OrderProduct
-                order.AddProductAndQuantity(product, prod.Quantity);
-
-                //Update Product added
-                _productRepository.Update(product);
+                //3)Adjust the Stock
+                Product product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId);
+                Inventory inventory = product.AdjustStock(prod.Quantity);
+                _inventoryRepository.Update(inventory);
 
             });
 
-            _repository.Add(order);
             _uof.Commit();
         }
 
-        public IEnumerable<Order> GetOrdersByClient(int id)
+        public IEnumerable<Order> GetOrdersByCustomerId(int customerId)
         {
-            return _repository.GetList(o => o.ClientId == id,
-                o => o.OrderProduct.Select(p => p.Product),
-                c => c.Client);
+            return null;
         }
 
         public Order GetOrderById(int id)
         {
-            return _repository.GetSingle(o => o.OrderId == id);
+            return _orderRepository.GetSingle(o => o.OrderId == id);
         }
 
         public IEnumerable<Product> GetProducts()
         {
-            return _productRepository.GetAll();
+            return _productRepository.GetAll(p => p.Inventories);
+        }
+
+        public enum OrderStatus
+        {
+            InProgress = 1,
+            Completed = 2
         }
     }
 }

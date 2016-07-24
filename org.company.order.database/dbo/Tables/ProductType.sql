@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [dbo].[ProductType] (
-    [ProductTypeId] INT          NOT NULL,
-    [Name]          VARCHAR (50) NOT NULL,
-    [IsActive]      BIT          NOT NULL,
-    CONSTRAINT [PK_ProdutTypeId] PRIMARY KEY CLUSTERED ([ProductTypeId] ASC)
+    [ProductTypeId] INT           IDENTITY (1, 1) NOT NULL,
+    [Name]          VARCHAR (500) NOT NULL,
+    [Active]        BIT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([ProductTypeId] ASC)
 );
+
+
 
