@@ -30,15 +30,19 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-hover-dropdown": "npm:bootstrap-hover-dropdown@2.2.1",
     "bootstrap-switch": "npm:bootstrap-switch@3.3.2",
+    "bootstrap-touchspin": "npm:bootstrap-touchspin@3.1.1",
     "core-js": "npm:core-js@1.2.6",
+    "fancybox": "npm:fancybox@3.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@3.1.0",
     "jquery-slimscroll": "npm:jquery-slimscroll@1.3.8",
     "jquery-ui": "npm:jquery-ui@1.12.0",
+    "jquery-zoom": "npm:jquery-zoom@1.7.15",
     "jquery.uniform": "npm:jquery.uniform@3.0.0",
     "module": "npm:jspm-loader-css-modules@1.0.1-beta1",
     "moment": "npm:moment@2.14.1",
     "numeral": "npm:numeral@1.5.3",
+    "owl.carousel": "npm:owl.carousel@2.1.4",
     "simple-line-icons": "npm:simple-line-icons@2.3.2",
     "uniform": "npm:uniform@0.5.1",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -420,6 +424,9 @@ System.config({
       "create-hash": "npm:create-hash@1.1.2",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0"
     },
+    "npm:fancybox@3.0.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:fastparse@1.1.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -455,6 +462,9 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:jquery-zoom@1.7.15": {
+      "jquery": "npm:jquery@3.1.0"
+    },
     "npm:jquery.uniform@3.0.0": {
       "jquery": "npm:jquery@1.12.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -483,6 +493,10 @@ System.config({
     },
     "npm:numeral@1.5.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
+    },
+    "npm:owl.carousel@2.1.4": {
+      "jquery": "npm:jquery@3.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:parse-asn1@5.0.0": {
       "asn1.js": "npm:asn1.js@4.8.0",

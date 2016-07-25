@@ -5,6 +5,7 @@ import {Order} from './order-model';
 import {Service} from './service';
 import {Router} from 'aurelia-router';
 
+
 @inject(NewInstance.of(ValidationController), Service, Router)
 export class Index
 {
@@ -14,6 +15,7 @@ export class Index
         this.router = router;
         this.orderProducts = [];
         this.errorMessage = false;
+        
     }
 
     attached(){
