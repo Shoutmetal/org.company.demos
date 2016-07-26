@@ -38,14 +38,14 @@ export class Carousel
         $(".quantity-down").html("<i class='fa fa-angle-down'></i>");
         $(".quantity-up").html("<i class='fa fa-angle-up'></i>");
 
-        if (!jQuery.fancybox) {
+        if (!$.fancybox) {
             return;
         }
         
-        jQuery(".fancybox-fast-view").fancybox();
+        $(".fancybox-fast-view").fancybox();
 
-        if (jQuery(".fancybox-button").size() > 0) {            
-            jQuery(".fancybox-button").fancybox({
+        if ($(".fancybox-button").size() > 0) {            
+            $(".fancybox-button").fancybox({
                 groupAttr: 'data-rel',
                 prevEffect: 'none',
                 nextEffect: 'none',

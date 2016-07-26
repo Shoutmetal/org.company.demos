@@ -1,6 +1,6 @@
 ﻿export function configure(config) {
     config.globalResources(
-        'converters/datetime',
-        'converters/currency'
+        'common/converters/datetime',
+        'common/converters/currency'
     );
 }

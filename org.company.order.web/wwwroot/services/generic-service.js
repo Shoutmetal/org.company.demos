@@ -3,7 +3,6 @@ import {HttpClient} from 'aurelia-http-client';
 import {Configure} from 'aurelia-configuration';
 import {Spinner} from 'services/spinner';
 
-
 @inject(HttpClient, Configure, Spinner)
 export class GenericService
 {

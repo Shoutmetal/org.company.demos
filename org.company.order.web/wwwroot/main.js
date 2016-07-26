@@ -9,7 +9,7 @@ export function configure(aurelia){
     
     aurelia.use.standardConfiguration();
     aurelia.use.plugin('aurelia-configuration', config => {
-        config.setDirectory('common'); 
+        config.setDirectory('configuration'); 
         config.setConfig('global-variables.json');
     });
 
@@ -17,9 +17,8 @@ export function configure(aurelia){
     aurelia.use.plugin('resources');
     aurelia.use.plugin('aurelia-validation')
     aurelia.use.plugin('aurelia-validatejs')
-    aurelia.use.feature('bootstrap-validation');
-    
-
-    aurelia.start().then(a => a.setRoot("home/menu", document.body))
+    aurelia.use.feature('configuration/bootstrap-validation');
+ 
+    aurelia.start().then(a => a.setRoot("main/init", document.body))
 
 }

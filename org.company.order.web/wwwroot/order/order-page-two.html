@@ -1,5 +1,5 @@
 ﻿<template>
-    <require from="./next.css!module!bind" as="style"></require>
+    <require from="./order-page-two.css!module!bind" as="style"></require>
     <div class="container container-fluid">
         <table class="table table-bordered">
             <thead class="${style.orderHeader}">
@@ -28,7 +28,7 @@
                                     <td>${product.productId}</td>
                                     <td>${product.name}</td>
                                     <td>${product.price | currencyFormat }</td>
-                                    <td>${product.stock}</td>
+                                    <td>${product.quantity}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><span class.bind="style.right">Total</span></td>

@@ -1,7 +1,6 @@
 ﻿import {inject, NewInstance} from 'aurelia-dependency-injection';  
 import {ValidationController} from 'aurelia-validation';
-import {Product} from './product-model';
-import {Order} from './order-model';
+import {Order, Product} from './model';
 import {Service} from './service';
 import {Router} from 'aurelia-router';
 
@@ -29,7 +28,7 @@ export class Index
         }
         this.errorMessage = false;
         let order = new Order(1, this.orderProducts);
-        this.router.navigateWithParams("order-next", order);
+        this.router.navigateWithParams("order-page-two", order);
     }
 
     addProduct(){
