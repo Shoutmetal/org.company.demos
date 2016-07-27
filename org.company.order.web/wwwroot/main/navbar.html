@@ -1,9 +1,9 @@
 ﻿<template>
 
     <div class="page-sidebar navbar-collapse collapse">
-        <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
             <li class="sidebar-toggler-wrapper">
-                <div class="sidebar-toggler">
+                <div class="sidebar-toggler" click.trigger="sliderToggle()">
                 </div>
             </li>
             <li class="sidebar-search-wrapper">
@@ -19,18 +19,18 @@
                     </div>
                 </form>
             </li>
-            <li repeat.for="route of router.navigation" show.bind="!route.config.parentName" class="${route.isActive ? 'start active open' : ''}">
-                <a href.bind="route.config.hasChilds ? 'javascript:void(0)' : route.href">
+            <li repeat.for="route of router.navigation" id="${route.config.name}" show.bind="!route.config.parentName">
+                <a href.bind="route.config.hasChilds ? 'javascript:void(0)' : route.href" click.trigger="open(route)">
                     <i class="${route.config.icon}"></i>
                     <span class="title">${route.title}</span>
                     <span class="${route.isActive ? 'selected': ''}"></span>
                     <span if.bind="route.config.hasChilds" class="arrow"></span>
                 </a>
                 <ul class="sub-menu" if.bind="route.config.hasChilds">
-                    <li repeat.for="subroute of router.navigation" show.bind="subroute.config.parentName == route.config.name" class="${subroute.isActive ? 'active' : ''}">
-                        <a href.bind="subroute.href">
-                            <i class="${subroute.config.icon}"></i>
-                           ${subroute.title}
+                    <li repeat.for="child of route.config.childs" class="${getRoute(child.name).config.isActive ? 'active' : ''}">
+                        <a href.bind="getRoute(child.name).href" click.trigger="openSub(route)">
+                            <i class="${child.icon}"></i>
+                           ${child.title}
                         </a>
                     </li>
                 </ul>
