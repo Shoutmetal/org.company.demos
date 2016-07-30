@@ -26,14 +26,8 @@ export class GenericService
 				.send()
 				.then(response => 
 				{
-				    let self = this;
-				    setTimeout(() => {
-				       
-				        resolve(response.content);
-
-				        self.spinner.off();
-				    }, 2000)
-				    
+				    resolve(response.content);
+				    this.spinner.off();
 				}
                 , err =>
                 {
@@ -55,7 +49,7 @@ export class GenericService
 				.send()
 				.then(response =>
 				{
-                    resolve(response.isSuccess);
+				    resolve(response.isSuccess);
 				    this.spinner.off();
 				}
                 , err =>
