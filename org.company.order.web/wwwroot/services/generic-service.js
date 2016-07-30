@@ -26,8 +26,14 @@ export class GenericService
 				.send()
 				.then(response => 
 				{
-				    resolve(response.content);
-				    this.spinner.off();
+				    let self = this;
+				    setTimeout(() => {
+				       
+				        resolve(response.content);
+
+				        self.spinner.off();
+				    }, 2000)
+				    
 				}
                 , err =>
                 {

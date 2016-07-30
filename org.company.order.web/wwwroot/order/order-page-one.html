@@ -1,7 +1,7 @@
 ﻿<template>
     <require from="./order-page-one.css!module!bind" as="style"></require>
 
-    <div class="panel panel-default">
+    <!--<div class="panel panel-default">
         <div class="panel-heading">
             Order
         </div>
@@ -64,7 +64,14 @@
                 </tbody>
             </table>
         </div>
+    </div>-->
+    <div class="panel-body">
+        <div class="main">
+            <div class="container">
+                <compose view-model="common/components/carousel" model.bind="products"></compose>
+            </div>
+        </div>
     </div>
 
-    <compose view-model="common/components/carousel"></compose>
+
 </template>

@@ -91,7 +91,6 @@ export class Menu
         this.selected.find("ul").hide();
         this.current.addClass("start active");
         this.selected = this.current;
-        
 
         return true;
 

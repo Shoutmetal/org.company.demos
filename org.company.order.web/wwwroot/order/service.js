@@ -4,6 +4,7 @@ import {GenericService} from 'services/generic-service';
 @inject(GenericService)
 export class Service
 {
+
     constructor(service){
         this.service = service;
     }
@@ -28,4 +29,5 @@ export class Service
     {
         return this.service.post("order/save", order).then( response => response );
     }
+
 }

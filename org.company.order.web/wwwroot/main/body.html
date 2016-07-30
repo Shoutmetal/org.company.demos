@@ -1,11 +1,11 @@
 ﻿<template>
-    <compose view="../services/spinner.html"></compose>
+    <spinner spin.bind="router.isNavigating"></spinner>
     <div class="page-container">
         <div class="page-sidebar-wrapper">
             <compose view="./navbar.html"></compose>
         </div>
         <div class="page-content-wrapper">
-            <div class="page-content" style="min-height:1028px">
+            <div class="page-content">
                 <router-view></router-view>
             </div>
         </div>
