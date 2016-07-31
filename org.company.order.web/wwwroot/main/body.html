@@ -2,7 +2,7 @@
     <spinner spin.bind="router.isNavigating"></spinner>
     <div class="page-container">
         <div class="page-sidebar-wrapper">
-            <compose view="./navbar.html"></compose>
+            <compose view-model="main/navbar" model.bind="router"></compose>
         </div>
         <div class="page-content-wrapper">
             <div class="page-content">
