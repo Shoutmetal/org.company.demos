@@ -24,17 +24,3 @@
     }
 }
 
-export function loader(isActivate)
-{
-    return function(target){
-        let loader =isActivate ? function(){
-            console.log("loading...");
-
-            r(function(){
-                console.log("done!")
-            });
-
-            function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
-        }() : '';
-    }
-}

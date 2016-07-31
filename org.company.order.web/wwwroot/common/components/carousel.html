@@ -1,22 +1,13 @@
 ﻿<template>
     <require from="./carousel.css!module!bind" as="style"></require>
 
-    <div class="owl-carousel" ref="carousel">
-        <div repeat.for="product of products">
-            <div class="product-item">
-                <div class="pi-img-wrapper">
-                    <img src.bind="product.imageUrl" class="img-responsive" alt.bind="product.name">
-                    <div>
-                        <a href.bind="product.imageUrl" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="${'#' + product.productId}" class="btn btn-default fancybox-fast-view" click.trigger="detail(product)">View</a>
-                    </div>
+    <div class="main">
+        <div class="container">
+            <div class="owl-carousel owl-theme" ref="carousel">
+                <div repeat.for="item of items">
+                    <compose view-model.bind="path" model.bind="item"></compose>
                 </div>
-                <h3><a href="shop-item.html">${product.name}</a></h3>
-                <div class="pi-price">${product.price | currencyFormat }</div>
-                <a href="javascript:void(0)" class="btn btn-default add2cart fancybox-fast-view" click.trigger="add(product)">Add to cart</a>
             </div>
-            <compose view-model="./product-detail" model.two-way="product"></compose>
         </div>
     </div>
-   
 </template>

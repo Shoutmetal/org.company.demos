@@ -1,59 +1,26 @@
-﻿import 'owl.carousel';
-import 'jquery-zoom';
+﻿import {bindable} from 'aurelia-framework'
+import 'owl.carousel';
 
-
+@bindable({name:"items"})
+@bindable({name:"path"})
 export class Carousel
 {
-
-    activate(items){
-        this.products = items;
-    }
-
     attached(){
         this.startCarousel();
-        this.startFancybox();
     }
 
     startCarousel(){
         $(this.carousel).owlCarousel({
-            pagination: false,
-            navigation: true,
+            nav: true,
             items: 5,
-            addClassActive: true,
-            itemsCustom : [
-                [0, 1],
-                [320, 1],
-                [480, 2],
-                [660, 2],
-                [700, 3],
-                [768, 3],
-                [992, 4],
-                [1024, 4],
-                [1200, 5],
-                [1400, 5],
-                [1600, 5]
-            ],
-        });
-    }
-
-    startFancybox(){
-        $(".fancybox-fast-view").fancybox();
-    
-        $(".fancybox-button").fancybox({
-            groupAttr: 'data-rel',
-            prevEffect: 'none',
-            nextEffect: 'none',
-            closeBtn: true,
-            helpers: {
-                title: {
-                    type: 'inside'
-                }
+            responsive:{
+                0:   { items:1 },
+                480: { items:2 },
+                700: { items:3 },
+                992: { items:4 },
+                1200:{ items:5 }
             }
         });
     }
 
-
-    detail(product){
-        this.item = product;
-    }
 }

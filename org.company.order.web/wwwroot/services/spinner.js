@@ -5,7 +5,6 @@ let count = 1;
 @bindable({ name: "spin"})
 export class Spinner {
 
-
     on(){
         count++
         this.calculate()

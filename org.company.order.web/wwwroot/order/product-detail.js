@@ -1,5 +1,4 @@
-﻿
-export class ProductDetail
+﻿export class ProductDetail
 {
     add(){
         console.log(this)

@@ -1,0 +1,14 @@
+﻿<template>
+    <div class="product-item">
+        <div class="pi-img-wrapper">
+            <img src.bind="product.imageUrl" class="img-responsive" alt.bind="product.name">
+            <div>
+                <fancybox-image-view image-url.bind="product.imageUrl" name="Zoom" ></fancybox-image-view>
+                <fancybox-detail-view target.bind="product.productId" name="View" path="order/product-detail" model.bind="product"></fancybox-detail-view>
+            </div>
+        </div>
+        <h3><a href="javascript:void()">${product.name}</a></h3>
+        <div class="pi-price">${product.price | currencyFormat }</div>
+        <a href="javascript:void(0)" class="btn btn-default add2cart fancybox-fast-view" click.trigger="add(product)">Add to cart</a>
+    </div>
+</template>

@@ -4,16 +4,13 @@ import {Order, Product} from './model';
 import {Service} from './service';
 import {Router} from 'aurelia-router';
 
-
 @inject(NewInstance.of(ValidationController), Service, Router)
 export class OrderPegeOne
 {
     constructor(controller, service, router) {
         
-        //this.service = service;
-        //this.router = router;
-        //this.orderProducts = [];
-        //this.errorMessage = false;
+        this.service = service;
+        this.router = router;
 
         this.products = [
             new Product({ productId:1, name:"Berry Lace Dress1", price:29.00 , imageUrl:"../styles/assets/frontend/pages/img/products/model1.jpg", description:"Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore."}),
@@ -27,31 +24,10 @@ export class OrderPegeOne
         
     }
 
-    //attached(){
-    //    this.service.getProducts().then( response => { this.products = response });
-    //}
+  
+   attached(){
+        //this.service.getProducts().then( response => { this.products = response });
+    }
 
-    //next(){
-    //    if(!this.orderProducts.length) { 
-    //        this.errorMessage = true;
-    //        return;
-    //    }
-    //    this.errorMessage = false;
-    //    let order = new Order(1, this.orderProducts);
-    //    this.router.navigateWithParams("order-page-two", order);
-    //}
 
-    //addProduct(){
-    //    if(!this.order.controller.validate().length){
-    //        let product = this.products.filter(p => p.productId == this.order.productId)[0];
-    //        product.quantity = this.order.quantity;
-    //        this.orderProducts.push(product);
-    //        this.clean();
-    //    }
-    //}
-
-    //clean(){
-    //    this.order.productId = "";
-    //    this.order.quantity = "";
-    //}
 }
