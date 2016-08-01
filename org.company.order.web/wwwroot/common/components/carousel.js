@@ -13,8 +13,7 @@ export class Carousel
     attached(){
         setTimeout(()=> {
             this.startCarousel();
-        }, 650)
-            
+        }, 1000)
 
     }
 
