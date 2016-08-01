@@ -4,7 +4,7 @@
             <img src.bind="product.imageUrl" class="img-responsive" alt.bind="product.name">
             <div>
                 <fancybox-image-view image-url.bind="product.imageUrl" name="Zoom" ></fancybox-image-view>
-                <fancybox-detail-view target.bind="product.productId" name="View" path="order/product-detail" model.bind="product"></fancybox-detail-view>
+                <fancybox-detail-view target.bind="product.productId" name="View" path="order/product-detail" model.two-way="product"></fancybox-detail-view>
             </div>
         </div>
         <h3><a href="javascript:void()">${product.name}</a></h3>

@@ -4,9 +4,9 @@ import {GenericService} from 'services/generic-service';
 @inject(GenericService)
 export class Service
 {
-
     constructor(service){
         this.service = service;
+        localStorage.setItem("cart_store", "[]")
     }
 
     getOrdersByCustomerId(id){
@@ -28,6 +28,18 @@ export class Service
     saveOrder(order)
     {
         return this.service.post("order/save", order).then( response => response );
+    }
+
+    addToCart(product){
+
+        let storage = localStorage.getItem("cart_store")
+        let cartShopStorage = JSON.parse(storage);
+        let exists = cartShopStorage.filter(p => p.productId === product.productId);
+
+        if(exists.length) return;
+
+        cartShopStorage.push(product)
+        localStorage.setItem("cart_store", JSON.stringify(cartShopStorage));
     }
 
 }

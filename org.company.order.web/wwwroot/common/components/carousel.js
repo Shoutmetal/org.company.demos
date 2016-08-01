@@ -1,15 +1,25 @@
-﻿import {bindable} from 'aurelia-framework'
+﻿import {inject, bindable, TaskQueue} from 'aurelia-framework'
 import 'owl.carousel';
 
 @bindable({name:"items"})
 @bindable({name:"path"})
+@inject(TaskQueue)
 export class Carousel
 {
+    constructor(taskQueue){
+        this.taskQueue = taskQueue;
+    }
+
     attached(){
-        this.startCarousel();
+        setTimeout(()=> {
+            this.startCarousel();
+        }, 650)
+            
+
     }
 
     startCarousel(){
+
         $(this.carousel).owlCarousel({
             nav: true,
             items: 5,
@@ -21,6 +31,9 @@ export class Carousel
                 1200:{ items:5 }
             }
         });
+
+
     }
+
 
 }

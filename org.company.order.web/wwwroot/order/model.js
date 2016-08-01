@@ -12,18 +12,23 @@ export class Product
     name = "";
 
     @required 
+    description = "";
+
+    @required 
     price = 0.0;
 
     @required 
     imageUrl = ""
 
-    @required 
-    description = "";
+    productTypeId = 0
 
     @required 
     quantity = 1;
 
+    inventories = [];
+
     constructor(product) {
+        
         $.extend(this, product);
 
         let container = Container.instance;
@@ -33,9 +38,6 @@ export class Product
         this.controller.validateTrigger = validateTrigger.change;  
     }
 
-    add(){
-        localStorage.setItem("cart_store", JSON.stringify(this));
-    }
 
 
 }

@@ -3,3 +3,7 @@
     height:92vh;
 }
 
+.container200px {
+    width:180px;
+    display:inline-block;
+}
