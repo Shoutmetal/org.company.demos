@@ -1,27 +1,22 @@
-﻿import {inject, bindable, TaskQueue} from 'aurelia-framework'
+﻿import {bindable, computedFrom} from 'aurelia-framework'
 import 'owl.carousel';
 
 @bindable({name:"items"})
 @bindable({name:"path"})
-@inject(TaskQueue)
 export class Carousel
 {
-    constructor(taskQueue){
-        this.taskQueue = taskQueue;
+    detached()
+    {
+        $(this.carousel).trigger('destroy.owl.carousel');
     }
 
-    attached(){
-        setTimeout(()=> {
-            this.startCarousel();
-        }, 1000)
+    start(){
 
-    }
-
-    startCarousel(){
-
+        $(this.carousel).trigger('destroy.owl.carousel');
         $(this.carousel).owlCarousel({
             nav: true,
             items: 5,
+            onInitialized: this.callback,
             responsive:{
                 0:   { items:1 },
                 480: { items:2 },
@@ -29,10 +24,18 @@ export class Carousel
                 992: { items:4 },
                 1200:{ items:5 }
             }
+
         });
-
-
+        
     }
 
+    @computedFrom('items')
+    get first(){
+        return this.items[0]
+    }
 
+    @computedFrom('items')
+    get last(){
+        return this.items[this.items.length - 1];
+    }
 }

@@ -3,13 +3,15 @@ import {ValidationController} from 'aurelia-validation';
 import {Product} from './model';
 import {Service} from './service';
 import {Router} from 'aurelia-router';
+import {Carousel} from 'common/components/carousel'
 
-@inject(NewInstance.of(ValidationController), Service, Router)
+@inject(NewInstance.of(ValidationController), Service, Router, Carousel)
 export class OrderPegeOne
 {
-    constructor(controller, service, router) {
+    constructor(controller, service, router, carousel) {
         this.service = service;
         this.router = router;
+        this.carousel = carousel;
         this.init();
     }
 
@@ -25,5 +27,9 @@ export class OrderPegeOne
             this.products = items;
 
         });
+    }
+
+    attached(){
+        this.carousel.start();
     }
 }
