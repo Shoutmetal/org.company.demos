@@ -11,8 +11,6 @@ export class Carousel
     }
 
     start(){
-
-        $(this.carousel).trigger('destroy.owl.carousel');
         $(this.carousel).owlCarousel({
             nav: true,
             items: 5,
