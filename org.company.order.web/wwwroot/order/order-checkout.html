@@ -2,13 +2,14 @@
 
     <ul class="breadcrumb">
         <li><a href="index.html">Home</a></li>
-        <li><a href="">Store</a></li>
         <li class="active">Checkout</li>
     </ul>
 
 
     <div class="container">
-        <div if.bind="products.length" class="col-md-12 col-sm-12">
+        <div if.bind="!products.length">The cart is empty, start shopping now!</div>
+        <div if.bind="confirmed"><h1>THANK YOU!</h1></div>
+        <div if.bind="products.length && !confirmed" class="col-md-12 col-sm-12">
             <h3>Checkout</h3>
 
             <div class="panel-group checkout-page" id="checkout-page">

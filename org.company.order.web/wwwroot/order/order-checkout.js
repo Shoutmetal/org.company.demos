@@ -12,6 +12,7 @@ export class OrderCheckout
         this.router = router;
         this.products = this.storage.get("cart");
         this.totalPrice = 0;
+        this.confirmed = false;
     }
 
     attached(){
@@ -19,7 +20,15 @@ export class OrderCheckout
     }
 
     confirm(){
-        console.log(this.products)
+        let order = { orderId:0, orderNumber:"", customerId: 1,  products: this.products};
+
+        this.service.saveOrder(order).then((response) => {
+        
+            this.confirmed = response;
+
+            if(response) this.storage.clear("cart");
+        })
+
     }
 
     cancel(){

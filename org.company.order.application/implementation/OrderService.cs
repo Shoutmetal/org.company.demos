@@ -33,8 +33,11 @@ namespace org.company.order.application.implementation
 
         public void AddOrder(OrderDTO orderDTO)
         {
+            //0) generate order number
+            string orderNumber = DateTime.Now.ToString("yyMMddHHmmssff") + orderDTO.CustomerId;
+
             //1) create an order
-            Order order = new Order(orderDTO.CustomerId, orderDTO.OrderNumber, (int)OrderStatus.Created);
+            Order order = new Order(orderDTO.CustomerId, orderNumber, (int)OrderStatus.Created);
 
             //2) add details to the order
             orderDTO.Products.ForEach( prod =>

@@ -2,46 +2,48 @@
     <require from="./order-report.css!module!bind" as="style" scope=""></require>
 
     <div class="container-fluid">
-        <table class="table table-responsive table-bordered ">
-            <thead class="${style.orderHeader}">
-                <tr>
-                    <th>ID</th>
-                    <th>NUMBER</th>
-                    <th>CLIENT</th>
-                    <th>DATE</th>
-                    <th>PRODUCTS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr repeat.for="order of orders">
-                    <td>${order.orderId}</td>
-                    <td>${order.number}</td>
-                    <td>${order.customer.name}</td>
-                    <td>${order.orderDate |  dateFormat }</td>
-                    <td>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>NAME</th>
-                                    <th>PRICE</th>
-                                    <th>STOCK</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr repeat.for="op of order.orderProduct">
-                                    <td>${op.product.productId}</td>
-                                    <td>${op.product.name}</td>
-                                    <td>${op.product.price | currencyFormat }</td>
-                                    <td>${op.product.stock}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="table-wrapper-responsive">
+            <table class="table table-responsive table-bordered ">
+                <thead class="${style.orderHeader}">
+                    <tr>
+                        <th>ID</th>
+                        <th>NUMBER</th>
+                        <th>CLIENT</th>
+                        <th>DATE</th>
+                        <th>PRODUCTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr repeat.for="order of orders">
+                        <td>${order.orderId}</td>
+                        <td>${order.number}</td>
+                        <td>${order.customer.name}</td>
+                        <td>${order.orderDate |  dateFormat }</td>
+                        <td>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NAME</th>
+                                        <th>PRICE</th>
+                                        <th>QUANTITY</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr repeat.for="od of order.orderDetail">
+                                        <td>${od.product.productId}</td>
+                                        <td>${od.product.name}</td>
+                                        <td>${od.product.price | currencyFormat }</td>
+                                        <td>${od.quantity}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </template>
