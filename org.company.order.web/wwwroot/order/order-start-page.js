@@ -2,14 +2,12 @@
 import {ValidationController} from 'aurelia-validation';
 import {Product} from './model';
 import {Service} from './service';
-import {Router} from 'aurelia-router';
 
-@inject(NewInstance.of(ValidationController), Service, Router)
+@inject(NewInstance.of(ValidationController), Service)
 export class OrderPegeOne
 {
-    constructor(controller, service, router) {
+    constructor(controller, service) {
         this.service = service;
-        this.router = router;
         this.init();
     }
 
@@ -17,7 +15,6 @@ export class OrderPegeOne
         this.service.getProducts().then( response => 
         { 
             let items = [];
-
             response.forEach((item) => {
                 items.push(new Product(item))
             });

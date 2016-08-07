@@ -1,9 +1,30 @@
-.page-content {
-    background-color:#f9f9f9;
-    height:92vh;
+body {
+    overflow-y:no-display
 }
 
-.container200px {
-    width:180px;
-    display:inline-block;
+.page-content {
+    background-color:#f9f9f9;
+    height:auto;
+}
+
+.items {
+    height:200px
+}
+
+.sticker-right {
+    position:absolute;
+    right:0;
+    top:0;
+    color:green;
+    padding:10px 10px;
+}
+
+.checkout-quantity {
+    padding-right:20px;
+    padding-left:20px;
+
+}
+
+.checkout-quantity-value {
+    padding-left: 20px !important
 }

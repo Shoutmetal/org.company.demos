@@ -21,21 +21,32 @@ export class NavBar
         this.defaultRoute();
         this.cookieMenu();
 
-        this.event.subscribe("router:navigation:success", (result) => {
+        this.event.subscribe("router:navigation:success", (route) => {
+            this.route = route.instruction;
 
-            if(this.route && !this.route.config.parentName){
-                let route = this.route
+            if(!this.route.config.parentName){
 
                 this.selected = this.selected || this.current;
-                this.current = $(this.element).find("#" + route.config.name);
+                this.current = $(this.element).find("#" + this.route.config.name);
 
                 if((this.selected).is(this.current)) return true;
 
-                this.selected.removeClass("start active open");
-                this.selected.find(".arrow").removeClass("open");
-                this.selected.find("ul").hide();
+                if(this.selected){
+                    this.selected.removeClass("start active open");
+                    this.selected.find(".arrow").removeClass("open");
+                    this.selected.find("ul").hide();
+                }
                 this.current.addClass("start active");
                 this.selected = this.current;
+            }else
+            {
+                if(this.selected){
+                    this.selected.removeClass("start active open");
+                    this.selected.find(".arrow").removeClass("open");
+                    this.selected.find("ul").hide();
+                }
+                this.selected = $(this.element).find("#" + this.route.config.parentName);
+                this.selected.addClass("start active open");
             }
 
         }); 
@@ -43,6 +54,8 @@ export class NavBar
 
     defaultRoute(){
         let current = this.router.navigation.filter( item => item.isActive)[0];
+
+        if(!current) return;
 
         if(current.config.parentName){
             this.current = $(this.element).find("#" + current.config.parentName)
@@ -67,13 +80,13 @@ export class NavBar
     open(route){
         this.route = route;
 
-        if(route.config.hasChilds){
+        if(this.route.config.hasChilds){
 
             this.selected = this.selected || this.current;
-            this.current = $(this.element).find("#" + route.config.name);
+            this.current = $(this.element).find("#" + this.route.config.name);
 
             let isOpen = this.current.hasClass("open");
-            
+
             $(".page-sidebar-menu li").each(function(){
                 $(this).removeClass("open") 
                 $(this).find("ul").hide();
@@ -90,23 +103,7 @@ export class NavBar
                 this.current.find("ul").show();
                 this.current.find("span.arrow").addClass("open");
             }
-
         }
-
-        return true;
-    }
-
-    openSub(route){
-        this.route = route;
-
-        if((this.selected).is(this.current)) return true;
-
-        this.selected.removeClass("start active open");
-        this.selected.find(".arrow").removeClass("open");
-        this.selected.find("ul").hide();
-
-        this.selected = $(this.element).find("#" + route.config.parentName);
-        this.selected.addClass("start active open");
 
         return true;
     }

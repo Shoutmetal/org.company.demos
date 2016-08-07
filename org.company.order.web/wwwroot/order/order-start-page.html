@@ -1,0 +1,15 @@
+﻿<template>
+    <require from="./order-start-page.css!module!bind" as="style"></require>
+    <div class="header">
+        <div class="container">
+            <compose view-model="order/order-cart-menu"></compose>
+        </div>
+    </div>
+    <hr />
+    <div class="main">
+        <div class="container">
+            <carousel path="order/product-item" items.bind="products"></carousel>
+        </div>
+    </div>
+
+</template>

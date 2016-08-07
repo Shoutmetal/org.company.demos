@@ -6,6 +6,7 @@
         'common/components/carousel',
         'common/components/fancybox-detail-view',
         'common/components/fancybox-image-view',
+        'common/attributes/slim-scroll',
         'services/spinner'
     );
 }

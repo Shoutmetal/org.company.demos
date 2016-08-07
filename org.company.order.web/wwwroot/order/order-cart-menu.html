@@ -1,0 +1,30 @@
+﻿<template>
+    <div class="top-cart-block">
+        <div class="top-cart-info">
+            <a href="javascript:void(0);" class="top-cart-info-count">${items.length} products</a>
+            <a href="javascript:void(0);" class="top-cart-info-value">${totalPrice | currencyFormat}</a>
+        </div>
+        <i class="fa fa-shopping-cart"></i>
+
+        <div class="top-cart-content-wrapper">
+            <div class="top-cart-content">
+                <ul class="scroller items" slimscroll>
+                    <li if.bind="!items.length" class="content-center">
+                        <div> The cart is empty, start shopping now! </div>
+                    </li>
+                    <li repeat.for="product of items">
+                        <a href="javascript:void(0)"><img src.bind="product.imageUrl" alt.bind="product.name" width="37" height="34"></a>
+                        <span class="cart-content-count">x ${product.quantity}</span>
+                        <strong><a href="javascript:void(0)">${product.name}</a></strong>
+                        <em>${product.price | currencyFormat}</em>
+                        <a href="javascript:void(0);" class="del-goods" click.trigger="delete(product.productId)">&nbsp;</a>
+                    </li>
+                </ul>
+                <div class="text-right">
+                    <a href="shop-shopping-cart.html" class="btn btn-default" click.trigger="cartshop()">View Cart</a>
+                    <a href="shop-checkout.html" class="btn btn-primary" click.trigger="checkout()">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

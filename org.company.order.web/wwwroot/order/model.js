@@ -2,6 +2,7 @@
 import {validateTrigger} from 'aurelia-validation';
 import {ValidationController} from 'aurelia-validation';
 import {Container} from 'aurelia-dependency-injection';
+import {computedFrom} from 'aurelia-framework'
 
 export class Product
 {
@@ -38,6 +39,11 @@ export class Product
         this.controller.validateTrigger = validateTrigger.change;  
     }
 
-
+    @computedFrom("quantity")
+    get total(){
+        let quantity = this.quantity
+            
+        return parseInt(quantity) * this.price;
+    }
 
 }

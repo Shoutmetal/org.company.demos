@@ -1,0 +1,55 @@
+﻿<template>
+
+    <ul class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Store</a></li>
+        <li class="active">Checkout</li>
+    </ul>
+
+
+    <div class="container">
+        <div if.bind="products.length" class="col-md-12 col-sm-12">
+            <h3>Checkout</h3>
+
+            <div class="panel-group checkout-page" id="checkout-page">
+                <div class="table-wrapper-responsive">
+                    <table>
+                        <tr>
+                            <th class="checkout-image">Image</th>
+                            <th class="checkout-description">Description</th>
+                            <th class="checkout-quantity">Quantity</th>
+                            <th class="checkout-price">Price</th>
+                            <th class="checkout-total">Total</th>
+                        </tr>
+                        <tr repeat.for="product of products">
+                            <td class="checkout-image">
+                                <a href="javascript:void(0);"><img src.bind="product.imageUrl" alt.bind="product.name"></a>
+                            </td>
+                            <td class="checkout-description">
+                                <h3><a href="javascript:void(0);">${product.name}</a></h3>
+                                <p>${product.description}</p>
+                            </td>
+                            <td class="checkout-quantity-value">${product.quantity}</td>
+                            <td class="checkout-price"><strong>${product.price | currencyFormat}</strong></td>
+                            <td class="checkout-total"><strong>${product.total | currencyFormat}</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="checkout-total-block">
+                <ul>
+                    <li class="checkout-total-price">
+                        <em>Total</em>
+                        <strong class="price">${totalPrice | currencyFormat}</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <button class="btn btn-primary pull-right" type="submit" id="button-confirm" click.trigger="confirm()">Confirm Order</button>
+            <button type="button" class="btn btn-default pull-right margin-right-20" click.trigger="cancel()">Cancel</button>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+</template>

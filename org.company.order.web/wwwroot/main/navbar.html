@@ -28,7 +28,7 @@
                 </a>
                 <ul class="sub-menu" if.bind="route.config.hasChilds">
                     <li repeat.for="child of route.config.childs" class="${getRoute(child.name).config.isActive ? 'active' : ''}">
-                        <a href.bind="getRoute(child.name).href" click.trigger="openSub(route)">
+                        <a href.bind="getRoute(child.name).href">
                             <i class="${child.icon}"></i>
                            ${child.title}
                         </a>

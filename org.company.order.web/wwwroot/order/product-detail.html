@@ -1,28 +1,29 @@
 ﻿<template>
     <require from="./product-detail.css!module!bind" as="style"></require>
 
-    <div id.bind="productId" class.bind="style.productDetail">
+    <div id.bind="product.productId" class.bind="style.productDetail">
         <div class="product-page product-pop-up">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-3">
                     <div class="product-main-image">
-                        <img src.bind="imageUrl" alt.bind="product.name" class="img-responsive" >
+                        <img src.bind="product.imageUrl" alt.bind="product.name" class="img-responsive" >
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-9">
                     <h2>Cool green dress with red bell</h2>
                     <div class="price-availability-block clearfix">
                         <div class="price">
-                            <strong>${ price | currencyFormat }</strong>
+                            <strong>${ product.price | currencyFormat }</strong>
                         </div>
                     </div>
                     <div class="description">
-                        <p>${description}</p>
+                        <p>${product.description}</p>
                     </div>
                     <div class="product-page-cart">
-                        <number-spin value.bind="quantity"></number-spin>
+                        <number-spin value.bind="product.quantity"></number-spin>
                         <button class="btn btn-primary" type="submit" click.trigger="add()">Add to cart</button>
                     </div>
+                    
                 </div>
             </div>
         </div>

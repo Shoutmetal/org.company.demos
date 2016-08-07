@@ -6,20 +6,17 @@ export class NumberSpin
 {
 
     attached(){
-        this.startTouchSpin();
-        this.numberChanged();
-    }
+        this.start();
 
-    numberChanged(){
         let self = this;
 
-        $(this.productQuantity).change((element) => {
+        $(this.quantity).on("change",(element) => {
             self.value = element.target.value;
         });
     }
 
-    startTouchSpin(){
-        $(this.productQuantity).TouchSpin({
+    start(){
+        $(this.quantity).TouchSpin({
             buttondown_class: "btn quantity-down",
             buttonup_class: "btn quantity-up"
         });

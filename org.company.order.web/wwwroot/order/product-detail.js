@@ -6,17 +6,19 @@ import {Carousel} from 'common/components/carousel'
 export class ProductDetail
 {
     constructor(service, carousel){
+        this.product = {};
         this.service = service;
         this.carousel = carousel;
     }
 
     attached(){
-        if(this.productId === this.first.productId)
+        if(this.product.productId === this.first.productId)
             this.carousel.start();
     }
 
     add(){
-        this.service.addToCart(this);
+        this.service.addToCart(this.product);
+        parent.$.fancybox.close();
     }
 
     bind(context)
@@ -25,7 +27,6 @@ export class ProductDetail
     }
 
     activate(product){
-        $.extend(this, product)
+        $.extend(this.product, product)
     }
-
 }

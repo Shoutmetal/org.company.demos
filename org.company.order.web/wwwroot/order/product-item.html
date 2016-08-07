@@ -10,5 +10,8 @@
         <h3><a href="javascript:void()">${product.name}</a></h3>
         <div class="pi-price">${product.price | currencyFormat }</div>
         <a href="javascript:void(0)" class="btn btn-default add2cart fancybox-fast-view" click.trigger="add(product)">Add to cart</a>
+        <div show.bind="isActive" class="sticker-right">
+            <i class="fa fa-2x fa-check-circle-o"></i>
+        </div>
     </div>
 </template>

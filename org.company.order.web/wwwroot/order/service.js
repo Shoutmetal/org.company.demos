@@ -1,12 +1,13 @@
 ﻿import {inject} from 'aurelia-framework';
 import {GenericService} from 'services/generic-service';
+import {Storage} from 'services/storage';
 
-@inject(GenericService)
+@inject(GenericService, Storage)
 export class Service
 {
-    constructor(service){
+    constructor(service, storage){
         this.service = service;
-        localStorage.setItem("cart_store", "[]")
+        this.storage = storage;
     }
 
     getOrdersByCustomerId(id){
@@ -31,15 +32,14 @@ export class Service
     }
 
     addToCart(product){
+        let condition = (prod) => { return prod.productId === product.productId };
+        let storageName = "cart";
+        let exists = this.storage.exists(storageName, condition);
 
-        let storage = localStorage.getItem("cart_store")
-        let cartShopStorage = JSON.parse(storage);
-        let exists = cartShopStorage.filter(p => p.productId === product.productId);
-
-        if(exists.length) return;
-
-        cartShopStorage.push(product)
-        localStorage.setItem("cart_store", JSON.stringify(cartShopStorage));
+        if(!exists)
+            this.storage.save(storageName, product);
+        else
+            this.storage.update(storageName, product, condition);
     }
 
 }
