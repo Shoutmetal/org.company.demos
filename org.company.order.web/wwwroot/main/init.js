@@ -12,9 +12,9 @@ export class Menu
         ];
 
         let order = [
-            { route: "order-start-page", moduleId: 'order/order-start-page', name:"order-start-page", title:"Order", nav:true, icon:"icon-basket", parentName:"order" },
+            { route: "order-start-page", moduleId: 'order/order-start-page', name:"order-start-page", title:"Cart Shop", nav:true, icon:"icon-basket", parentName:"order" },
             { route: "order-checkout", moduleId: 'order/order-checkout', name:"order-checkout", title:"Checkout", nav:true, icon:"icon-check", parentName:"order"},
-            { route: "order-cart-shop", moduleId: 'order/order-cart-shop', name:"order-cart-shop", title:"Cart Shop", nav:true, icon:"icon-bag", parentName:"order"}
+            { route: "order-cart-shop", moduleId: 'order/order-cart-shop', name:"order-cart-shop", title:"Cart Details", nav:true, icon:"icon-bag", parentName:"order"}
         ]
 
         let routes = [

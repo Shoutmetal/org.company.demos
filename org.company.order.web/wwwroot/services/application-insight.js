@@ -13,7 +13,7 @@
     run(routingContext, next) {
         var origin = window.location.pathname + window.location.hash;
         var path = origin.replace("/#/", "/").replace("#", "");
-        console.log("[AppInsights] Tracking for %s", path);
+        //console.log("[AppInsights] Tracking for %s", path);
         this.server.trackPageView(path);
         return next();
     }

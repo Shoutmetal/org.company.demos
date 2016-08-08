@@ -40,6 +40,10 @@ export class NavBar
                     this.selected.find(".arrow").removeClass("open");
                     this.selected.find("ul").hide();
                 }
+
+                if(this.selectedSub)
+                    this.selectedSub.removeClass("active");
+
                 this.current.addClass("start active");
                 this.selected = this.current;
             }else{
