@@ -16,7 +16,7 @@
                         <a href="javascript:void(0)"><img src.bind="product.imageUrl" alt.bind="product.name" width="37" height="34"></a>
                         <span class="cart-content-count">x ${product.quantity}</span>
                         <strong><a href="javascript:void(0)">${product.name}</a></strong>
-                        <em>${product.price | currencyFormat}</em>
+                        <em>${(product.price * product.quantity) | currencyFormat}</em>
                         <a href="javascript:void(0);" class="del-goods" click.trigger="delete(product.productId)">&nbsp;</a>
                     </li>
                 </ul>

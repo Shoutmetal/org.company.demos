@@ -24,7 +24,7 @@ export class Product
     productTypeId = 0
 
     @required 
-    quantity = 1;
+    quantity = 1;;
 
     inventories = [];
 
@@ -37,13 +37,6 @@ export class Product
 
         this.controller = controller;
         this.controller.validateTrigger = validateTrigger.change;  
-    }
-
-    @computedFrom("quantity")
-    get total(){
-        let quantity = this.quantity
-            
-        return parseInt(quantity) * this.price;
     }
 
 }

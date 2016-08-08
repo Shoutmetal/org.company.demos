@@ -9,7 +9,6 @@ export class Storage
         this.eventName = "storage:";
     }
 
-
     get(key){
         let storage = localStorage.getItem(key);
         return JSON.parse(storage || "[]");

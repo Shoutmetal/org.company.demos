@@ -20,7 +20,7 @@ export class OrderPegeOne
             });
 
             this.products = items;
-
+           
         });
     }
 }

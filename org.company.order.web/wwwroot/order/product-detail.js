@@ -18,6 +18,8 @@ export class ProductDetail
 
     add(){
         this.service.addToCart(this.product);
+        
+        
         parent.$.fancybox.close();
     }
 
@@ -27,6 +29,8 @@ export class ProductDetail
     }
 
     activate(product){
-        $.extend(this.product, product)
+        
+
+        this.product = product
     }
 }

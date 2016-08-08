@@ -17,14 +17,20 @@ export class Menu
             { route: "order-cart-shop", moduleId: 'order/order-cart-shop', name:"order-cart-shop", title:"Cart Details", nav:true, icon:"icon-bag", parentName:"order"}
         ]
 
+        let demoInfo = [
+         { route: "general-information", moduleId: 'demo/general-information', name:"general-information", title:"General Information", nav:true, icon:"icon-paper-plane", parentName:"demo" }
+        ]
+
         let routes = [
             { route: "", moduleId: 'home/index', name:"home", title:"Home", nav:true, icon:"icon-home" },
-            { route: "order", moduleId: 'reports/report-main', name:"order", title:"Order", nav:true, icon:"icon-handbag", hasChilds:true, childs: order},
-            { route: "reports", moduleId: 'reports/report-main', name:"reports", title:"Reports", nav:true, icon:"icon-chart", hasChilds:true, childs: reports}
+            { route: "order", moduleId: 'home/index', name:"order", title:"Order", nav:true, icon:"icon-handbag", hasChilds:true, childs: order},
+            { route: "reports", moduleId: 'home/index', name:"reports", title:"Reports", nav:true, icon:"icon-chart", hasChilds:true, childs: reports},
+            { route: "demo", moduleId: 'home/index', name:"demo", title:"About Demo", nav:true, icon:"icon-info", hasChilds:true, childs: demoInfo}
         ];
 
         routes = routes.concat(reports);
         routes = routes.concat(order);
+        routes = routes.concat(demoInfo);
         config.map(routes);
 
         this.router = router;

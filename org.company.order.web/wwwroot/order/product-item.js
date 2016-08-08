@@ -24,6 +24,7 @@ export class ProductItem
     }
 
     activate(item){
+        
         this.product = item;
     }
 

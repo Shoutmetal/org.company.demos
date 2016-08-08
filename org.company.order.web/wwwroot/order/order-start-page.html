@@ -1,5 +1,10 @@
 ﻿<template>
     <require from="./order-start-page.css!module!bind" as="style"></require>
+    <ul class="breadcrumb">
+        <li><a href="javascript:void(0)">Order</a></li>
+        <li class="active">Cart Shop</li>
+    </ul>
+
     <div class="header">
         <div class="container">
             <compose view-model="order/order-cart-menu"></compose>

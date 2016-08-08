@@ -1,17 +1,16 @@
 ﻿<template>
 
     <ul class="breadcrumb">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="javascript:void(0)">Order</a></li>
         <li class="active">Checkout</li>
     </ul>
 
+    <div if.bind="!products.length">The cart is empty, <a href="/#/order-start-page">start shopping now!</a></div>
+    <div if.bind="confirmed"><h1>THANK YOU!</h1></div>
 
-    <div class="container">
-        <div if.bind="!products.length">The cart is empty, <a href="/#/order-start-page">start shopping now!</a></div>
-        <div if.bind="confirmed"><h1>THANK YOU!</h1></div>
-        <div if.bind="products.length && !confirmed" class="col-md-12 col-sm-12">
+    <div if.bind="products.length && !confirmed" class="container">
+        <div  class="col-md-12 col-sm-12">
             <h3>Checkout</h3>
-
             <div class="panel-group checkout-page" id="checkout-page">
                 <div class="table-wrapper-responsive">
                     <table>
@@ -32,7 +31,7 @@
                             </td>
                             <td class="checkout-quantity-value">${product.quantity}</td>
                             <td class="checkout-price"><strong>${product.price | currencyFormat}</strong></td>
-                            <td class="checkout-total"><strong>${product.total | currencyFormat}</strong></td>
+                            <td class="checkout-total"><strong>${(product.price * product.quantity) | currencyFormat}</strong></td>
                         </tr>
                     </table>
                 </div>
