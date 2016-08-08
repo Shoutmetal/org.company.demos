@@ -19,7 +19,7 @@
                     </div>
                 </form>
             </li>
-            <li repeat.for="route of router.navigation" id="${route.config.name}" show.bind="!route.config.parentName">
+            <li repeat.for="route of router.navigation" id="${route.config.name}" show.bind="!route.config.parentName" class="parent-router">
                 <a href.bind="route.config.hasChilds ? 'javascript:void(0)' : route.href" click.trigger="open(route)">
                     <i class="${route.config.icon}"></i>
                     <span class="title">${route.title}</span>
@@ -27,7 +27,7 @@
                     <span if.bind="route.config.hasChilds" class="arrow"></span>
                 </a>
                 <ul class="sub-menu" if.bind="route.config.hasChilds">
-                    <li repeat.for="child of route.config.childs" class="${getRoute(child.name).config.isActive ? 'active' : ''}">
+                    <li repeat.for="child of route.config.childs" class="child-router" id="${child.name}">
                         <a href.bind="getRoute(child.name).href">
                             <i class="${child.icon}"></i>
                            ${child.title}

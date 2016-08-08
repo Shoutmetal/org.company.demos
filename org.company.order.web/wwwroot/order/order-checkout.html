@@ -7,7 +7,7 @@
 
 
     <div class="container">
-        <div if.bind="!products.length">The cart is empty, start shopping now!</div>
+        <div if.bind="!products.length">The cart is empty, <a href="/#/order-start-page">start shopping now!</a></div>
         <div if.bind="confirmed"><h1>THANK YOU!</h1></div>
         <div if.bind="products.length && !confirmed" class="col-md-12 col-sm-12">
             <h3>Checkout</h3>

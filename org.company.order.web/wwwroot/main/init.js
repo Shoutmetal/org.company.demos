@@ -8,18 +8,23 @@ export class Menu
         config.addPipelineStep('modelbind', AppInsights);
 
         let reports = [
-            { route: "order-report", moduleId: 'reports/order-report', name:"order-report", title:"Order Report", nav:true, icon:"icon-rocket", parentName:"reports"}
+            { route: "order-report", moduleId: 'reports/order-report', name:"order-report", title:"Order Report", nav:true, icon:"icon-pie-chart", parentName:"reports"}
         ];
+
+        let order = [
+            { route: "order-start-page", moduleId: 'order/order-start-page', name:"order-start-page", title:"Order", nav:true, icon:"icon-basket", parentName:"order" },
+            { route: "order-checkout", moduleId: 'order/order-checkout', name:"order-checkout", title:"Checkout", nav:true, icon:"icon-check", parentName:"order"},
+            { route: "order-cart-shop", moduleId: 'order/order-cart-shop', name:"order-cart-shop", title:"Cart Shop", nav:true, icon:"icon-bag", parentName:"order"}
+        ]
 
         let routes = [
             { route: "", moduleId: 'home/index', name:"home", title:"Home", nav:true, icon:"icon-home" },
-            { route: "order-start-page", moduleId: 'order/order-start-page', name:"order-start-page", title:"Order", nav:true, icon:"icon-basket" },
-            { route: "order-checkout", moduleId: 'order/order-checkout', name:"order-checkout", title:"Checkout", nav:true, icon:"icon-check"},
-            { route: "order-cart-shop", moduleId: 'order/order-cart-shop', name:"order-cart-shop", title:"Cart Shop", nav:false},
-            { route: "reports", moduleId: 'reports/report-main', name:"reports", title:"Reports", nav:true, icon:"icon-diamond", hasChilds:true, childs: reports}
+            { route: "order", moduleId: 'reports/report-main', name:"order", title:"Order", nav:true, icon:"icon-handbag", hasChilds:true, childs: order},
+            { route: "reports", moduleId: 'reports/report-main', name:"reports", title:"Reports", nav:true, icon:"icon-chart", hasChilds:true, childs: reports}
         ];
 
         routes = routes.concat(reports);
+        routes = routes.concat(order);
         config.map(routes);
 
         this.router = router;
