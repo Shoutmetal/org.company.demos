@@ -66,7 +66,6 @@ export class NavBar
 
                 if(this.selectedSub)
                     this.selectedSub.removeClass("active");
-
                 this.currentSub.addClass("active");
                 this.selectedSub = this.currentSub;
 

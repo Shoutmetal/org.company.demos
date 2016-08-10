@@ -30,8 +30,7 @@ export class OrderCheckout
     }
 
     cancel(){
-        this.storage.clear("cart");
-        this.router.navigate("order-start-page");
+        this.router.navigate("order-cart-shop");
     }
 
 }

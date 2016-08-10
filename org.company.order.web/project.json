@@ -3,7 +3,7 @@
   "compilationOptions": {
     "emitEntryPoint": true
   },
-
+  "prepublish": [ "npm install", "jspm install -y" ],
   "dependencies": {
     "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1-update4",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
