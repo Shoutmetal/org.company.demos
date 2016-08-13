@@ -12,7 +12,7 @@ namespace org.company.order.application.implementation
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
-        public readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IOrderDetailRepository _orderDetailRepository;
         private readonly IProductRepository _productRepository;
         private readonly IInventoryRepository _inventoryRepository;
         private readonly IUnitOfWork _uof;
@@ -34,7 +34,7 @@ namespace org.company.order.application.implementation
         public void AddOrder(OrderDTO orderDTO)
         {
             //0) generate order number
-            string orderNumber = DateTime.Now.ToString("yyMMddHHmmssff") + orderDTO.CustomerId;
+            string orderNumber = orderDTO.CustomerId + DateTime.Now.ToString("yyMMddHHmmssff");
 
             //1) create an order
             Order order = new Order(orderDTO.CustomerId, orderNumber, (int)OrderStatus.Created);
@@ -51,7 +51,7 @@ namespace org.company.order.application.implementation
 
                 _orderDetailRepository.Add(orderDetail);
 
-                //3)Adjust the Stock
+                //3) Adjust the Stock
                 Product product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId, i => i.Inventories);
                 Inventory inventory = product.AdjustStock(prod.Quantity);
                 _inventoryRepository.Update(inventory);
