@@ -37,7 +37,7 @@ System.register([], function (_export, _context) {
                             var s = u && u(config, r, f, e, o);return s !== !0 && t["_" + i](config, r, f, e, o), s;
                         }), t;
                     }({
-                        instrumentationKey: "59b21429-9914-42a4-bf83-e62860e9722f"
+                        instrumentationKey: "d166fa91-be12-495f-a662-97d443fcba26"
                     });
                     window.appInsights = this.server;
                 }
