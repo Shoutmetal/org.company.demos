@@ -1,0 +1,13 @@
+<template>
+    <spinner spin.bind="router.isNavigating"></spinner>
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+            <compose view-model="main/navbar" model.bind="router"></compose>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+</template>

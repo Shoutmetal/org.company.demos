@@ -1,20 +1,11 @@
 System.config({
-  baseURL: "/",
   defaultJSExtensions: true,
-  transpiler: "babel",
-  babelOptions: {
-    "modules": "system",
-    "optional": [
-      "es7.decorators",
-      "es7.classProperties",
-      "runtime"
-    ]
-  },
+  transpiler: false,
   paths: {
+    "*": "dist/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
     "aurelia-auth": "npm:aurelia-auth@3.0.2",
     "aurelia-binding-loader": "npm:aurelia-binding-loader@1.1.0",
@@ -41,7 +32,6 @@ System.config({
     "jquery-ui": "npm:jquery-ui@1.12.0",
     "jquery-zoom": "npm:jquery-zoom@1.7.15",
     "jquery.uniform": "npm:jquery.uniform@3.0.0",
-    "module": "npm:jspm-loader-css-modules@1.0.1-beta1",
     "moment": "npm:moment@2.14.1",
     "numeral": "npm:numeral@1.5.3",
     "owl.carousel": "npm:owl.carousel@2.1.4",
@@ -365,23 +355,6 @@ System.config({
       "public-encrypt": "npm:public-encrypt@4.0.0",
       "randombytes": "npm:randombytes@2.0.3"
     },
-    "npm:css-modules-loader-core@1.0.0": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "postcss": "npm:postcss@5.0.10",
-      "postcss-modules-extract-imports": "npm:postcss-modules-extract-imports@1.0.0",
-      "postcss-modules-local-by-default": "npm:postcss-modules-local-by-default@1.0.0",
-      "postcss-modules-scope": "npm:postcss-modules-scope@1.0.0",
-      "postcss-modules-values": "npm:postcss-modules-values@1.1.0"
-    },
-    "npm:css-selector-tokenizer@0.5.4": {
-      "cssesc": "npm:cssesc@0.1.0",
-      "fastparse": "npm:fastparse@1.1.1"
-    },
-    "npm:debounce@1.0.0": {
-      "date-now": "npm:date-now@1.0.1"
-    },
     "npm:des.js@1.0.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
@@ -410,14 +383,8 @@ System.config({
     "npm:fancybox@3.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:fastparse@1.1.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.25"
-    },
-    "npm:has-flag@1.0.0": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
@@ -454,18 +421,6 @@ System.config({
     "npm:jquery-zoom@1.7.15": {
       "jquery": "npm:jquery@2.2.4"
     },
-    "npm:js-base64@2.1.9": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
-    },
-    "npm:jspm-loader-css-modules@1.0.1-beta1": {
-      "jspm-loader-css": "npm:jspm-loader-css@1.0.1-beta1"
-    },
-    "npm:jspm-loader-css@1.0.1-beta1": {
-      "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0",
-      "debounce": "npm:debounce@1.0.0",
-      "path": "npm:path@0.12.7",
-      "toposort": "npm:toposort@0.2.12"
-    },
     "npm:miller-rabin@4.0.0": {
       "bn.js": "npm:bn.js@4.11.5",
       "brorand": "npm:brorand@1.0.5"
@@ -489,10 +444,6 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:path@0.12.7": {
-      "process": "npm:process@0.11.6",
-      "util": "npm:util@0.10.3"
-    },
     "npm:pbkdf2@3.0.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -500,32 +451,6 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
-    },
-    "npm:postcss-modules-extract-imports@1.0.0": {
-      "postcss": "npm:postcss@5.0.10",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:postcss-modules-local-by-default@1.0.0": {
-      "css-selector-tokenizer": "npm:css-selector-tokenizer@0.5.4",
-      "postcss": "npm:postcss@5.0.10"
-    },
-    "npm:postcss-modules-scope@1.0.0": {
-      "css-selector-tokenizer": "npm:css-selector-tokenizer@0.5.4",
-      "postcss": "npm:postcss@5.0.10",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:postcss-modules-values@1.1.0": {
-      "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
-      "postcss": "npm:postcss@5.0.10"
-    },
-    "npm:postcss@5.0.10": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "js-base64": "npm:js-base64@2.1.9",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "source-map": "npm:source-map@0.5.6",
-      "supports-color": "npm:supports-color@3.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:process@0.11.6": {
@@ -567,9 +492,6 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:source-map@0.5.6": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
@@ -582,14 +504,6 @@ System.config({
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
-    },
-    "npm:supports-color@3.1.2": {
-      "has-flag": "npm:has-flag@1.0.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:toposort@0.2.12": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

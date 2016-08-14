@@ -1,0 +1,41 @@
+<template>
+
+    <div class="page-sidebar navbar-collapse collapse">
+        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="sidebar-toggler-wrapper">
+                <div class="sidebar-toggler" click.trigger="sliderToggle()">
+                </div>
+            </li>
+            <li class="sidebar-search-wrapper">
+                <form class="sidebar-search" action="extra_search.html" method="POST">
+                    <a href="javascript:;" class="remove">
+                        <i class="icon-close"></i>
+                    </a>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                        </span>
+                    </div>
+                </form>
+            </li>
+            <li repeat.for="route of router.navigation" id="${route.config.name}" show.bind="!route.config.parentName" class="parent-router">
+                <a href.bind="route.config.hasChilds ? 'javascript:void(0)' : route.href" click.trigger="open(route)">
+                    <i class="${route.config.icon}"></i>
+                    <span class="title">${route.title}</span>
+                    <span class="${route.isActive ? 'selected': ''}"></span>
+                    <span if.bind="route.config.hasChilds" class="arrow"></span>
+                </a>
+                <ul class="sub-menu" if.bind="route.config.hasChilds">
+                    <li repeat.for="child of route.config.childs" class="child-router" id="${child.name}">
+                        <a href.bind="getRoute(child.name).href">
+                            <i class="${child.icon}"></i>
+                           ${child.title}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</template>

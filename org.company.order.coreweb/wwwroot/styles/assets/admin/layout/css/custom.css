@@ -28,3 +28,8 @@ body {
 .checkout-quantity-value {
     padding-left: 20px !important
 }
+
+.productDetail {
+    display: none; 
+    width: 700px;
+}

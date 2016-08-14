@@ -1,9 +1,0 @@
-﻿<template>
-    <require from="./carousel.css!module!bind" as="style"></require>
-
-
-    <div class="owl-carousel owl-theme" ref="carousel">
-        <compose repeat.for="item of items" view-model.bind="path" model.bind="item" containerless />
-    </div>
-
-</template>

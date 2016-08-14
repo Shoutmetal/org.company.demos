@@ -27,7 +27,13 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "compile": {
+      "exclude": [
+        "node_modules",
+        "jspm_packages"
+      ]
+    }
   },
 
   "runtimeOptions": {
@@ -39,12 +45,13 @@
   "publishOptions": {
     "include": [
       "wwwroot",
+      "appsettings.json",
       "web.config"
     ]
-  },
+    },
 
   "scripts": {
-    "prepublish": [ "npm install", "jspm install" ],
+    "prepublish": [ "npm install", "gulp build" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
