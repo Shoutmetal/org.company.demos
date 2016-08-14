@@ -6,7 +6,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
     "aurelia-auth": "npm:aurelia-auth@3.0.2",
     "aurelia-binding-loader": "npm:aurelia-binding-loader@1.1.0",
