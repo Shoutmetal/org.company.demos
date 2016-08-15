@@ -2,25 +2,21 @@
 using org.company.order.domain.contracts.repository;
 using org.company.order.domain.generic;
 using org.company.order.repository.generic;
-using SimpleInjector;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace org.company.order.communication
 {
     public class RepositoryDependencyResolver
     {
-        public static void RegisterServices(Container container)
+        public static void RegisterServices(IServiceCollection services)
         {
-            
-
-            container.Register<DbContext, DemoDbContext>(Lifestyle.Scoped);
-            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
-
-            container.Register<IProductRepository, ProductRepository>(Lifestyle.Scoped);
-            container.Register<IOrderRepository, OrderRepository>(Lifestyle.Scoped);
-            container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Scoped);
-            container.Register<IOrderDetailRepository, OrderDetailRepository>(Lifestyle.Scoped);
-            container.Register<IInventoryRepository, InventoryRepository>(Lifestyle.Scoped);
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
         }
     }
 }

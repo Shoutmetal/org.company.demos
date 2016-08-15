@@ -4,13 +4,23 @@
       "version": "1.0.0",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0"
+    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "org.company.order.communication": "1.0.0-*",
+    "org.company.order.domain": "1.0.0-*",
+    "org.company.order.repository": "1.0.0-*",
+    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+    "Microsoft.EntityFrameworkCore": "1.0.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
   },
 
   "tools": {
@@ -28,13 +38,7 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "compile": {
-      "exclude": [
-        "node_modules",
-        "jspm_packages"
-      ]
-    }
+    "preserveCompilationContext": true
   },
 
   "runtimeOptions": {
@@ -45,14 +49,12 @@
 
   "publishOptions": {
     "include": [
-      "wwwroot",
       "appsettings.json",
       "web.config"
     ]
-    },
+  },
 
   "scripts": {
-    "prepublish": [ "npm install", "gulp build" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }

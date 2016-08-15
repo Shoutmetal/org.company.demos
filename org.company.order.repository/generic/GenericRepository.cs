@@ -1,26 +1,28 @@
-﻿using org.company.order.domain.generic;
+﻿using Microsoft.EntityFrameworkCore;
+using org.company.order.domain.generic;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace org.company.order.repository.generic
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private DbContext _context;
+        private DemoDbContext _context;
+        private DbSet<T> dbSet;
 
-        public GenericRepository() { }
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(DemoDbContext context)
         {
             _context = context;
+            dbSet = context.Set<T>();
         }
 
         public virtual IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
         {
-            IQueryable<T> dbQuery = _context.Set<T>();
+            IQueryable<T> dbQuery = dbSet;
 
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include<T, object>(navigationProperty);
@@ -28,9 +30,20 @@ namespace org.company.order.repository.generic
             return dbQuery.ToList<T>();
         }
 
+        public virtual async Task<IList<T>> GetAllAsync(params Expression<Func<T, object>>[] navigationProperties)
+        {
+            IQueryable<T> dbQuery = dbSet;
+
+            foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                dbQuery = dbQuery.Include<T, object>(navigationProperty);
+
+            return await dbQuery.ToListAsync<T>();
+        }
+
+
         public virtual IList<T> GetList(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
         {
-            IQueryable<T> dbQuery = _context.Set<T>();
+            IQueryable<T> dbQuery = dbSet;
 
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include<T, object>(navigationProperty);
@@ -40,9 +53,21 @@ namespace org.company.order.repository.generic
             return dbQuery.ToList<T>();
         }
 
+        public virtual async Task<IList<T>> GetListAsync(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
+        {
+            IQueryable<T> dbQuery = dbSet;
+
+            foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                dbQuery = dbQuery.Include<T, object>(navigationProperty);
+
+            dbQuery = dbQuery.Where(where);
+
+            return await dbQuery.ToListAsync<T>();
+        }
+
         public virtual T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties)
         {
-            IQueryable<T> dbQuery = _context.Set<T>();
+            IQueryable<T> dbQuery = dbSet;
 
             foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
                 dbQuery = dbQuery.Include<T, object>(navigationProperty);
@@ -50,11 +75,21 @@ namespace org.company.order.repository.generic
             return dbQuery.FirstOrDefault(where);
         }
 
+        public virtual async Task<T> GetSingleAsync(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
+        {
+            IQueryable<T> dbQuery = dbSet;
+
+            foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                dbQuery = dbQuery.Include<T, object>(navigationProperty);
+
+ 
+            return await dbQuery.FirstOrDefaultAsync(where);
+        }
+
         public virtual void Add(params T[] items)
         {
-            foreach (T item in items)
-                _context.Entry(item).State = EntityState.Added;
-
+                foreach (T item in items)
+                    _context.Entry(item).State = EntityState.Added;
         }
 
         public virtual void Update(params T[] items)

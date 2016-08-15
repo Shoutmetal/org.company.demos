@@ -15,5 +15,9 @@ namespace org.company.order.domain.generic
         void Add(params T[] items);
         void Update(params T[] items);
         void Remove(params T[] items);
+
+        Task<IList<T>> GetAllAsync(params Expression<Func<T, object>>[] navigationProperties);
+        Task<IList<T>> GetListAsync(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties);
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties);
     }
 }

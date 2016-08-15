@@ -1,14 +1,12 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using org.company.order.application.contracts;
-using org.company.order.entities;
 using org.company.order.service.model;
-using System.Collections.Generic;
-using System.Web.Http;
 
 namespace org.company.order.service.Controllers
 {
-    [RoutePrefix("api/order")]
-    public class OrderController : ApiController
+    [Route("api/[controller]")]
+    public class OrderController : Controller
     {
         
         private readonly IOrderService _service;
@@ -19,33 +17,29 @@ namespace org.company.order.service.Controllers
          
         }
 
-        [HttpGet]
-        [Route("orders/{id}")]
-        public IHttpActionResult GetOrdersByCustomer(int id)
+        [HttpGet("orders/{id}")]
+        public IActionResult GetOrdersByCustomer(int id)
         {
             var result = _service.GetOrdersByCustomerId(id);
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("order/{id}")]
-        public IHttpActionResult GetOrderById(int id)
+        [HttpGet("order/{id}")]
+        public IActionResult GetOrderById(int id)
         {
             var result = _service.GetOrderById(id);
 
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("products")]
-        public IHttpActionResult GetProducts()
+        [HttpGet("products")]        
+        public IActionResult GetProducts()
         {
             var result = _service.GetProducts();
             return Ok(result);
         }
 
-        [HttpPost]
-        [Route("save")]
+        [HttpPost("save")]
         public void Post([FromBody]OrderDTO order)
         {
             _service.AddOrder(order);

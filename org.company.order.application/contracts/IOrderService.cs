@@ -1,10 +1,6 @@
 ﻿using org.company.order.entities;
 using org.company.order.service.model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace org.company.order.application.contracts
 {

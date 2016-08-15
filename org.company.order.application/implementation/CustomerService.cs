@@ -1,12 +1,8 @@
 ﻿using org.company.order.application.contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using org.company.order.entities;
 using org.company.order.domain.contracts.repository;
 using org.company.order.domain.generic;
+using org.company.order.entities;
+using System.Collections.Generic;
 
 namespace org.company.order.application.implementation
 {

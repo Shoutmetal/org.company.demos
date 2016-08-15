@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
 namespace org.company.order.entities

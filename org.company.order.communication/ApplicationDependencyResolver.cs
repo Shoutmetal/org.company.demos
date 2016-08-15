@@ -1,15 +1,15 @@
-﻿using org.company.order.application.contracts;
+﻿using Microsoft.Extensions.DependencyInjection;
+using org.company.order.application.contracts;
 using org.company.order.application.implementation;
-using SimpleInjector;
 
 namespace org.company.order.communication
 {
     public class ApplicationDependencyResolver
     {
-        public static void RegisterServices(Container container)
+        public static void RegisterServices(IServiceCollection services)
         {
-            container.Register<IOrderService, OrderService>(Lifestyle.Scoped);
-            container.Register<ICustomerService, CustomerService>(Lifestyle.Scoped);
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
     }
 }

@@ -1,15 +1,12 @@
-﻿using org.company.order.application.contracts;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using org.company.order.application.contracts;
+using org.company.order.entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 
 namespace org.company.order.service.Controllers
 {
-    [RoutePrefix("api/customer")]
-    public class CustomerController : ApiController
+    [Route("api/[controller]")]
+    public class CustomerController : Controller
     {
         private readonly ICustomerService _service;
 
@@ -18,19 +15,19 @@ namespace org.company.order.service.Controllers
             _service = service;
         }
 
-
-        public IHttpActionResult GetCustomers() {
+        [HttpGet]
+        public IEnumerable<Customer> GetCustomers() {
             var result = _service.GetCustomers();
 
-            return Ok(result);
+            return result;
         }
 
-        [Route("customer/{id}")]
-        public IHttpActionResult GetCustomerById(int id)
+        [HttpGet("{id}")]
+        public Customer GetCustomerById(int id)
         {
             var result = _service.GetCustomerById(id);
 
-            return Ok(result);
+            return result;
         }
     }
 }

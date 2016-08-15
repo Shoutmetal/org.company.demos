@@ -1,14 +1,16 @@
-﻿using org.company.order.domain.generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using org.company.order.domain.generic;
 using System;
-using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace org.company.order.repository.generic
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public DbContext context;
+        public DemoDbContext context;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(DemoDbContext context)
         {
             this.context = context;
         }
@@ -16,6 +18,10 @@ namespace org.company.order.repository.generic
         public void Commit()
         {
             context.SaveChanges();
+        }
+
+        public async Task CommitAsync() {
+            await context.SaveChangesAsync();
         }
 
         private bool disposed = false;
