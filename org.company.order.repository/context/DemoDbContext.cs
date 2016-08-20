@@ -9,7 +9,7 @@ namespace org.company.order.repository
         public DemoDbContext(DbContextOptions<DemoDbContext> options)
             : base(options)
         {
-
+           
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -8,6 +8,7 @@ using org.company.order.communication;
 using org.company.order.repository;
 using Newtonsoft.Json.Serialization;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace org.company.order.service
 {
@@ -38,11 +39,14 @@ namespace org.company.order.service
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            Action<SqlServerDbContextOptionsBuilder> action = (options) => {
+
+                //options.UseRelationalNulls();
+            };
 
             services
-                .AddEntityFramework()
                 .AddDbContext<DemoDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DemoDbContext")), ServiceLifetime.Scoped);
+                options.UseSqlServer(Configuration.GetConnectionString("DemoDbContext"), action));
 
             // Add Dependency Resolver
             ApplicationDependencyResolver.RegisterServices(services);

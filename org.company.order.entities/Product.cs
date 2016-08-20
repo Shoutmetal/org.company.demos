@@ -20,6 +20,7 @@ namespace org.company.order.entities
         public decimal Price { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
+
         public ICollection<Inventory> Inventories { get; set; }
 
         public Inventory AdjustStock(int quantity) {
