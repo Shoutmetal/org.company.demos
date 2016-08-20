@@ -11,7 +11,7 @@ namespace org.company.order.repository.generic
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private DbContext _context;
-        private DbSet<T> dbSet;
+        public DbSet<T> dbSet;
 
 
         public GenericRepository(DbContext context)

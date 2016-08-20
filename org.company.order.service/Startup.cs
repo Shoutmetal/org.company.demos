@@ -39,20 +39,12 @@ namespace org.company.order.service
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            Action<SqlServerDbContextOptionsBuilder> action = (options) => {
-
-                //options.UseRelationalNulls();
-            };
-
-            services
-                .AddDbContext<DemoDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DemoDbContext"), action));
-
             // Add Dependency Resolver
-            ApplicationDependencyResolver.RegisterServices(services);
-            DomainDependencyResolver.RegisterServices(services);
+            DatabaseContext.RegisterServices(services, Configuration);
             RepositoryDependencyResolver.RegisterServices(services);
-
+            DomainDependencyResolver.RegisterServices(services);
+            ApplicationDependencyResolver.RegisterServices(services);
+            
             services.AddMvc()
                 .AddJsonOptions(options => {
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

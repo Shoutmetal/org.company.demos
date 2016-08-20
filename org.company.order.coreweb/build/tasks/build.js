@@ -29,7 +29,7 @@ gulp.task('build-system', function() {
 gulp.task('build-html', function() {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: false}))
     .pipe(gulp.dest(paths.output));
 });
 

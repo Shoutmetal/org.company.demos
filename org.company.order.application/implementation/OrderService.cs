@@ -5,7 +5,7 @@ using org.company.order.entities;
 using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace org.company.order.application.implementation
 {
@@ -67,9 +67,7 @@ namespace org.company.order.application.implementation
 
         public IEnumerable<Order> GetOrdersByCustomerId(int customerId)
         {
-            return _orderRepository.GetList(o => o.CustomerId == customerId,
-                o => o.OrderDetail,
-                c => c.Customer);
+            return _orderRepository.GetOrderByCustomerId(customerId);
         }
 
         public Order GetOrderById(int id)
