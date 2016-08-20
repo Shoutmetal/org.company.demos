@@ -19,7 +19,6 @@ namespace org.company.order.repository
                 .ThenInclude(p => p.Product)
                 .Where(o => o.CustomerId == customerId);
 
-
             return order.ToList();
         }
     }
