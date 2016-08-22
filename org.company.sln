@@ -41,6 +41,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.applicati
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.service", "org.company.order.service\org.company.order.service.xproj", "{567973E5-CA62-4776-93DE-679AA72CC1C5}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.security", "org.company.security\org.company.security.xproj", "{4D2DDA56-8F86-4885-9980-D14C1A12E381}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{567973E5-CA62-4776-93DE-679AA72CC1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{567973E5-CA62-4776-93DE-679AA72CC1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{567973E5-CA62-4776-93DE-679AA72CC1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2DDA56-8F86-4885-9980-D14C1A12E381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2DDA56-8F86-4885-9980-D14C1A12E381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2DDA56-8F86-4885-9980-D14C1A12E381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2DDA56-8F86-4885-9980-D14C1A12E381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{B3218190-A988-45C6-BE70-1CFD98A25837} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
 		{3D2C4603-1FD8-447F-86CE-4B32B6DF56E0} = {4A1BBF80-D399-490A-B2F5-0B4B562D1432}
 		{567973E5-CA62-4776-93DE-679AA72CC1C5} = {36D52940-681C-4C3F-A048-883ADB587BAD}
+		{4D2DDA56-8F86-4885-9980-D14C1A12E381} = {38116A84-9DEA-46AB-9748-B07644DD0AC9}
 	EndGlobalSection
 EndGlobal

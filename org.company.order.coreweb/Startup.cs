@@ -22,10 +22,10 @@ namespace org.company.order.coreweb
         {
             loggerFactory.AddConsole();
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
@@ -33,10 +33,10 @@ namespace org.company.order.coreweb
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Welcome to the org.company Demo");
+            });
 
 
         }

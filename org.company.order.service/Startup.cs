@@ -9,6 +9,7 @@ using org.company.order.repository;
 using Newtonsoft.Json.Serialization;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace org.company.order.service
 {
@@ -60,7 +61,6 @@ namespace org.company.order.service
             loggerFactory.AddDebug();
 
             app.UseApplicationInsightsRequestTelemetry();
-
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseCors(policy =>
@@ -71,8 +71,12 @@ namespace org.company.order.service
             });
 
             app.UseDeveloperExceptionPage();
-
             app.UseMvc();
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Welcome to the org.company Demo");
+            });
         }
     }
 }
