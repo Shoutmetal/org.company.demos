@@ -5,7 +5,7 @@
         identSrv : {
             name: 'identSrv',
             url: '/auth/identSrv',
-            authorizationEndpoint: 'http://localhost:22530/connect/authorize', //if this ends with slash --> game over
+            authorizationEndpoint: 'http://localhost:20763/connect/authorize', //if this ends with slash --> game over
             redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
             scope: ['profile', 'openid'],
             

@@ -28,6 +28,7 @@ namespace org.company.core.security.Service
         {
 
             _userManager = userManager;
+            
             _signInManager = signInManager;
             _logger = loggerFactory.CreateLogger<AuthorizationProvider>();
         }
@@ -82,7 +83,7 @@ namespace org.company.core.security.Service
             if (context.Request.IsPasswordGrantType())
             {
                 var user = await _userManager.FindByNameAsync(context.Request.Username);
-                var result = await _userManager.ValidateUserAsync(user, context.Request.Password);
+                var result = await _userManager.CheckPasswordAsync(user, context.Request.Password);
 
                 if (user == null || !result) {
                     _logger.LogInformation(0, "Invalid User");

@@ -26,6 +26,7 @@ namespace org.company.security.IdentityManagers
             
         }
 
+        //Remove this, seems to be equal to CheckPasswordAsync...
         public async Task<bool> ValidateUserAsync(T user, string password)
         {
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
