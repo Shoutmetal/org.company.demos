@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,13 @@ namespace org.company.core.security.Service
 {
     public sealed class AuthorizationProvider : OpenIdConnectServerProvider
     {
-        private readonly UserManager<User> _userManager;
+        private readonly SecurityUserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
 
 
         public AuthorizationProvider(
-            UserManager<User> userManager,
+            SecurityUserManager<User> userManager,
             SignInManager<User> signInManager,
             ILoggerFactory loggerFactory)
         {
@@ -47,6 +48,24 @@ namespace org.company.core.security.Service
                 return Task.FromResult(0);
             }
 
+            // Note: you can skip the request validation when the client_id
+            // parameter is missing to support unauthenticated token requests.
+            if (string.IsNullOrEmpty(context.ClientId))
+            {
+                context.Skip();
+
+                return Task.FromResult(0);
+            }
+
+            // Note: to mitigate brute force attacks, you SHOULD strongly consider applying
+            // a key derivation function like PBKDF2 to slow down the secret validation process.
+            // You SHOULD also consider using a time-constant comparer to prevent timing attacks.
+            if (string.Equals(context.ClientId, "client_id", StringComparison.Ordinal) &&
+                string.Equals(context.ClientSecret, "client_secret", StringComparison.Ordinal))
+            {
+                context.Validate();
+            }
+
             // Since there's only one application and since it's a public client
             // (i.e a client that cannot keep its credentials private), call Skip()
             // to inform the server that the request should be accepted without 
@@ -62,18 +81,16 @@ namespace org.company.core.security.Service
             // OpenID Connect server middleware handle the other grant types.
             if (context.Request.IsPasswordGrantType())
             {
-                
-                var result = await _signInManager.PasswordSignInAsync(context.Request.Username, context.Request.Password, false, false);
+                var user = await _userManager.FindByNameAsync(context.Request.Username);
+                var result = await _userManager.ValidateUserAsync(user, context.Request.Password);
 
-                if (!result.Succeeded)
-                {
+                if (user == null || !result) {
                     _logger.LogInformation(0, "Invalid User");
                     context.Reject(
                         error: OpenIdConnectConstants.Errors.InvalidClient,
                         description: "Invalid User.");
                 }
 
-                var user = await _userManager.FindByNameAsync(context.Request.Username);
 
                 var identity = new ClaimsIdentity(context.Options.AuthenticationScheme);
                 identity.AddClaim(ClaimTypes.NameIdentifier, user.UserName);

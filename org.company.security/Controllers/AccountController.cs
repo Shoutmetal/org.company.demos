@@ -5,22 +5,28 @@ using Microsoft.AspNetCore.Authorization;
 using org.company.security.Model;
 using Microsoft.Extensions.Logging;
 using org.company.security.IdentityModels;
+using org.company.security.IdentityManagers;
 
 namespace org.company.security.Controllers
 {
     [Route("api/[controller]")]
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _userManager;
+        private readonly SecurityUserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly string CustomerRoleName = "Customer";
         private readonly ILogger _logger;
 
         public AccountController(
-            UserManager<User> userManager,
+            SecurityUserManager<User> userManager,
+            RoleManager<Role> roleManager,
             SignInManager<User> signInManager,
-            ILoggerFactory loggerFactory) {
+            ILoggerFactory loggerFactory)
+        {
 
             _userManager = userManager;
+            _roleManager = roleManager;
             _signInManager = signInManager;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
@@ -36,21 +42,26 @@ namespace org.company.security.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    //_logger.LogInformation(3, "User created a new account with password.");
+
+                    await AddRoleAsync(user);
+
                     return Ok();
                 }
-             
+
             }
 
             // If we got this far, something failed, redisplay form
             return BadRequest();
+        }
+
+        public async Task AddRoleAsync(User user)
+        {
+            var roleExists = await _roleManager.RoleExistsAsync(CustomerRoleName);
+
+            if (!roleExists)
+                await _roleManager.CreateAsync(new Role() { Name = CustomerRoleName });
+
+            await _userManager.AddToRoleAsync(user, CustomerRoleName);
         }
 
         [HttpPost]

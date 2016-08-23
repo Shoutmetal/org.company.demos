@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-configuration'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-configuration', 'configuration/auth-configuration'], function (_export, _context) {
     "use strict";
 
-    var LogManager, ConsoleAppender, Configure;
+    var LogManager, ConsoleAppender, Configure, config;
     function configure(aurelia) {
 
         aurelia.use.standardConfiguration();
@@ -13,6 +13,9 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
         });
 
         aurelia.use.plugin('aurelia-binding-loader');
+        aurelia.use.plugin('aurelia-auth', function (baseConfig) {
+            baseConfig.configure(config);
+        });
         aurelia.use.plugin('resources');
         aurelia.use.plugin('aurelia-validation');
         aurelia.use.plugin('aurelia-validatejs');
@@ -32,6 +35,8 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
             ConsoleAppender = _aureliaLoggingConsole.ConsoleAppender;
         }, function (_aureliaConfiguration) {
             Configure = _aureliaConfiguration.Configure;
+        }, function (_configurationAuthConfiguration) {
+            config = _configurationAuthConfiguration.default;
         }],
         execute: function () {
 
@@ -40,4 +45,4 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBT08sYUFBUyxTQUFULENBQW1CLE9BQW5CLEVBQTJCOztBQUU5QixnQkFBUSxHQUFSLENBQVkscUJBQVo7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix1QkFBbkIsRUFBNEMsa0JBQVU7QUFDbEQsbUJBQU8sWUFBUCxDQUFvQixHQUFwQjtBQUNBLG1CQUFPLFNBQVAsQ0FBaUIsdUJBQWpCO0FBQ0gsU0FIRDs7QUFLQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix3QkFBbkI7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixXQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxPQUFaLENBQW9CLG9DQUFwQjs7QUFFQSxnQkFBUSxLQUFSLEdBQWdCLElBQWhCLENBQXFCO0FBQUEsbUJBQUssRUFBRSxPQUFGLENBQVUsV0FBVixFQUF1QixTQUFTLElBQWhDLENBQUw7QUFBQSxTQUFyQjtBQUVIOzt5QkFoQmUsUzs7OztBQVBSLHNCLHFCQUFBLFU7O0FBQ0EsMkIsMEJBQUEsZTs7QUFDQSxxQix5QkFBQSxTOzs7O0FBRVIsdUJBQVcsV0FBWCxDQUF1QixJQUFJLGVBQUosRUFBdkI7QUFDQSx1QkFBVyxRQUFYLENBQW9CLFdBQVcsUUFBWCxDQUFvQixLQUF4QyIsImZpbGUiOiJtYWluLmpzIiwic291cmNlUm9vdCI6Ii9zcmMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBUU8sYUFBUyxTQUFULENBQW1CLE9BQW5CLEVBQTJCOztBQUU5QixnQkFBUSxHQUFSLENBQVkscUJBQVo7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix1QkFBbkIsRUFBNEMsa0JBQVU7QUFDbEQsbUJBQU8sWUFBUCxDQUFvQixHQUFwQjtBQUNBLG1CQUFPLFNBQVAsQ0FBaUIsdUJBQWpCO0FBQ0gsU0FIRDs7QUFLQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix3QkFBbkI7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixjQUFuQixFQUFtQyxVQUFDLFVBQUQsRUFBYztBQUFHLHVCQUFXLFNBQVgsQ0FBcUIsTUFBckI7QUFBK0IsU0FBbkY7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixXQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxPQUFaLENBQW9CLG9DQUFwQjs7QUFFQSxnQkFBUSxLQUFSLEdBQWdCLElBQWhCLENBQXFCO0FBQUEsbUJBQUssRUFBRSxPQUFGLENBQVUsV0FBVixFQUF1QixTQUFTLElBQWhDLENBQUw7QUFBQSxTQUFyQjtBQUVIOzt5QkFqQmUsUzs7OztBQVJSLHNCLHFCQUFBLFU7O0FBQ0EsMkIsMEJBQUEsZTs7QUFDQSxxQix5QkFBQSxTOztBQUNELGtCOzs7O0FBRVAsdUJBQVcsV0FBWCxDQUF1QixJQUFJLGVBQUosRUFBdkI7QUFDQSx1QkFBVyxRQUFYLENBQW9CLFdBQVcsUUFBWCxDQUFvQixLQUF4QyIsImZpbGUiOiJtYWluLmpzIiwic291cmNlUm9vdCI6Ii9zcmMifQ==

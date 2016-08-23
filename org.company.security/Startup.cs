@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Identity;
 using org.company.security.Context;
 using org.company.security.IdentityModels;
+using org.company.security.IdentityManagers;
 
 namespace org.company.security
 {
@@ -46,13 +47,11 @@ namespace org.company.security
                 .AddDbContext<SecurityDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SecurityDbContext")));
 
-            //services.AddScoped<UserManager<User>>();
-            //services.AddScoped<SignInManager<User>>();
-
             services
                 .AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<SecurityDbContext, int>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddUserManager<SecurityUserManager<User>>();
 
             services.AddAuthentication();
 
@@ -62,7 +61,7 @@ namespace org.company.security
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<User> userManager, SignInManager<User> signInManager )
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SecurityUserManager<User> userManager, SignInManager<User> signInManager )
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -90,7 +89,7 @@ namespace org.company.security
                 // Disable the authorization endpoint as it's not used in this scenario.
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-
+                
                 options.Provider = new AuthorizationProvider(userManager, signInManager, loggerFactory);
 
                 // Force the OpenID Connect server middleware to use JWT
