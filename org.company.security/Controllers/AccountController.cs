@@ -32,26 +32,28 @@ namespace org.company.security.Controllers
         }
 
         [HttpPost("register")]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var user = new User
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
+                UserName = model.UserName,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
 
-                    await AddRoleAsync(user);
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                await AddRoleAsync(user);
 
-                    return Ok();
-                }
-
+                return Ok(result);
             }
 
-            // If we got this far, something failed, redisplay form
-            return BadRequest();
+            return BadRequest(result.Errors);
         }
 
         public async Task AddRoleAsync(User user)

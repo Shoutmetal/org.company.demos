@@ -1,28 +1,35 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-configuration', 'configuration/auth-configuration'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-configuration', 'configuration/auth-configuration', 'aurelia-authentication'], function (_export, _context) {
     "use strict";
 
-    var LogManager, ConsoleAppender, Configure, config;
+    var LogManager, ConsoleAppender, Configure, authConfig, AuthService;
     function configure(aurelia) {
 
         aurelia.use.standardConfiguration();
+        aurelia.use.plugin('aurelia-api', function (configure) {
+            configure.registerEndpoint('api', 'http://localhost:20763').setDefaultEndpoint('api');
+        });
+        aurelia.use.plugin('aurelia-authentication', function (baseConfig) {
+            baseConfig.configure(authConfig);
+        });
+
         aurelia.use.plugin('aurelia-configuration', function (config) {
             config.setDirectory('/');
             config.setConfig('global-variables.json');
         });
 
         aurelia.use.plugin('aurelia-binding-loader');
-        aurelia.use.plugin('aurelia-auth', function (baseConfig) {
-            baseConfig.configure(config);
-        });
+
         aurelia.use.plugin('resources');
         aurelia.use.plugin('aurelia-validation');
         aurelia.use.plugin('aurelia-validatejs');
         aurelia.use.feature('configuration/bootstrap-validation');
 
         aurelia.start().then(function (a) {
-            return a.setRoot("main/init", document.body);
+            var auth = aurelia.container.get(AuthService);
+            var root = auth.isAuthenticated() ? 'main/init' : 'account/login';
+            a.setRoot(root, document.body);
         });
     }
 
@@ -36,7 +43,9 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
         }, function (_aureliaConfiguration) {
             Configure = _aureliaConfiguration.Configure;
         }, function (_configurationAuthConfiguration) {
-            config = _configurationAuthConfiguration.default;
+            authConfig = _configurationAuthConfiguration.default;
+        }, function (_aureliaAuthentication) {
+            AuthService = _aureliaAuthentication.AuthService;
         }],
         execute: function () {
 
@@ -45,4 +54,4 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBUU8sYUFBUyxTQUFULENBQW1CLE9BQW5CLEVBQTJCOztBQUU5QixnQkFBUSxHQUFSLENBQVkscUJBQVo7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix1QkFBbkIsRUFBNEMsa0JBQVU7QUFDbEQsbUJBQU8sWUFBUCxDQUFvQixHQUFwQjtBQUNBLG1CQUFPLFNBQVAsQ0FBaUIsdUJBQWpCO0FBQ0gsU0FIRDs7QUFLQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix3QkFBbkI7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixjQUFuQixFQUFtQyxVQUFDLFVBQUQsRUFBYztBQUFHLHVCQUFXLFNBQVgsQ0FBcUIsTUFBckI7QUFBK0IsU0FBbkY7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixXQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxPQUFaLENBQW9CLG9DQUFwQjs7QUFFQSxnQkFBUSxLQUFSLEdBQWdCLElBQWhCLENBQXFCO0FBQUEsbUJBQUssRUFBRSxPQUFGLENBQVUsV0FBVixFQUF1QixTQUFTLElBQWhDLENBQUw7QUFBQSxTQUFyQjtBQUVIOzt5QkFqQmUsUzs7OztBQVJSLHNCLHFCQUFBLFU7O0FBQ0EsMkIsMEJBQUEsZTs7QUFDQSxxQix5QkFBQSxTOztBQUNELGtCOzs7O0FBRVAsdUJBQVcsV0FBWCxDQUF1QixJQUFJLGVBQUosRUFBdkI7QUFDQSx1QkFBVyxRQUFYLENBQW9CLFdBQVcsUUFBWCxDQUFvQixLQUF4QyIsImZpbGUiOiJtYWluLmpzIiwic291cmNlUm9vdCI6Ii9zcmMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBU08sYUFBUyxTQUFULENBQW1CLE9BQW5CLEVBQTJCOztBQUU5QixnQkFBUSxHQUFSLENBQVkscUJBQVo7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixhQUFuQixFQUFrQyxxQkFBYTtBQUFFLHNCQUFVLGdCQUFWLENBQTJCLEtBQTNCLEVBQWtDLHdCQUFsQyxFQUE0RCxrQkFBNUQsQ0FBK0UsS0FBL0U7QUFBd0YsU0FBekk7QUFDQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQix3QkFBbkIsRUFBNkMsc0JBQWM7QUFBRSx1QkFBVyxTQUFYLENBQXFCLFVBQXJCO0FBQWtDLFNBQS9GOztBQUdBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLHVCQUFuQixFQUE0QyxrQkFBVTtBQUNsRCxtQkFBTyxZQUFQLENBQW9CLEdBQXBCO0FBQ0EsbUJBQU8sU0FBUCxDQUFpQix1QkFBakI7QUFDSCxTQUhEOztBQU1BLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLHdCQUFuQjs7QUFFQSxnQkFBUSxHQUFSLENBQVksTUFBWixDQUFtQixXQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxNQUFaLENBQW1CLG9CQUFuQjtBQUNBLGdCQUFRLEdBQVIsQ0FBWSxPQUFaLENBQW9CLG9DQUFwQjs7QUFFQSxnQkFBUSxLQUFSLEdBQWdCLElBQWhCLENBQXFCLGFBQ3JCO0FBQ0ksZ0JBQUksT0FBTyxRQUFRLFNBQVIsQ0FBa0IsR0FBbEIsQ0FBc0IsV0FBdEIsQ0FBWDtBQUNBLGdCQUFJLE9BQU8sS0FBSyxlQUFMLEtBQXlCLFdBQXpCLEdBQXVDLGVBQWxEO0FBQ0EsY0FBRSxPQUFGLENBQVUsSUFBVixFQUFnQixTQUFTLElBQXpCO0FBRUgsU0FORDtBQVFIOzt5QkE1QmUsUzs7OztBQVRSLHNCLHFCQUFBLFU7O0FBQ0EsMkIsMEJBQUEsZTs7QUFDQSxxQix5QkFBQSxTOztBQUNELHNCOztBQUNDLHVCLDBCQUFBLFc7Ozs7QUFFUix1QkFBVyxXQUFYLENBQXVCLElBQUksZUFBSixFQUF2QjtBQUNBLHVCQUFXLFFBQVgsQ0FBb0IsV0FBVyxRQUFYLENBQW9CLEtBQXhDIiwiZmlsZSI6Im1haW4uanMiLCJzb3VyY2VSb290IjoiL3NyYyJ9

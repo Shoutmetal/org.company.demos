@@ -90,6 +90,8 @@ namespace org.company.core.security.Service
                     context.Reject(
                         error: OpenIdConnectConstants.Errors.InvalidClient,
                         description: "Invalid User.");
+
+                    return;
                 }
 
 

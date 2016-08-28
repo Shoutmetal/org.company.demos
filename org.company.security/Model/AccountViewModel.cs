@@ -8,7 +8,15 @@ namespace org.company.security.Model
 {
     public class RegisterViewModel
     {
-        public string Name { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -16,6 +24,8 @@ namespace org.company.security.Model
 
         [Required]
         public string Password { get; set; }
+
+        
     }
 
     public class LoginViewModel {

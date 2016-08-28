@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using org.company.security.Context;
 using org.company.security.IdentityModels;
 using org.company.security.IdentityManagers;
+using Newtonsoft.Json.Serialization;
 
 namespace org.company.security
 {
@@ -48,16 +49,25 @@ namespace org.company.security
                     options.UseSqlServer(Configuration.GetConnectionString("SecurityDbContext")));
 
             services
-                .AddIdentity<User, Role>()
+                .AddIdentity<User, Role>(
+                        options => {
+                            options.Password.RequireDigit = false;
+                            options.Password.RequiredLength = 8;
+                            options.Password.RequireLowercase = false;
+                            options.Password.RequireNonAlphanumeric = false;
+                            options.Password.RequireUppercase = false;
+                            })
                 .AddEntityFrameworkStores<SecurityDbContext, int>()
                 .AddDefaultTokenProviders()
                 .AddUserManager<SecurityUserManager<User>>();
 
             services.AddAuthentication();
 
-
-
-            services.AddMvc();
+            services.AddMvc()
+               .AddJsonOptions(options => {
+                   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                   options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+               });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -65,6 +75,15 @@ namespace org.company.security
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+            });
+
+
 
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
@@ -78,6 +97,7 @@ namespace org.company.security
                 Audience = "resource_server_1",
                 Authority = "/",
                 RequireHttpsMetadata = false
+                
             });
 
             // Add a new middleware issuing tokens.
@@ -89,7 +109,7 @@ namespace org.company.security
                 // Disable the authorization endpoint as it's not used in this scenario.
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-                
+               
                 options.Provider = new AuthorizationProvider(userManager, signInManager, loggerFactory);
 
                 // Force the OpenID Connect server middleware to use JWT
@@ -97,8 +117,11 @@ namespace org.company.security
                 options.AccessTokenHandler = new JwtSecurityTokenHandler();
             });
 
+            
+
             app.UseDeveloperExceptionPage();
 
+ 
             app.UseMvc();
         }
     }

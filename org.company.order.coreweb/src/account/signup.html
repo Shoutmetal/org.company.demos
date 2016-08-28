@@ -1,0 +1,44 @@
+﻿<template>
+    <form class="register-form" ref="signupForm"  validation-renderer="bootstrap-form">
+        <h3>Sign Up</h3>
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span></span>
+        </div>
+        <p class="hint">
+            Enter your personal details below:
+        </p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Full Name</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" value.bind="firstName & validate" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Full Name</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" value.bind="lastName & validate" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Email</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Email" value.bind="email & validate" />
+        </div>
+        <p class="hint">
+            Enter your account details below:
+        </p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" value.bind="signupUsername & validate" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" value.bind="signupPassword & validate" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" value.bind="rpassword & validate" />
+        </div>
+        <div class="form-actions">
+            <button type="button" id="register-back-btn" class="btn btn-default" click.trigger="back()">Back</button>
+            <button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right" click.trigger="signup()">Submit</button>
+        </div>
+    </form>
+
+</template>
