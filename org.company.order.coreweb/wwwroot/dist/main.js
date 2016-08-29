@@ -8,7 +8,7 @@ System.register(['aurelia-framework', 'aurelia-logging-console', 'aurelia-config
 
         aurelia.use.standardConfiguration();
         aurelia.use.plugin('aurelia-api', function (configure) {
-            configure.registerEndpoint('api', 'http://localhost:20763').setDefaultEndpoint('api');
+            configure.registerEndpoint('api', 'http://localhost:35923').setDefaultEndpoint('api');
         });
         aurelia.use.plugin('aurelia-authentication', function (baseConfig) {
             baseConfig.configure(authConfig);

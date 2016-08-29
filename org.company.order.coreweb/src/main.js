@@ -10,7 +10,7 @@ LogManager.setLevel(LogManager.logLevel.error);
 export function configure(aurelia){
     
     aurelia.use.standardConfiguration();
-    aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', 'http://localhost:20763').setDefaultEndpoint('api'); });
+    aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', 'http://localhost:35923').setDefaultEndpoint('api'); });
     aurelia.use.plugin('aurelia-authentication', baseConfig => { baseConfig.configure(authConfig) });
 
 

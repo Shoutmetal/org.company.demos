@@ -1,15 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using org.company.security.IdentityManagers;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using org.company.security.Model;
 using Microsoft.Extensions.Logging;
 using org.company.security.IdentityModels;
-using org.company.security.IdentityManagers;
+using Microsoft.AspNetCore.Authorization;
+using org.company.security.Model;
 
-namespace org.company.security.Controllers
+// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace org.company.order.service.Controllers
 {
-    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly SecurityUserManager<User> _userManager;

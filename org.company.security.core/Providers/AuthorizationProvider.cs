@@ -3,7 +3,9 @@ using AspNet.Security.OpenIdConnect.Server;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using org.company.security.Context;
 using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
 using System;
@@ -33,15 +35,24 @@ namespace org.company.core.security.Service
             _logger = loggerFactory.CreateLogger<AuthorizationProvider>();
         }
 
-        public override Task HandleUserinfoRequest(HandleUserinfoRequestContext context)
+        public override Task ValidateAuthorizationRequest(ValidateAuthorizationRequestContext context)
         {
-            return base.HandleUserinfoRequest(context);
-        }
-        public override Task HandleAuthorizationRequest(HandleAuthorizationRequestContext context)
-        {
-            return base.HandleAuthorizationRequest(context);
+            return base.ValidateAuthorizationRequest(context);
         }
 
+        public override Task MatchEndpoint(MatchEndpointContext context)
+        {
+            // Note: by default, OpenIdConnectServerHandler only handles authorization requests made to the authorization endpoint.
+            // This context handler uses a more relaxed policy that allows extracting authorization requests received at
+            // /connect/authorize/accept and /connect/authorize/deny (see AuthorizationController.cs for more information).
+            if (context.Options.AuthorizationEndpointPath.HasValue &&
+                context.Request.Path.StartsWithSegments(context.Options.AuthorizationEndpointPath))
+            {
+                context.MatchesAuthorizationEndpoint();
+            }
+
+            return Task.FromResult(0);
+        }
 
         public override Task ValidateTokenRequest(ValidateTokenRequestContext context)
         {
@@ -84,6 +95,9 @@ namespace org.company.core.security.Service
 
             return Task.FromResult(0);
         }
+
+  
+        
 
         public override async Task HandleTokenRequest(HandleTokenRequestContext context)
         {

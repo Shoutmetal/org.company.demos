@@ -10,6 +10,10 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using Microsoft.AspNetCore.Http;
+using org.company.security.core.Configuration;
+using org.company.security.IdentityManagers;
+using org.company.security.IdentityModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace org.company.order.service
 {
@@ -45,7 +49,12 @@ namespace org.company.order.service
             RepositoryDependencyResolver.RegisterServices(services);
             DomainDependencyResolver.RegisterServices(services);
             ApplicationDependencyResolver.RegisterServices(services);
+
+            //Add Identity and oauth service
+            AuthServiceConfiguration.Add(services, Configuration);
+
             
+
             services.AddMvc()
                 .AddJsonOptions(options => {
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -55,20 +64,24 @@ namespace org.company.order.service
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SecurityUserManager<User> userManager, SignInManager<User> signInManager)
         {
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.Build();
+            });
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseCors(policy =>
-            {
-                policy.AllowAnyOrigin();
-                policy.AllowAnyHeader();
-                policy.AllowAnyMethod();
-            });
+            //Add oauth configuration
+            AuthAppConfiguration.Add(app, loggerFactory, userManager, signInManager);
 
             app.UseDeveloperExceptionPage();
             app.UseMvc();

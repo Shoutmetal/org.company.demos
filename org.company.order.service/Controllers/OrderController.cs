@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using org.company.order.application.contracts;
 using org.company.order.service.model;
@@ -33,7 +34,8 @@ namespace org.company.order.service.Controllers
             return Ok(result);
         }
 
-        [HttpGet("products")]        
+        [HttpGet("products")]
+        [Authorize("Bearer")]
         public IActionResult GetProducts()
         {
             var result = _service.GetProducts();

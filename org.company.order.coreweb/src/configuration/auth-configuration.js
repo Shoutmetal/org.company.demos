@@ -4,6 +4,8 @@
     configureEndpoints: ['api'],
 
     loginUrl: '/connect/token',  
+    profileUrl: '/connect/userinfo',
+    profileMethod: 'get',
     loginRedirect: '/',
     logoutRedirect: '/',
     signupUrl: '/api/account/register',

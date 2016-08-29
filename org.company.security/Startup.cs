@@ -50,16 +50,18 @@ namespace org.company.security
 
             services
                 .AddIdentity<User, Role>(
-                        options => {
+                        options =>
+                        {
                             options.Password.RequireDigit = false;
                             options.Password.RequiredLength = 8;
                             options.Password.RequireLowercase = false;
                             options.Password.RequireNonAlphanumeric = false;
                             options.Password.RequireUppercase = false;
-                            })
+                        })
                 .AddEntityFrameworkStores<SecurityDbContext, int>()
                 .AddDefaultTokenProviders()
                 .AddUserManager<SecurityUserManager<User>>();
+                
 
             services.AddAuthentication();
 
@@ -83,8 +85,6 @@ namespace org.company.security
                 policy.AllowAnyMethod();
             });
 
-
-
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
 
@@ -107,8 +107,10 @@ namespace org.company.security
                 options.AllowInsecureHttp = true;
 
                 // Disable the authorization endpoint as it's not used in this scenario.
-                options.AuthorizationEndpointPath = PathString.Empty;
+                options.AuthorizationEndpointPath = "/connect/authorize";
                 options.TokenEndpointPath = "/connect/token";
+                options.UserinfoEndpointPath = "/connect/userinfo";
+                
                
                 options.Provider = new AuthorizationProvider(userManager, signInManager, loggerFactory);
 
@@ -121,8 +123,9 @@ namespace org.company.security
 
             app.UseDeveloperExceptionPage();
 
- 
+           
             app.UseMvc();
+
         }
     }
 }

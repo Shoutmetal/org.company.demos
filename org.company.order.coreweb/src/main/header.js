@@ -8,6 +8,13 @@ export class Header{
         this.authService = authService;
     }
 
+    attached(){
+        //this.authService.getMe()
+        //   .then(profile => {
+        //       console.log(profile.username);
+        //   });
+    }
+
     logout() {
         return this.authService.logout();
     }

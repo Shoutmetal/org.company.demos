@@ -2,18 +2,24 @@
 import {HttpClient} from 'aurelia-http-client';
 import {Configure} from 'aurelia-configuration';
 import {Spinner} from 'services/spinner';
+import {AuthService} from 'aurelia-authentication';
 
-@inject(HttpClient, Configure, Spinner)
+@inject(HttpClient, Configure, Spinner, AuthService)
 export class GenericService
 {
-    constructor(http, config, spinner){
+    constructor(http, config, spinner, authService){
         this.http = http;
         this.config = config;
         this.spinner = spinner;
+        this.authService = authService;
+
+        console.log(this.authService.getAccessToken())
 
         this.http.configure(x => {
             x.withBaseUrl(this.config.get('baseUrl'));
-            x.withHeader('accept', 'application/json');
+            x.withHeader('Accept', 'application/json');
+            x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
+
         });
     }
 
@@ -26,6 +32,7 @@ export class GenericService
 				.send()
 				.then(response => 
 				{
+                console.log(response)
 				    resolve(response.content);
 				    this.spinner.off();
 				}
