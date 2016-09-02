@@ -12,11 +12,10 @@ export class GenericService
         this.config = config;
         this.spinner = spinner;
         this.authService = authService;
-
-        console.log(this.authService.getAccessToken())
+        this.isDevEnvironment = window.location.hostname == "localhost";
 
         this.http.configure(x => {
-            x.withBaseUrl(this.config.get('baseUrl'));
+            x.withBaseUrl( this.isDevEnvironment ? this.config.get('baseUrl') :  this.config.get('productionBaseUrl'));
             x.withHeader('Accept', 'application/json');
             x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
 
@@ -32,7 +31,6 @@ export class GenericService
 				.send()
 				.then(response => 
 				{
-                console.log(response)
 				    resolve(response.content);
 				    this.spinner.off();
 				}

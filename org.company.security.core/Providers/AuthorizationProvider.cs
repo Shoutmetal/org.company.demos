@@ -108,9 +108,17 @@ namespace org.company.core.security.Service
                 // By default, claims are not serialized in the access and identity tokens.
                 // Use the overload taking a "destinations" parameter to make sure 
                 // your claims are correctly serialized in the appropriate tokens.
-                identity.AddClaim("username", await userManager.GetUserNameAsync(user),
+                identity.AddClaim(ClaimTypes.Name, await userManager.GetUserNameAsync(user),
                     OpenIdConnectConstants.Destinations.AccessToken,
                     OpenIdConnectConstants.Destinations.IdentityToken);
+
+                identity.AddClaim("firstname", user.FirstName,
+                     OpenIdConnectConstants.Destinations.AccessToken,
+                    OpenIdConnectConstants.Destinations.IdentityToken);
+                identity.AddClaim("lastname", user.LastName,
+                     OpenIdConnectConstants.Destinations.AccessToken,
+                    OpenIdConnectConstants.Destinations.IdentityToken);
+
 
                 AuthenticationProperties properties = await CreateProperties(context, user);
 
@@ -156,7 +164,11 @@ namespace org.company.core.security.Service
 
         public override Task HandleUserinfoRequest(HandleUserinfoRequestContext context)
         {
-            return base.HandleUserinfoRequest(context);
+            context.SkipToNextMiddleware();
+
+            return Task.FromResult(0);
+
+            //return base.HandleUserinfoRequest(context);
         }
     }
 }

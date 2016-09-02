@@ -1,3 +1,4 @@
 ﻿{
-  "baseUrl": "http://localhost:35923/api/"
+  "baseUrl": "http://localhost:35923/api/",
+  "productionBaseUrl": "http://orgcompanyservice.azurewebsites.net/api/"
 }

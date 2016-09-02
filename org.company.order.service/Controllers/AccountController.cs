@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using org.company.security.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
 using org.company.security.Model;
+using AspNet.Security.OpenIdConnect.Extensions;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -68,6 +70,19 @@ namespace org.company.order.service.Controllers
                 await _roleManager.CreateAsync(new Role() { Name = CustomerRoleName });
 
             await _userManager.AddToRoleAsync(user, CustomerRoleName);
+        }
+
+        [Authorize]
+        [HttpGet("~/connect/userinfo")]
+        public IActionResult Get()
+        {
+            return Json(new
+            {
+                sub = User.GetClaim(ClaimTypes.NameIdentifier),
+                username = User.GetClaim(ClaimTypes.Name),
+                firstname = User.GetClaim("firstname"),
+                lastname = User.GetClaim("lastname")
+            });
         }
 
         [HttpPost]

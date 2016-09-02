@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace org.company.security.core.Configuration
 {
@@ -19,7 +20,8 @@ namespace org.company.security.core.Configuration
             services
                 .AddEntityFrameworkSqlServer()
                 .AddDbContext<SecurityDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("SecurityDbContext")));
+                    options.UseSqlServer(configuration.GetConnectionString("SecurityDbContext"), 
+                    b => b.MigrationsAssembly("org.company.order.service")));
 
             services
                 .AddIdentity<User, Role>(
@@ -31,7 +33,7 @@ namespace org.company.security.core.Configuration
                             options.Password.RequireNonAlphanumeric = false;
                             options.Password.RequireUppercase = false;
                         })
-                .AddEntityFrameworkStores<SecurityDbContext, int>()
+                .AddEntityFrameworkStores<SecurityDbContext, Guid>()
                 .AddDefaultTokenProviders()
                 .AddUserManager<SecurityUserManager<User>>();
 

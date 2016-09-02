@@ -8,9 +8,13 @@ LogManager.addAppender(new ConsoleAppender());
 LogManager.setLevel(LogManager.logLevel.error);
 
 export function configure(aurelia){
-    
+
+    let apiEndpoint = window.location.hostname == "localhost" 
+            ? "http://localhost:35923"
+            : "http://orgcompanyservice.azurewebsites.net";
+
     aurelia.use.standardConfiguration();
-    aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', 'http://localhost:35923').setDefaultEndpoint('api'); });
+    aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', apiEndpoint).setDefaultEndpoint('api'); });
     aurelia.use.plugin('aurelia-authentication', baseConfig => { baseConfig.configure(authConfig) });
 
 
@@ -19,7 +23,6 @@ export function configure(aurelia){
         config.setConfig('global-variables.json');
     });
 
-    
     aurelia.use.plugin('aurelia-binding-loader');
    
     aurelia.use.plugin('resources');
