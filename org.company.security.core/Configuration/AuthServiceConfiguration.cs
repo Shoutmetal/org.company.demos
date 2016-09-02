@@ -14,6 +14,8 @@ namespace org.company.security.core.Configuration
 
         public static void Add(IServiceCollection services, IConfigurationRoot configuration) {
 
+            services.AddAuthentication();
+
             services
                 .AddEntityFrameworkSqlServer()
                 .AddDbContext<SecurityDbContext>(options =>
@@ -34,13 +36,12 @@ namespace org.company.security.core.Configuration
                 .AddUserManager<SecurityUserManager<User>>();
 
 
-            //services.AddAuthentication();
 
-            services.AddAuthorization(auth =>
-            {
-                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder("org.company")
-                    .RequireAuthenticatedUser().Build());
-            });
+            //services.AddAuthorization(auth =>
+            //{
+            //    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder("org.company")
+            //        .RequireAuthenticatedUser().Build());
+            //});
         }
     }
 }

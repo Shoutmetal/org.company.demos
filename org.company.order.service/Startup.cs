@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using org.company.order.communication;
-using org.company.order.repository;
 using Newtonsoft.Json.Serialization;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using System;
 using Microsoft.AspNetCore.Http;
 using org.company.security.core.Configuration;
 using org.company.security.IdentityManagers;
@@ -53,8 +49,6 @@ namespace org.company.order.service
             //Add Identity and oauth service
             AuthServiceConfiguration.Add(services, Configuration);
 
-            
-
             services.AddMvc()
                 .AddJsonOptions(options => {
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -71,7 +65,6 @@ namespace org.company.order.service
                 policy.AllowAnyOrigin();
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
-                policy.Build();
             });
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

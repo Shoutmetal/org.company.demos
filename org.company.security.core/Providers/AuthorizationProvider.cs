@@ -18,42 +18,26 @@ namespace org.company.core.security.Service
 {
     public sealed class AuthorizationProvider : OpenIdConnectServerProvider
     {
-        private readonly SecurityUserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly ILogger _logger;
-
-
-        public AuthorizationProvider(
-            SecurityUserManager<User> userManager,
-            SignInManager<User> signInManager,
-            ILoggerFactory loggerFactory)
-        {
-
-            _userManager = userManager;
-            
-            _signInManager = signInManager;
-            _logger = loggerFactory.CreateLogger<AuthorizationProvider>();
-        }
 
         public override Task ValidateAuthorizationRequest(ValidateAuthorizationRequestContext context)
         {
             return base.ValidateAuthorizationRequest(context);
         }
 
-        public override Task MatchEndpoint(MatchEndpointContext context)
+        public override Task HandleAuthorizationRequest(HandleAuthorizationRequestContext context)
         {
-            // Note: by default, OpenIdConnectServerHandler only handles authorization requests made to the authorization endpoint.
-            // This context handler uses a more relaxed policy that allows extracting authorization requests received at
-            // /connect/authorize/accept and /connect/authorize/deny (see AuthorizationController.cs for more information).
-            if (context.Options.AuthorizationEndpointPath.HasValue &&
-                context.Request.Path.StartsWithSegments(context.Options.AuthorizationEndpointPath))
-            {
-                context.MatchesAuthorizationEndpoint();
-            }
-
-            return Task.FromResult(0);
+            return base.HandleAuthorizationRequest(context);
         }
 
+        public override Task ApplyAuthorizationResponse(ApplyAuthorizationResponseContext context)
+        {
+            return base.ApplyAuthorizationResponse(context);
+        }
+
+        public override Task DeserializeAuthorizationCode(DeserializeAuthorizationCodeContext context)
+        {
+            return base.DeserializeAuthorizationCode(context);
+        }
         public override Task ValidateTokenRequest(ValidateTokenRequestContext context)
         {
             // Reject the token requests that don't use
@@ -96,61 +80,76 @@ namespace org.company.core.security.Service
             return Task.FromResult(0);
         }
 
-  
-        
-
         public override async Task HandleTokenRequest(HandleTokenRequestContext context)
         {
+
+            var userManager = context.HttpContext.RequestServices.GetService<SecurityUserManager<User>>();
+            var signInManager = context.HttpContext.RequestServices.GetService<SignInManager<User>>();
+
             // Only handle grant_type=password token requests and let the
             // OpenID Connect server middleware handle the other grant types.
             if (context.Request.IsPasswordGrantType())
             {
-                var user = await _userManager.FindByNameAsync(context.Request.Username);
-                var result = await _userManager.CheckPasswordAsync(user, context.Request.Password);
+                var user = await userManager.FindByNameAsync(context.Request.Username);
+                var result = await userManager.CheckPasswordAsync(user, context.Request.Password);
 
-                if (user == null || !result) {
-                    _logger.LogInformation(0, "Invalid User");
+                if (user == null || !result)
+                {
                     context.Reject(
-                        error: OpenIdConnectConstants.Errors.InvalidClient,
-                        description: "Invalid User.");
+                        error: OpenIdConnectConstants.Errors.InvalidGrant,
+                        description: "Invalid Credentials.");
 
                     return;
                 }
 
+                
                 var identity = new ClaimsIdentity(context.Options.AuthenticationScheme);
-                identity.AddClaim(ClaimTypes.NameIdentifier, user.UserName);
-                identity.AddClaim(ClaimTypes.Name, user.UserName);
-                identity.AddClaim(ClaimTypes.Email, user.Email);
+
+                // Note: the name identifier is always included in both identity and
+                // access tokens, even if an explicit destination is not specified.
+                identity.AddClaim(ClaimTypes.NameIdentifier, await userManager.GetUserIdAsync(user));
+ 
 
                 // By default, claims are not serialized in the access and identity tokens.
                 // Use the overload taking a "destinations" parameter to make sure 
                 // your claims are correctly serialized in the appropriate tokens.
-                identity.AddClaim("urn:customclaim", "value",
+                identity.AddClaim("username", await userManager.GetUserNameAsync(user),
                     OpenIdConnectConstants.Destinations.AccessToken,
                     OpenIdConnectConstants.Destinations.IdentityToken);
 
-                AuthenticationProperties properties = await CreateProperties(user);
+                AuthenticationProperties properties = await CreateProperties(context, user);
 
                 var claimPrincipal = new ClaimsPrincipal(identity);
+
+                // Create a new authentication ticket holding the user identity.
                 var ticket = new AuthenticationTicket(claimPrincipal, properties, context.Options.AuthenticationScheme);
 
-                // Call SetResources with the list of resource servers
-                // the access token should be issued for.
-                ticket.SetResources("resource_server_1");
 
                 // Call SetScopes with the list of scopes you want to grant
                 // (specify offline_access to issue a refresh token).
-                ticket.SetScopes("profile", "offline_access");
+                ticket.SetScopes(
+                    OpenIdConnectConstants.Scopes.OpenId,
+                    OpenIdConnectConstants.Scopes.Email,
+                    OpenIdConnectConstants.Scopes.Profile,
+                    OpenIdConnectConstants.Scopes.OfflineAccess);
+
+                // Call SetResources with the list of resource servers
+                // the access token should be issued for.
+                ticket.SetResources("resource_server");
+
+                
 
                 context.Validate(ticket);
 
-                await _signInManager.SignInAsync(user, properties);
+                //await signInManager.SignInAsync(user, properties);
             }
         }
 
-        public async Task<AuthenticationProperties> CreateProperties(User user)
+        public async Task<AuthenticationProperties> CreateProperties(HandleTokenRequestContext context, User user)
         {
-            var permissions = await _userManager.GetRolesAsync(user);
+
+            var userManager = context.HttpContext.RequestServices.GetService<SecurityUserManager<User>>();
+            var permissions = await userManager.GetRolesAsync(user);
 
             IDictionary<string, string> data = new Dictionary<string, string>
             {

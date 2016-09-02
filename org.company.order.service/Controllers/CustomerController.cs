@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using org.company.order.application.contracts;
 using org.company.order.entities;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 namespace org.company.order.service.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _service;

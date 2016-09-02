@@ -1,4 +1,5 @@
 ﻿
+using AspNet.Security.OpenIdConnect.Server;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using org.company.order.application.contracts;
@@ -8,6 +9,7 @@ using System.Linq;
 namespace org.company.order.service.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class OrderController : Controller
     {
         
@@ -35,7 +37,6 @@ namespace org.company.order.service.Controllers
         }
 
         [HttpGet("products")]
-        [Authorize("Bearer")]
         public IActionResult GetProducts()
         {
             var result = _service.GetProducts();
