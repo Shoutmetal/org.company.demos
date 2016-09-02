@@ -14,6 +14,7 @@ using org.company.security.Model;
 
 namespace org.company.order.service.Controllers
 {
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly SecurityUserManager<User> _userManager;
@@ -36,7 +37,6 @@ namespace org.company.order.service.Controllers
         }
 
         [HttpPost("register")]
-        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

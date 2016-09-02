@@ -25,7 +25,11 @@ System.register(['aurelia-authentication', 'aurelia-framework'], function (_expo
                     this.authService = authService;
                 }
 
-                Header.prototype.attached = function attached() {};
+                Header.prototype.attached = function attached() {
+                    this.authService.getMe().then(function (profile) {
+                        console.log(profile.username);
+                    });
+                };
 
                 Header.prototype.logout = function logout() {
                     return this.authService.logout();
@@ -38,4 +42,4 @@ System.register(['aurelia-authentication', 'aurelia-framework'], function (_expo
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4vaGVhZGVyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7OztBQUFRLHVCLDBCQUFBLFc7O0FBQ0Esa0IscUJBQUEsTTs7OzhCQUdLLE0sV0FEWixPQUFPLFdBQVAsQztBQUdHLGdDQUFZLFdBQVosRUFBd0I7QUFBQTs7QUFDcEIseUJBQUssV0FBTCxHQUFtQixXQUFuQjtBQUNIOztpQ0FFRCxRLHVCQUFVLENBS1QsQzs7aUNBRUQsTSxxQkFBUztBQUNMLDJCQUFPLEtBQUssV0FBTCxDQUFpQixNQUFqQixFQUFQO0FBQ0gsaUIiLCJmaWxlIjoibWFpbi9oZWFkZXIuanMiLCJzb3VyY2VSb290IjoiL3NyYyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4vaGVhZGVyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7OztBQUFRLHVCLDBCQUFBLFc7O0FBQ0Esa0IscUJBQUEsTTs7OzhCQUdLLE0sV0FEWixPQUFPLFdBQVAsQztBQUdHLGdDQUFZLFdBQVosRUFBd0I7QUFBQTs7QUFDcEIseUJBQUssV0FBTCxHQUFtQixXQUFuQjtBQUNIOztpQ0FFRCxRLHVCQUFVO0FBQ04seUJBQUssV0FBTCxDQUFpQixLQUFqQixHQUNJLElBREosQ0FDUyxtQkFBVztBQUNiLGdDQUFRLEdBQVIsQ0FBWSxRQUFRLFFBQXBCO0FBQ0gscUJBSEo7QUFJSCxpQjs7aUNBRUQsTSxxQkFBUztBQUNMLDJCQUFPLEtBQUssV0FBTCxDQUFpQixNQUFqQixFQUFQO0FBQ0gsaUIiLCJmaWxlIjoibWFpbi9oZWFkZXIuanMiLCJzb3VyY2VSb290IjoiL3NyYyJ9

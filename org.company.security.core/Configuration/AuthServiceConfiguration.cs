@@ -35,13 +35,6 @@ namespace org.company.security.core.Configuration
                 .AddDefaultTokenProviders()
                 .AddUserManager<SecurityUserManager<User>>();
 
-
-
-            //services.AddAuthorization(auth =>
-            //{
-            //    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder("org.company")
-            //        .RequireAuthenticatedUser().Build());
-            //});
         }
     }
 }

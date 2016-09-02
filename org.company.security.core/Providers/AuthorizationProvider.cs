@@ -19,25 +19,20 @@ namespace org.company.core.security.Service
     public sealed class AuthorizationProvider : OpenIdConnectServerProvider
     {
 
-        public override Task ValidateAuthorizationRequest(ValidateAuthorizationRequestContext context)
+        public override Task MatchEndpoint(MatchEndpointContext context)
         {
-            return base.ValidateAuthorizationRequest(context);
+            // Note: by default, OpenIdConnectServerHandler only handles authorization requests made to the authorization endpoint.
+            // This context handler uses a more relaxed policy that allows extracting authorization requests received at
+            // /connect/authorize/accept and /connect/authorize/deny (see AuthorizationController.cs for more information).
+            if (context.Options.AuthorizationEndpointPath.HasValue &&
+                context.Request.Path.StartsWithSegments(context.Options.AuthorizationEndpointPath))
+            {
+                context.MatchesAuthorizationEndpoint();
+            }
+
+            return Task.FromResult(0);
         }
 
-        public override Task HandleAuthorizationRequest(HandleAuthorizationRequestContext context)
-        {
-            return base.HandleAuthorizationRequest(context);
-        }
-
-        public override Task ApplyAuthorizationResponse(ApplyAuthorizationResponseContext context)
-        {
-            return base.ApplyAuthorizationResponse(context);
-        }
-
-        public override Task DeserializeAuthorizationCode(DeserializeAuthorizationCodeContext context)
-        {
-            return base.DeserializeAuthorizationCode(context);
-        }
         public override Task ValidateTokenRequest(ValidateTokenRequestContext context)
         {
             // Reject the token requests that don't use
@@ -140,8 +135,6 @@ namespace org.company.core.security.Service
                 
 
                 context.Validate(ticket);
-
-                //await signInManager.SignInAsync(user, properties);
             }
         }
 
@@ -159,6 +152,11 @@ namespace org.company.core.security.Service
             };
 
             return new AuthenticationProperties(data);
+        }
+
+        public override Task HandleUserinfoRequest(HandleUserinfoRequestContext context)
+        {
+            return base.HandleUserinfoRequest(context);
         }
     }
 }

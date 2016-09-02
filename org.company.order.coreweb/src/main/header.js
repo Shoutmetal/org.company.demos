@@ -9,10 +9,10 @@ export class Header{
     }
 
     attached(){
-        //this.authService.getMe()
-        //   .then(profile => {
-        //       console.log(profile.username);
-        //   });
+        this.authService.getMe()
+           .then(profile => {
+               console.log(profile.username);
+           });
     }
 
     logout() {

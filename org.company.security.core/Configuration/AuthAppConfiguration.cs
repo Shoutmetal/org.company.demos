@@ -21,21 +21,6 @@ namespace org.company.security.core.Configuration
         {
             app.UseOAuthValidation();
 
-            //app.UseIdentity();
-
-            
-
-            //app.UseJwtBearerAuthentication(new JwtBearerOptions
-            //{
-            //    AutomaticAuthenticate = true,
-            //    AutomaticChallenge = true,
-            //    Audience = "http://localhost:35923/connect/authorize",
-            //    Authority = "http://localhost:35923/",
-            //    RequireHttpsMetadata = false
-
-
-            //});
-
             // Add a new middleware issuing tokens.
             app.UseOpenIdConnectServer(options =>
             {
@@ -47,10 +32,9 @@ namespace org.company.security.core.Configuration
                 // Disable the authorization endpoint as it's not used in this scenario.
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-                //options.UserinfoEndpointPath = "/connect/userinfo";
+                options.UserinfoEndpointPath = "/connect/userinfo";
 
                 options.Provider = new AuthorizationProvider();
-
 
                 // Force the OpenID Connect server middleware to use JWT
                 // instead of the default opaque/encrypted format.
