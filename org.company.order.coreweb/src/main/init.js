@@ -1,13 +1,12 @@
 ﻿import {AppInsights} from 'services/application-insight';
-import {AuthenticateStep} from 'aurelia-authentication';
-
+import {AuthorizeStep} from 'aurelia-auth';
 
 export class Menu
 {
 
     configureRouter(config, router){
         config.title= "Demo Architecture";
-        config.addPipelineStep('authorize', AuthenticateStep);
+        config.addPipelineStep('authorize', AuthorizeStep);
         config.addPipelineStep('modelbind', AppInsights);
 
         let reports = [

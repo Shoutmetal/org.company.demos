@@ -1,6 +1,6 @@
 ﻿import {bindable, bindingMode} from 'aurelia-framework';
 
-let count = 1;
+let count = 0;
 
 @bindable({ name: "spin"})
 export class Spinner {
@@ -25,7 +25,6 @@ export class Spinner {
     }
 
     calculate(){
-
         if(count === 0)
             $("#spinner").hide();
         else

@@ -1,6 +1,5 @@
 ﻿import {LogManager} from 'aurelia-framework'
 import {ConsoleAppender} from 'aurelia-logging-console';
-import {Configure} from "aurelia-configuration";
 import authConfig from 'configuration/auth-configuration';
 import {AuthService} from 'aurelia-authentication';
 
@@ -17,12 +16,6 @@ export function configure(aurelia){
     aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', apiEndpoint).setDefaultEndpoint('api'); });
     aurelia.use.plugin('aurelia-authentication', baseConfig => { baseConfig.configure(authConfig) });
 
-
-    aurelia.use.plugin('aurelia-configuration', config => {
-        config.setDirectory('/'); 
-        config.setConfig('global-variables.json');
-    });
-
     aurelia.use.plugin('aurelia-binding-loader');
    
     aurelia.use.plugin('resources');
@@ -32,8 +25,16 @@ export function configure(aurelia){
  
     aurelia.start().then(a => 
     {
+
+        console.log("once?")
         var auth = aurelia.container.get(AuthService);
         let root = auth.isAuthenticated() ? 'main/init' : 'account/login';
+
+        if(auth.isAuthenticated())
+            auth.getMe().then(profile => {
+                sessionStorage.setItem("profile", JSON.stringify(profile));
+            })
+
         a.setRoot(root, document.body);
         
     })

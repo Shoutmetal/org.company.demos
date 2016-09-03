@@ -1,21 +1,21 @@
 ﻿import {inject, computedFrom} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Storage} from 'services/storage'
 import {Router} from 'aurelia-router';
+import {Service} from 'order/service'
 
-@inject(EventAggregator, Storage, Router)
-export class CartMenu
+@inject(EventAggregator, Router, Service)
+export class OrderCartMenu
 {
-    constructor(event, storage, router){
+    constructor(event, router, service){
         this.event = event;
-        this.storage = storage;
         this.router = router;
-        this.items = this.storage.get("cart");
+        this.service = service;
+        this.items = this.service.getStorage("cart");
     }
 
     attached()
     {
-        this.event.subscribe("storage:cart", (items) => {
+        this.event.subscribe(this.service.getEventName("cart"), (items) => {
             this.items = items;
         });
     }
@@ -27,7 +27,8 @@ export class CartMenu
     }
 
     delete(id){
-        this.storage.delete("cart", (item) => { return item.productId === id })
+        this.service.deleteStorage("cart", (item) => { return item.productId === id })
+      
     }
 
     checkout(){

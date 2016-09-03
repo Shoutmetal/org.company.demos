@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-framework', 'services/generic-service', 'aurelia-authentication'], function (_export, _context) {
+System.register(['aurelia-framework', 'services/service-generic', 'aurelia-authentication'], function (_export, _context) {
     "use strict";
 
     var inject, GenericService, AuthService, _dec, _class, Service;
@@ -14,8 +14,8 @@ System.register(['aurelia-framework', 'services/generic-service', 'aurelia-authe
     return {
         setters: [function (_aureliaFramework) {
             inject = _aureliaFramework.inject;
-        }, function (_servicesGenericService) {
-            GenericService = _servicesGenericService.GenericService;
+        }, function (_servicesServiceGeneric) {
+            GenericService = _servicesServiceGeneric.GenericService;
         }, function (_aureliaAuthentication) {
             AuthService = _aureliaAuthentication.AuthService;
         }],

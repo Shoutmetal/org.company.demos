@@ -1,5 +1,5 @@
 ﻿import {inject} from 'aurelia-framework';
-import {GenericService} from 'services/generic-service';
+import {GenericService} from 'services/service-generic';
 import {AuthService} from 'aurelia-authentication';
 
 @inject(GenericService, AuthService)

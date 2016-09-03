@@ -1,17 +1,15 @@
 ﻿import {inject} from 'aurelia-framework';
-import {Storage} from 'services/storage';
 import {Router} from 'aurelia-router'
 import {Service} from './service';
 
 
-@inject(Storage, Service, Router)
+@inject (Service, Router)
 export class OrderCheckout
 {
-    constructor(storage, service, router){
-        this.storage = storage;
+    constructor(service, router){
         this.service = service;
         this.router = router;
-        this.products = this.storage.get("cart");
+        this.products = this.service.getStorage("cart");
         this.totalPrice = 0;
         this.confirmed = false;
     }
@@ -25,8 +23,10 @@ export class OrderCheckout
         let order = { orderId:0, orderNumber:"", customerId: this.user.userid , products: this.products};
 
         this.service.saveOrder(order).then((response) => {
+            console.log(response)
+
             this.confirmed = response;
-            if(response) this.storage.clear("cart");
+            if(response) this.service.cleanStorage("cart");
         })
 
     }

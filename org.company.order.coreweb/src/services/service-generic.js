@@ -1,21 +1,18 @@
 ﻿import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
-import {Configure} from 'aurelia-configuration';
-import {Spinner} from 'services/spinner';
+import {Spinner} from 'common/components/spinner';
 import {AuthService} from 'aurelia-authentication';
 
-@inject(HttpClient, Configure, Spinner, AuthService)
+@inject(HttpClient, Spinner, AuthService)
 export class GenericService
 {
-    constructor(http, config, spinner, authService){
+    constructor(http, spinner, authService){
         this.http = http;
-        this.config = config;
         this.spinner = spinner;
         this.authService = authService;
-        this.isDevEnvironment = window.location.hostname == "localhost";
 
         this.http.configure(x => {
-            x.withBaseUrl( this.isDevEnvironment ? this.config.get('baseUrl') :  this.config.get('productionBaseUrl'));
+            x.withBaseUrl( this.authService.client.client.baseUrl + "/api/" );
             x.withHeader('Accept', 'application/json');
             x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
 
@@ -29,11 +26,8 @@ export class GenericService
             http.createRequest(url)
 				.asGet()
 				.send()
-				.then(response => 
-				{
-				    resolve(response.content);
-				    this.spinner.off();
-				}
+				.then(response => resolve(response.content))
+				.then( ()=> { this.spinner.off() }
                 , err =>
                 {
                     reject(err);
@@ -52,15 +46,13 @@ export class GenericService
 				.asPost()
 				.withContent(data)
 				.send()
-				.then(response =>
-				{
-				    resolve(response.isSuccess);
-				    this.spinner.off();
-				}
+				.then(response => resolve(response.content))
+				.then( ()=> { this.spinner.off() }
                 , err =>
                 {
                     reject(err);
                     this.spinner.off();
+                    
                 });
         });
 

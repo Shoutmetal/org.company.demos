@@ -1,5 +1,5 @@
 ﻿import {inject} from 'aurelia-framework';
-import {Service} from './service';
+import {Service} from 'order/service';
 import {Carousel} from 'common/components/carousel'
 
 @inject(Service, Carousel)
@@ -17,9 +17,8 @@ export class ProductDetail
     }
 
     add(){
-        this.service.addToCart(this.product);
-        
-        
+        this.service.addToCart(this.product, "cart");
+
         parent.$.fancybox.close();
     }
 

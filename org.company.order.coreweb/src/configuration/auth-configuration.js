@@ -11,6 +11,9 @@
     signupUrl: '/api/account/register',
     loginOnSignup: false,
     signupRedirect: false,
+
+
+
     providers: {
         google: {
                 url: 'google',

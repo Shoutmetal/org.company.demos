@@ -1,5 +1,5 @@
 ﻿import {inject} from 'aurelia-framework';
-import {Service} from './service';
+import {Service} from 'reports/service';
 
 @inject(Service)
 export class OrderSearch

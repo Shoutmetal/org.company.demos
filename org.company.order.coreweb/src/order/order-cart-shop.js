@@ -1,7 +1,7 @@
 ﻿import {inject, NewInstance} from 'aurelia-dependency-injection';  
 import {ValidationController} from 'aurelia-validation';
-import {Product} from './model';
-import {Service} from './service';
+import {Product} from 'order/model';
+import {Service} from 'order/service';
 
 @inject(NewInstance.of(ValidationController), Service)
 export class OrderPegeOne

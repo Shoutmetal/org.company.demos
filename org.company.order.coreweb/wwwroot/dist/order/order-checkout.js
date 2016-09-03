@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-framework', 'services/storage', 'aurelia-router', './service'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-router', './service'], function (_export, _context) {
     "use strict";
 
-    var inject, Storage, Router, Service, _dec, _class, OrderCheckout;
+    var inject, Router, Service, _dec, _class, OrderCheckout;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,22 +14,19 @@ System.register(['aurelia-framework', 'services/storage', 'aurelia-router', './s
     return {
         setters: [function (_aureliaFramework) {
             inject = _aureliaFramework.inject;
-        }, function (_servicesStorage) {
-            Storage = _servicesStorage.Storage;
         }, function (_aureliaRouter) {
             Router = _aureliaRouter.Router;
         }, function (_service) {
             Service = _service.Service;
         }],
         execute: function () {
-            _export('OrderCheckout', OrderCheckout = (_dec = inject(Storage, Service, Router), _dec(_class = function () {
-                function OrderCheckout(storage, service, router) {
+            _export('OrderCheckout', OrderCheckout = (_dec = inject(Service, Router), _dec(_class = function () {
+                function OrderCheckout(service, router) {
                     _classCallCheck(this, OrderCheckout);
 
-                    this.storage = storage;
                     this.service = service;
                     this.router = router;
-                    this.products = this.storage.get("cart");
+                    this.products = this.service.getStorage("cart");
                     this.totalPrice = 0;
                     this.confirmed = false;
                 }
@@ -51,8 +48,10 @@ System.register(['aurelia-framework', 'services/storage', 'aurelia-router', './s
                     var order = { orderId: 0, orderNumber: "", customerId: this.user.userid, products: this.products };
 
                     this.service.saveOrder(order).then(function (response) {
+                        console.log(response);
+
                         _this2.confirmed = response;
-                        if (response) _this2.storage.clear("cart");
+                        if (response) _this2.service.cleanStorage("cart");
                     });
                 };
 
@@ -67,4 +66,4 @@ System.register(['aurelia-framework', 'services/storage', 'aurelia-router', './s
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVyL29yZGVyLWNoZWNrb3V0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7OztBQUFRLGtCLHFCQUFBLE07O0FBQ0EsbUIsb0JBQUEsTzs7QUFDQSxrQixrQkFBQSxNOztBQUNBLG1CLFlBQUEsTzs7O3FDQUlLLGEsV0FEWixPQUFPLE9BQVAsRUFBZ0IsT0FBaEIsRUFBeUIsTUFBekIsQztBQUdHLHVDQUFZLE9BQVosRUFBcUIsT0FBckIsRUFBOEIsTUFBOUIsRUFBcUM7QUFBQTs7QUFDakMseUJBQUssT0FBTCxHQUFlLE9BQWY7QUFDQSx5QkFBSyxPQUFMLEdBQWUsT0FBZjtBQUNBLHlCQUFLLE1BQUwsR0FBYyxNQUFkO0FBQ0EseUJBQUssUUFBTCxHQUFnQixLQUFLLE9BQUwsQ0FBYSxHQUFiLENBQWlCLE1BQWpCLENBQWhCO0FBQ0EseUJBQUssVUFBTCxHQUFrQixDQUFsQjtBQUNBLHlCQUFLLFNBQUwsR0FBaUIsS0FBakI7QUFDSDs7d0NBRUQsUSx1QkFBVTtBQUFBOztBQUNOLHlCQUFLLFVBQUwsR0FBbUIsS0FBSyxRQUFMLENBQWMsTUFBZCxDQUFzQixVQUFDLEdBQUQsRUFBTSxPQUFOO0FBQUEsK0JBQWtCLFFBQVEsUUFBUixHQUFtQixRQUFRLEtBQTNCLEdBQW1DLEdBQXJEO0FBQUEscUJBQXRCLEVBQWlGLENBQWpGLENBQW5CO0FBQ0EseUJBQUssT0FBTCxDQUFhLGNBQWIsR0FBOEIsSUFBOUIsQ0FBb0MsZ0JBQVE7QUFBRSw4QkFBSyxJQUFMLEdBQVksSUFBWjtBQUFtQixxQkFBakU7QUFDSCxpQjs7d0NBRUQsTyxzQkFBUztBQUFBOztBQUNMLHdCQUFJLFFBQVEsRUFBRSxTQUFRLENBQVYsRUFBYSxhQUFZLEVBQXpCLEVBQTZCLFlBQVksS0FBSyxJQUFMLENBQVUsTUFBbkQsRUFBNEQsVUFBVSxLQUFLLFFBQTNFLEVBQVo7O0FBRUEseUJBQUssT0FBTCxDQUFhLFNBQWIsQ0FBdUIsS0FBdkIsRUFBOEIsSUFBOUIsQ0FBbUMsVUFBQyxRQUFELEVBQWM7QUFDN0MsK0JBQUssU0FBTCxHQUFpQixRQUFqQjtBQUNBLDRCQUFHLFFBQUgsRUFBYSxPQUFLLE9BQUwsQ0FBYSxLQUFiLENBQW1CLE1BQW5CO0FBQ2hCLHFCQUhEO0FBS0gsaUI7O3dDQUVELE0scUJBQVE7QUFDSix5QkFBSyxNQUFMLENBQVksUUFBWixDQUFxQixpQkFBckI7QUFDSCxpQiIsImZpbGUiOiJvcmRlci9vcmRlci1jaGVja291dC5qcyIsInNvdXJjZVJvb3QiOiIvc3JjIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm9yZGVyL29yZGVyLWNoZWNrb3V0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7OztBQUFRLGtCLHFCQUFBLE07O0FBQ0Esa0Isa0JBQUEsTTs7QUFDQSxtQixZQUFBLE87OztxQ0FJSyxhLFdBRFosT0FBUSxPQUFSLEVBQWlCLE1BQWpCLEM7QUFHRyx1Q0FBWSxPQUFaLEVBQXFCLE1BQXJCLEVBQTRCO0FBQUE7O0FBQ3hCLHlCQUFLLE9BQUwsR0FBZSxPQUFmO0FBQ0EseUJBQUssTUFBTCxHQUFjLE1BQWQ7QUFDQSx5QkFBSyxRQUFMLEdBQWdCLEtBQUssT0FBTCxDQUFhLFVBQWIsQ0FBd0IsTUFBeEIsQ0FBaEI7QUFDQSx5QkFBSyxVQUFMLEdBQWtCLENBQWxCO0FBQ0EseUJBQUssU0FBTCxHQUFpQixLQUFqQjtBQUNIOzt3Q0FFRCxRLHVCQUFVO0FBQUE7O0FBQ04seUJBQUssVUFBTCxHQUFtQixLQUFLLFFBQUwsQ0FBYyxNQUFkLENBQXNCLFVBQUMsR0FBRCxFQUFNLE9BQU47QUFBQSwrQkFBa0IsUUFBUSxRQUFSLEdBQW1CLFFBQVEsS0FBM0IsR0FBbUMsR0FBckQ7QUFBQSxxQkFBdEIsRUFBaUYsQ0FBakYsQ0FBbkI7QUFDQSx5QkFBSyxPQUFMLENBQWEsY0FBYixHQUE4QixJQUE5QixDQUFvQyxnQkFBUTtBQUFFLDhCQUFLLElBQUwsR0FBWSxJQUFaO0FBQW1CLHFCQUFqRTtBQUNILGlCOzt3Q0FFRCxPLHNCQUFTO0FBQUE7O0FBQ0wsd0JBQUksUUFBUSxFQUFFLFNBQVEsQ0FBVixFQUFhLGFBQVksRUFBekIsRUFBNkIsWUFBWSxLQUFLLElBQUwsQ0FBVSxNQUFuRCxFQUE0RCxVQUFVLEtBQUssUUFBM0UsRUFBWjs7QUFFQSx5QkFBSyxPQUFMLENBQWEsU0FBYixDQUF1QixLQUF2QixFQUE4QixJQUE5QixDQUFtQyxVQUFDLFFBQUQsRUFBYztBQUM3QyxnQ0FBUSxHQUFSLENBQVksUUFBWjs7QUFFQSwrQkFBSyxTQUFMLEdBQWlCLFFBQWpCO0FBQ0EsNEJBQUcsUUFBSCxFQUFhLE9BQUssT0FBTCxDQUFhLFlBQWIsQ0FBMEIsTUFBMUI7QUFDaEIscUJBTEQ7QUFPSCxpQjs7d0NBRUQsTSxxQkFBUTtBQUNKLHlCQUFLLE1BQUwsQ0FBWSxRQUFaLENBQXFCLGlCQUFyQjtBQUNILGlCIiwiZmlsZSI6Im9yZGVyL29yZGVyLWNoZWNrb3V0LmpzIiwic291cmNlUm9vdCI6Ii9zcmMifQ==
