@@ -46,7 +46,7 @@ export class GenericService
 				.asPost()
 				.withContent(data)
 				.send()
-				.then(response => resolve(response.content))
+				.then(response => resolve(response))
 				.then( ()=> { this.spinner.off() }
                 , err =>
                 {

@@ -1,6 +1,6 @@
 ﻿import {bindable, bindingMode} from 'aurelia-framework';
 
-let count = 0;
+let count = 1;
 
 @bindable({ name: "spin"})
 export class Spinner {

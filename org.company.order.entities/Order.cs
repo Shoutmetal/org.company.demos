@@ -11,14 +11,20 @@ namespace org.company.order.entities
             this.OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public Order(Guid customerId, string orderNumber, int statusId)
+        public Order(Guid customerId, int statusId)
         {
             this.OrderDetail = new HashSet<OrderDetail>();
             this.CustomerId = customerId;
-            this.Number = orderNumber;
+            this.Number = GenerateOrderNumber();
             this.StatusId = statusId;
             this.OrderDate = DateTime.Now;
             this.Active = true;
+        }
+
+        private string GenerateOrderNumber()
+        {
+            return (CustomerId.ToString().Substring(0, 5) + DateTime.Now.ToString("yyMMddHHmmssff") +
+                    CustomerId.ToString().Substring(CustomerId.ToString().Length - 6, 6)).ToUpper();
         }
 
         [Key]

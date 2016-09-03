@@ -1,4 +1,4 @@
-﻿import {Spinner} from 'services/spinner';
+﻿import {Spinner} from 'common/components/spinner';
 import {Container} from 'aurelia-dependency-injection';
 
 export function spin()

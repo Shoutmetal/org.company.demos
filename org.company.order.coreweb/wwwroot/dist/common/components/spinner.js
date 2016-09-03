@@ -17,7 +17,7 @@ System.register(["aurelia-framework"], function (_export, _context) {
             bindingMode = _aureliaFramework.bindingMode;
         }],
         execute: function () {
-            count = 0;
+            count = 1;
 
             _export("Spinner", Spinner = (_dec = bindable({ name: "spin" }), _dec(_class = function () {
                 function Spinner() {

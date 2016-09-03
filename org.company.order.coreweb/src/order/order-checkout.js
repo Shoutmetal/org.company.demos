@@ -1,6 +1,6 @@
 ﻿import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router'
-import {Service} from './service';
+import {Service} from 'order/service';
 
 
 @inject (Service, Router)
@@ -23,9 +23,7 @@ export class OrderCheckout
         let order = { orderId:0, orderNumber:"", customerId: this.user.userid , products: this.products};
 
         this.service.saveOrder(order).then((response) => {
-            console.log(response)
-
-            this.confirmed = response;
+            this.confirmed = response.isSuccess;
             if(response) this.service.cleanStorage("cart");
         })
 

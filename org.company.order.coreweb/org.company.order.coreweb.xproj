@@ -19,6 +19,10 @@
   <ItemGroup>
     <DnxInvisibleContent Include="bower.json" />
     <DnxInvisibleContent Include=".bowerrc" />
+    <DnxInvisibleContent Include="wwwroot\dist\services\generic-service.js" />
+    <DnxInvisibleContent Include="wwwroot\dist\services\spinner.html" />
+    <DnxInvisibleContent Include="wwwroot\dist\services\spinner.js" />
+    <DnxInvisibleContent Include="wwwroot\dist\services\storage.js" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

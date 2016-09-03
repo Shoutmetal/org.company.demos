@@ -33,15 +33,8 @@ namespace org.company.order.application.implementation
 
         public void AddOrder(OrderDTO orderDTO)
         {
-
-            //0) generate order number
-            string orderNumber = (orderDTO.CustomerId.ToString().Substring(0, 5) + DateTime.Now.ToString("yyMMddHHmmssff") + 
-                orderDTO.CustomerId.ToString().Substring(orderDTO.CustomerId.ToString().Length - 6, 6)).ToUpper();
-
-            var len = orderNumber.Length;
-
             //1) create an order
-            Order order = new Order(orderDTO.CustomerId, orderNumber, (int)OrderStatus.Created);
+            Order order = new Order(orderDTO.CustomerId, (int)OrderStatus.Created);
             _orderRepository.Add(order);
 
             //2) add details to the order
