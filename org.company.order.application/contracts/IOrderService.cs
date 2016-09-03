@@ -1,5 +1,6 @@
 ﻿using org.company.order.entities;
 using org.company.order.service.model;
+using System;
 using System.Collections.Generic;
 
 namespace org.company.order.application.contracts
@@ -8,7 +9,7 @@ namespace org.company.order.application.contracts
     {
         void AddOrder(OrderDTO order);
 
-        IEnumerable<Order> GetOrdersByCustomerId(int customerId);
+        IEnumerable<Order> GetOrdersByCustomerId(Guid customerId);
         Order GetOrderById(int orderId);
 
         IEnumerable<Product> GetProducts();

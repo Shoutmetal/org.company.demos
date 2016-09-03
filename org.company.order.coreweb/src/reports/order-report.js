@@ -6,13 +6,29 @@ export class OrderSearch
 {
     constructor(service){
         this.service = service;
+        this.valueObject();
     }
 
-    attached(){
-        this.service.getOrdersByCustomerId(1).then( response => 
-        { 
-            this.orders = response.sort((a,b) => b.orderId - a.orderId ) ;
-        });
+    valueObject()
+    {
+        let getOrders = (user) => {
+            let userid = user.userid;
 
+            return this.service.getOrdersByCustomerId(userid);
+        }
+
+        let orderByDesc = (orders) => {
+            this.orders = orders.sort((a,b) => b.orderId - a.orderId );
+        }
+
+
+        this.service.getUserProfile()
+               .then(getOrders)
+               .then(orderByDesc)
+               .catch( err => console.log(err))
     }
+
+    
+
+    
 }

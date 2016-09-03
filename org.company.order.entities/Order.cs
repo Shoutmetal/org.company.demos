@@ -11,7 +11,7 @@ namespace org.company.order.entities
             this.OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public Order(int customerId, string orderNumber, int statusId)
+        public Order(Guid customerId, string orderNumber, int statusId)
         {
             this.OrderDetail = new HashSet<OrderDetail>();
             this.CustomerId = customerId;
@@ -23,7 +23,7 @@ namespace org.company.order.entities
 
         [Key]
         public int OrderId { get; set; }
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public int StatusId { get; set; }
         public string Number { get; private set; }
 
@@ -32,9 +32,7 @@ namespace org.company.order.entities
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         
         public Status Status { get; set; }
-        public Customer Customer { get; set; }
 
-       
     }
 
    

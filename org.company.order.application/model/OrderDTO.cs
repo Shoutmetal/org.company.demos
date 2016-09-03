@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace org.company.order.service.model
@@ -6,7 +7,7 @@ namespace org.company.order.service.model
     public class OrderDTO
     {
         public int OrderId { get; set; }
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public List<ProductDTO> Products { get; set; }
         public string OrderNumber { get; set; }
     }

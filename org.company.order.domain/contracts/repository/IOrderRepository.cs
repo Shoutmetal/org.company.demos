@@ -10,6 +10,6 @@ namespace org.company.order.domain.contracts.repository
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        IList<Order> GetOrderByCustomerId(int customerId);
+        IList<Order> GetOrderByCustomerId(Guid customerId);
     }
 }

@@ -1,13 +1,15 @@
 ﻿import {inject} from 'aurelia-framework';
 import {GenericService} from 'services/generic-service';
+import {AuthService} from 'aurelia-authentication';
 import {Storage} from 'services/storage';
 
-@inject(GenericService, Storage)
+@inject(GenericService, Storage, AuthService)
 export class Service
 {
-    constructor(service, storage){
+    constructor(service, storage, authService){
         this.service = service;
         this.storage = storage;
+        this.authService = authService;
     }
 
     getOrdersByCustomerId(id){
@@ -40,6 +42,10 @@ export class Service
             this.storage.save(storageName, product);
         else
             this.storage.update(storageName, product, condition);
+    }
+
+    getUserProfile(){
+        return this.authService.getMe().then( response => response );
     }
 
 }

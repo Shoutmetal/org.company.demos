@@ -15,14 +15,11 @@ namespace org.company.order.repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Inventory>().HasKey(e => new { e.WarehouseId, e.ProductId });
-
             modelBuilder.Entity<OrderDetail>().HasKey(e => new { e.OrderId, e.ProductId });
-
 
         }
 
 
-        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Status> Status { get; set; }

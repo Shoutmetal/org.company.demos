@@ -78,6 +78,7 @@ namespace org.company.order.service.Controllers
         {
             return Json(new
             {
+                userid = User.GetClaim("userid"),
                 sub = User.GetClaim(ClaimTypes.NameIdentifier),
                 username = User.GetClaim(ClaimTypes.Name),
                 firstname = User.GetClaim("firstname"),

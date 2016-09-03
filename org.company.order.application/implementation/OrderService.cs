@@ -35,7 +35,10 @@ namespace org.company.order.application.implementation
         {
 
             //0) generate order number
-            string orderNumber = orderDTO.CustomerId + DateTime.Now.ToString("yyMMddHHmmssff");
+            string orderNumber = (orderDTO.CustomerId.ToString().Substring(0, 5) + DateTime.Now.ToString("yyMMddHHmmssff") + 
+                orderDTO.CustomerId.ToString().Substring(orderDTO.CustomerId.ToString().Length - 6, 6)).ToUpper();
+
+            var len = orderNumber.Length;
 
             //1) create an order
             Order order = new Order(orderDTO.CustomerId, orderNumber, (int)OrderStatus.Created);
@@ -65,7 +68,7 @@ namespace org.company.order.application.implementation
 
         }
 
-        public IEnumerable<Order> GetOrdersByCustomerId(int customerId)
+        public IEnumerable<Order> GetOrdersByCustomerId(Guid customerId)
         {
             return _orderRepository.GetOrderByCustomerId(customerId);
         }
