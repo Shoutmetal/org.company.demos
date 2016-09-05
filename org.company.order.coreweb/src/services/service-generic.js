@@ -2,6 +2,7 @@
 import {HttpClient} from 'aurelia-http-client';
 import {Spinner} from 'common/components/spinner';
 import {AuthService} from 'aurelia-authentication';
+import {ServiceInterceptor} from 'services/service-interceptor'
 
 @inject(HttpClient, Spinner, AuthService)
 export class GenericService
@@ -15,7 +16,7 @@ export class GenericService
             x.withBaseUrl( this.authService.client.client.baseUrl + "/api/" );
             x.withHeader('Accept', 'application/json');
             x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
-
+            x.withInterceptor(new ServiceInterceptor());
         });
     }
 

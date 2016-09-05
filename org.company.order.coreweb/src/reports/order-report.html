@@ -4,8 +4,9 @@
         <li><a href="javascript:void(0)">Report</a></li>
         <li class="active">Order Report</li>
     </ul>
+    <div if.bind="!orders.length" >No results available, <a href="/#/order-cart-shop">start shopping now!</a></div>
 
-    <div class="container-fluid">
+    <div if.bind="orders.length" class="container-fluid">
         <div class="table-wrapper-responsive">
             <table class="table table-responsive table-bordered ">
                 <thead class="${style.orderHeader}">

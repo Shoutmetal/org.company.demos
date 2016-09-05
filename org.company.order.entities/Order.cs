@@ -23,8 +23,7 @@ namespace org.company.order.entities
 
         private string GenerateOrderNumber()
         {
-            return (CustomerId.ToString().Substring(0, 5) + DateTime.Now.ToString("yyMMddHHmmssff") +
-                    CustomerId.ToString().Substring(CustomerId.ToString().Length - 6, 6)).ToUpper();
+            return (CustomerId.ToString().Substring(0, 11) + DateTime.Now.ToString("yyMMddHHmmssff")).ToUpper();
         }
 
         [Key]

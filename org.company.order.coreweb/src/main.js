@@ -8,14 +8,11 @@ LogManager.setLevel(LogManager.logLevel.error);
 
 export function configure(aurelia){
 
-    let apiEndpoint = window.location.hostname == "localhost" 
-            ? "http://localhost:35923"
-            : "http://orgcompanyservice.azurewebsites.net";
+    let apiEndpoint = window.location.hostname == "localhost" ? "http://localhost:35923" : "http://orgcompanyservice.azurewebsites.net";
 
     aurelia.use.standardConfiguration();
     aurelia.use.plugin('aurelia-api', configure => { configure.registerEndpoint('api', apiEndpoint).setDefaultEndpoint('api'); });
     aurelia.use.plugin('aurelia-authentication', baseConfig => { baseConfig.configure(authConfig) });
-
     aurelia.use.plugin('aurelia-binding-loader');
    
     aurelia.use.plugin('resources');

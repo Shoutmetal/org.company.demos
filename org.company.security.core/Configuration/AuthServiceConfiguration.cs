@@ -16,6 +16,7 @@ namespace org.company.security.core.Configuration
         public static void Add(IServiceCollection services, IConfigurationRoot configuration) {
 
             services.AddAuthentication();
+            
 
             services
                 .AddEntityFrameworkSqlServer()

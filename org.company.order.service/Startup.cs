@@ -46,11 +46,12 @@ namespace org.company.order.service
             DomainDependencyResolver.RegisterServices(services);
             ApplicationDependencyResolver.RegisterServices(services);
 
-            //Add Identity and oauth service
+            //Add ASOS service
             AuthServiceConfiguration.Add(services, Configuration);
 
             services.AddMvc()
-                .AddJsonOptions(options => {
+                .AddJsonOptions(options =>
+                {
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
@@ -60,6 +61,12 @@ namespace org.company.order.service
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SecurityUserManager<User> userManager, SignInManager<User> signInManager)
         {
+            if (env.IsEnvironment("Development"))
+            {
+                app.UseBrowserLink();
+                app.UseDeveloperExceptionPage();
+            }
+
             app.UseCors(policy =>
             {
                 policy.AllowAnyOrigin();
@@ -73,10 +80,10 @@ namespace org.company.order.service
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
 
-            //Add oauth configuration
+            //Add ASOS configuration
             AuthAppConfiguration.Add(app, loggerFactory, userManager, signInManager);
 
-            app.UseDeveloperExceptionPage();
+
             app.UseMvc();
 
             app.Run(async (context) =>

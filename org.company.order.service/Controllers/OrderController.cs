@@ -13,7 +13,7 @@ namespace org.company.order.service.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         
         private readonly IOrderService _service;

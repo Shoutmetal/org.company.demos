@@ -6,19 +6,13 @@ export class Header{
 
     constructor(authService){
         this.authService = authService;
-        this.username;
-        this.firstname;
-        this.lastname;
+        this.user = JSON.parse(sessionStorage.getItem("profile") || "{}");
+        this.username = this.user.username;
+        this.firstname = this.user.firstname;
+        this.lastname = this.user.lastname;
     }
 
-    attached(){
-        this.authService.getMe()
-           .then(profile => {
-               this.username = profile.username;
-               this.firstname = profile.firstname;
-               this.lastname = profile.lastname;
-           });
-    }
+
 
     @computedFrom('firstname', 'lastname')
     get fullname(){

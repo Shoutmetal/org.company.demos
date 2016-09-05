@@ -169,8 +169,6 @@ namespace org.company.core.security.Service
             context.SkipToNextMiddleware();
 
             return Task.FromResult(0);
-
-            //return base.HandleUserinfoRequest(context);
         }
     }
 }

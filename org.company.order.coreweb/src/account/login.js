@@ -22,6 +22,11 @@ export class Login
         let credentials = { username: this.username, password: this.password, grant_type: "password" };
 
         this.authService.login(credentials, this.header)
+            .then(response => {
+                localStorage.setItem("xxx",JSON.stringify(response));
+
+                return;
+            })
             .catch(error => {
                 error.json().then(ex=>  {
                        
