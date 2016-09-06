@@ -10,10 +10,9 @@ export class ServiceInterceptor
         let container = Container.instance;
         this.authService = container.get(AuthService);
         this.auth_object = this.authService.authentication.getResponseObject();
-
         this.serviceRefreshToken = serviceRefreshToken;
         this.serviceRefreshToken.configure({
-            expiresIn : (this.auth_object.expires_in - 45)
+            expiresIn : (this.auth_object.expires_in - 60)
         });
 
         this.serviceRefreshToken.start();

@@ -33,11 +33,7 @@ export class ServiceRefreshToken
 				.withContent(data)
 				.send()
 				.then( response =>{ 
-				    console.log("auth refresh token response -> ", response)
-
 				    auth.setResponseObject(response.content)
-
-				    console.log("refresh -> ", auth.getRefreshToken());
 				})
                 , err => reject(err);
         });
@@ -53,17 +49,16 @@ export class ServiceRefreshToken
     }
 
     start(){
-        if(!this.expiresIn) throw Error("No time set on the configuration.")
+        if(!this.expiresIn) throw Error("No expiration time set on the configuration.")
 
         let me = this;
         this.restartTime = me.expiresIn
 
         let fn = () => {
             me.expiresIn--;
-            console.log(me.expiresIn)
+            //console.log(me.expiresIn)
             if(!me.expiresIn && !me.stop)
             {
-                console.log("refresh!");
                 me.refresh();
                 clearInterval(inverval);
                 me.expiresIn = me.restartTime
