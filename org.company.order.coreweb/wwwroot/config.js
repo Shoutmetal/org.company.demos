@@ -27,6 +27,7 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "fancybox": "npm:fancybox@3.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
+    "idle-timeout": "npm:idle-timeout@0.1.0",
     "jquery": "npm:jquery@2.2.4",
     "jquery-migrate": "npm:jquery-migrate@3.0.0",
     "jquery-slimscroll": "npm:jquery-slimscroll@1.3.8",
@@ -37,6 +38,7 @@ System.config({
     "numeral": "npm:numeral@1.5.3",
     "owl.carousel": "npm:owl.carousel@2.1.4",
     "simple-line-icons": "npm:simple-line-icons@2.3.2",
+    "thorst/jquery-idletimer": "github:thorst/jquery-idletimer@1.0.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

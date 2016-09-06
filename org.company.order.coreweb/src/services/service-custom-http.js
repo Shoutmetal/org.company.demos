@@ -3,11 +3,12 @@ import {HttpClient} from 'aurelia-http-client';
 import {Spinner} from 'common/components/spinner';
 import {AuthService} from 'aurelia-authentication';
 import {ServiceInterceptor} from 'services/service-interceptor'
+import {ServiceRefreshToken} from 'services/service-refresh-token'
 
-@inject(HttpClient, Spinner, AuthService)
-export class GenericService
+@inject(HttpClient, Spinner, AuthService, ServiceRefreshToken)
+export class CustomHttp
 {
-    constructor(http, spinner, authService){
+    constructor(http, spinner, authService, serviceRefreshToken){
         this.http = http;
         this.spinner = spinner;
         this.authService = authService;
@@ -16,7 +17,7 @@ export class GenericService
             x.withBaseUrl( this.authService.client.client.baseUrl + "/api/" );
             x.withHeader('Accept', 'application/json');
             x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
-            x.withInterceptor(new ServiceInterceptor());
+            x.withInterceptor(new ServiceInterceptor(serviceRefreshToken));
         });
     }
 

@@ -4,13 +4,19 @@ import {Container} from 'aurelia-dependency-injection';
 
 export class ServiceInterceptor
 {
-
-    constructor(){
+    constructor(serviceRefreshToken){
         this.expires_in = 0;
-
+       
         let container = Container.instance;
         this.authService = container.get(AuthService);
         this.auth_object = this.authService.authentication.getResponseObject();
+
+        this.serviceRefreshToken = serviceRefreshToken;
+        this.serviceRefreshToken.configure({
+            expiresIn : (this.auth_object.expires_in - 45)
+        });
+
+        this.serviceRefreshToken.start();
     }
 
     request(request) {  
@@ -22,30 +28,18 @@ export class ServiceInterceptor
     }
 
     response(response) {
-        this.expires_in = this.auth_object.expires_in;
-
-        this.calculate()
+        //this.serviceRefreshToken.restart();
 
         return response; 
     }
 
     responseError(error){
         if (error.statusCode == 401) {
-
-            let container = Container.instance;
-            let auth = container.get(AuthService);
-            auth.logout();
-
-            window.location.href = "/"
+           // this.serviceRefreshToken.stop(); //let die the session
         }
         throw error;
     }
 
-    calculate(){
-        //setInterval(()=>{
-        //    console.log(this.expires_in)
-            
-        //} ,this.expires_in * 10)
-    }
+
 
 }

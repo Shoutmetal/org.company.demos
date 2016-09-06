@@ -1,8 +1,8 @@
 ﻿import {inject} from 'aurelia-framework';
-import {GenericService} from 'services/service-generic';
+import {CustomHttp} from 'services/service-custom-http';
 import {AuthService} from 'aurelia-authentication';
 
-@inject(GenericService, AuthService)
+@inject(CustomHttp, AuthService)
 export class Service
 {
     constructor(service, authService){

@@ -16,7 +16,7 @@
     // =====================
 
     // The API endpoint to which refreshToken requests are sent. null = loginUrl
-    refreshTokenUrl: '/connect/revoke',
+    refreshTokenUrl: null,
 
     // Option to turn refresh tokens On/Off
     useRefreshToken: true,

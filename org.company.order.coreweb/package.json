@@ -78,6 +78,7 @@
       "bootstrap-hover-dropdown": "npm:bootstrap-hover-dropdown@^2.2.1",
       "bootstrap-switch": "npm:bootstrap-switch@^3.3.2",
       "bootstrap-touchspin": "npm:bootstrap-touchspin@^3.1.1",
+      "ehynds/jquery-idle-timeout": "github:ehynds/jquery-idle-timeout@master",
       "fancybox": "npm:fancybox@^3.0.0",
       "font-awesome": "npm:font-awesome@^4.6.3",
       "jquery": "npm:jquery@^2.2.4",
@@ -87,7 +88,8 @@
       "moment": "npm:moment@^2.14.1",
       "numeral": "npm:numeral@^1.5.3",
       "owl.carousel": "npm:owl.carousel@^2.1.4",
-      "simple-line-icons": "npm:simple-line-icons@^2.3.2"
+      "simple-line-icons": "npm:simple-line-icons@^2.3.2",
+      "thorst/jquery-idletimer": "github:thorst/jquery-idletimer@^1.0.1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

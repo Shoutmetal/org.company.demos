@@ -47,12 +47,12 @@ namespace org.company.core.security.Service
 
             // Note: you can skip the request validation when the client_id
             // parameter is missing to support unauthenticated token requests.
-            if (string.IsNullOrEmpty(context.ClientId))
-            {
-                context.Skip();
+            //if (string.IsNullOrEmpty(context.ClientId))
+            //{
+            //    context.Skip();
 
-                return Task.FromResult(0);
-            }
+            //    return Task.FromResult(0);
+            //}
 
             // Note: to mitigate brute force attacks, you SHOULD strongly consider applying
             // a key derivation function like PBKDF2 to slow down the secret validation process.
@@ -169,6 +169,21 @@ namespace org.company.core.security.Service
             context.SkipToNextMiddleware();
 
             return Task.FromResult(0);
+        }
+
+        public override Task ValidateRevocationRequest(ValidateRevocationRequestContext context)
+        {
+            return base.ValidateRevocationRequest(context);
+        }
+
+        public override Task HandleRevocationRequest(HandleRevocationRequestContext context)
+        {
+            return base.HandleRevocationRequest(context);
+        }
+
+        public override Task DeserializeRefreshToken(DeserializeRefreshTokenContext context)
+        {
+            return base.DeserializeRefreshToken(context);
         }
     }
 }
