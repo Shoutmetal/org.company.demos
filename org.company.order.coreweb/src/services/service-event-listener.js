@@ -59,6 +59,7 @@ export class ServiceEventListener
                 if(!me.expiresIn)
                 {
                     me.event.publish("event::inactivity");
+                    me.pause = true;
                     clearInterval(inverval);
                     me.expiresIn = me.restartTime
                     inverval = setInterval(fn, me.sandbox); 
