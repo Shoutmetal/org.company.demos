@@ -43,7 +43,7 @@ namespace org.company.security.core.Configuration
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
                 options.UserinfoEndpointPath = "/connect/userinfo";
-                options.AccessTokenLifetime = TimeSpan.FromMinutes(30);
+                options.AccessTokenLifetime = TimeSpan.FromMinutes(1);
                 options.RevocationEndpointPath = "/connect/revoke";
 
                 options.Provider = new AuthorizationProvider();

@@ -2,6 +2,8 @@
 import {ConsoleAppender} from 'aurelia-logging-console';
 import authConfig from 'configuration/auth-configuration';
 import {AuthService} from 'aurelia-authentication';
+import {ServiceRefreshToken} from 'services/service-refresh-token'
+import {ServiceEventListener} from 'services/service-event-listener'
 
 LogManager.addAppender(new ConsoleAppender());
 LogManager.setLevel(LogManager.logLevel.error);
@@ -22,13 +24,31 @@ export function configure(aurelia){
  
     aurelia.start().then(a => 
     {
-        var auth = aurelia.container.get(AuthService);
-        let root = auth.isAuthenticated() ? 'main/init' : 'account/login';
+        let authService = aurelia.container.get(AuthService);
+        let root = authService.isAuthenticated() ? 'main/init' : 'account/login';
 
-        if(auth.isAuthenticated())
-            auth.getMe().then(profile => {
+        if(authService.isAuthenticated()){
+
+            authService.getMe().then(profile => {
                 sessionStorage.setItem("profile", JSON.stringify(profile));
-            })
+            });
+
+            let serviceEventListener = aurelia.container.get(ServiceEventListener);
+            let serviceRefreshToken = aurelia.container.get(ServiceRefreshToken);
+
+            let auth_object = authService.authentication.getResponseObject();
+
+            serviceRefreshToken.configure({
+                expiresIn : (auth_object.expires_in-5)
+            });
+
+            serviceEventListener.configure({
+                expiresIn : (auth_object.expires_in-10)
+            });
+
+            serviceRefreshToken.start();
+            serviceEventListener.start();
+        }
 
         a.setRoot(root, document.body);
         
