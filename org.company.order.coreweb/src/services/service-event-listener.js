@@ -9,7 +9,7 @@ export class ServiceEventListener
         this.expiresIn = 0;
         this.restartTime = 0;
         this.sandbox = 1000;
-        this.pause = false;
+        this._pause = false;
 
         this.handleBodyClick = e => {
             this.expiresIn = this.restartTime;
@@ -45,21 +45,18 @@ export class ServiceEventListener
     }
 
     start(){
-
         this.addEvents();
 
         let me = this;
 
         let fn = () => {
-            if(!me.pause){
+            if(!me._pause){
                 me.expiresIn--;
-
-                console.log("event listener : ", me.expiresIn);
 
                 if(!me.expiresIn)
                 {
                     me.event.publish("event::inactivity");
-                    me.pause = true;
+                    me._pause=true;
                     clearInterval(inverval);
                     me.expiresIn = me.restartTime
                     inverval = setInterval(fn, me.sandbox); 
@@ -70,5 +67,13 @@ export class ServiceEventListener
 
         let inverval = setInterval(fn, this.sandbox)
     
+    }
+
+    pause(){
+        this._pause = true;
+    }
+
+    continue(){
+        this._pause = false;
     }
 }

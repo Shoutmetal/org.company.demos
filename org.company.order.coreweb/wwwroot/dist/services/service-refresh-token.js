@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentication', 'aurelia-event-aggregator'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentication'], function (_export, _context) {
     "use strict";
 
-    var inject, HttpClient, AuthService, EventAggregator, _dec, _class, ServiceRefreshToken;
+    var inject, computedFrom, HttpClient, AuthService, _dec, _class, ServiceRefreshToken;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,55 +14,45 @@ System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentica
     return {
         setters: [function (_aureliaFramework) {
             inject = _aureliaFramework.inject;
+            computedFrom = _aureliaFramework.computedFrom;
         }, function (_aureliaHttpClient) {
             HttpClient = _aureliaHttpClient.HttpClient;
         }, function (_aureliaAuthentication) {
             AuthService = _aureliaAuthentication.AuthService;
-        }, function (_aureliaEventAggregator) {
-            EventAggregator = _aureliaEventAggregator.EventAggregator;
         }],
         execute: function () {
-            _export('ServiceRefreshToken', ServiceRefreshToken = (_dec = inject(HttpClient, AuthService, EventAggregator), _dec(_class = function () {
-                function ServiceRefreshToken(http, authService, event) {
+            _export('ServiceRefreshToken', ServiceRefreshToken = (_dec = inject(HttpClient, AuthService), _dec(_class = function () {
+                function ServiceRefreshToken(http, authService) {
                     var _this = this;
 
                     _classCallCheck(this, ServiceRefreshToken);
 
                     this.http = http;
                     this.authService = authService;
-                    this.event = event;
                     this.expiresIn = 0;
                     this.restartTime = 0;
                     this.sandbox = 1000;
                     this.stop = false;
-                    this.pause = false;
+                    this._pause = false;
 
                     this.http.configure(function (x) {
                         x.withBaseUrl(_this.authService.client.client.baseUrl);
                         x.withHeader('Accept', 'application/json');
                         x.withHeader('Content-Type', 'application/x-www-form-urlencoded');
                     });
-
-                    var $countdown = void 0;
-
-                    this.event.subscribe("event::inactivity", function () {
-                        _this.pause = true;
-                        $('body').append('<div class="modal fade" id="idle-timeout-dialog" data-backdrop="static"><div class="modal-dialog modal-small"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Your session is about to expire.</h4></div><div class="modal-body"><p><i class="fa fa-warning"></i> You session will be locked in <span id="idle-timeout-counter"></span> seconds.</p><p>Do you want to continue your session?</p></div><div class="modal-footer"><button id="idle-timeout-dialog-logout" type="button" class="btn btn-default">No, Logout</button><button id="idle-timeout-dialog-keepalive" type="button" class="btn btn-primary" data-dismiss="modal">Yes, Keep Working</button></div></div></div></div>');
-
-                        $('#idle-timeout-dialog').modal('show');
-
-                        $countdown = $('#idle-timeout-counter');
-
-                        $('#idle-timeout-dialog-keepalive').on('click', function () {
-                            $('#idle-timeout-dialog').modal('hide');
-                        });
-
-                        $('#idle-timeout-dialog-logout').on('click', function () {
-                            $('#idle-timeout-dialog').modal('hide');
-                            $.idleTimeout.options.onTimeout.call(this);
-                        });
-                    });
                 }
+
+                ServiceRefreshToken.prototype.pause = function pause() {
+                    this._pause = true;
+                };
+
+                ServiceRefreshToken.prototype.continue = function _continue() {
+                    this._pause = false;
+                };
+
+                ServiceRefreshToken.prototype.restart = function restart() {
+                    this.expiresIn = this.restartTime;
+                };
 
                 ServiceRefreshToken.prototype.refresh = function refresh() {
                     var http = this.http;
@@ -73,7 +63,7 @@ System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentica
 
                     var promise = new Promise(function (resolve, reject) {
                         http.createRequest(url).asPost().withContent(data).send().then(function (response) {
-                            auth.setResponseObject(response.content);
+                            return auth.setResponseObject(response.content);
                         }), function (err) {
                             return reject(err);
                         };
@@ -95,11 +85,9 @@ System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentica
                     var me = this;
 
                     var fn = function fn() {
-                        if (!me.pause) {
+                        if (!me._pause) {
 
                             me.expiresIn--;
-
-                            console.log("refresh token : ", me.expiresIn);
 
                             if (!me.expiresIn) {
                                 me.refresh();
@@ -113,10 +101,6 @@ System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentica
                     var inverval = setInterval(fn, this.sandbox);
                 };
 
-                ServiceRefreshToken.prototype.restart = function restart() {
-                    this.expiresIn = this.restartTime;
-                };
-
                 return ServiceRefreshToken;
             }()) || _class));
 
@@ -124,4 +108,4 @@ System.register(['aurelia-framework', 'aurelia-http-client', 'aurelia-authentica
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3NlcnZpY2UtcmVmcmVzaC10b2tlbi5qcyJdLCJuYW1lcyI6WyJpbmplY3QiLCJIdHRwQ2xpZW50IiwiQXV0aFNlcnZpY2UiLCJFdmVudEFnZ3JlZ2F0b3IiLCJTZXJ2aWNlUmVmcmVzaFRva2VuIiwiaHR0cCIsImF1dGhTZXJ2aWNlIiwiZXZlbnQiLCJleHBpcmVzSW4iLCJyZXN0YXJ0VGltZSIsInNhbmRib3giLCJzdG9wIiwicGF1c2UiLCJjb25maWd1cmUiLCJ4Iiwid2l0aEJhc2VVcmwiLCJjbGllbnQiLCJiYXNlVXJsIiwid2l0aEhlYWRlciIsIiRjb3VudGRvd24iLCJzdWJzY3JpYmUiLCIkIiwiYXBwZW5kIiwibW9kYWwiLCJvbiIsImlkbGVUaW1lb3V0Iiwib3B0aW9ucyIsIm9uVGltZW91dCIsImNhbGwiLCJyZWZyZXNoIiwiZGF0YSIsImVuY29kZVVSSUNvbXBvbmVudCIsImdldFJlZnJlc2hUb2tlbiIsImF1dGgiLCJ1cmwiLCJwcm9taXNlIiwiUHJvbWlzZSIsInJlc29sdmUiLCJyZWplY3QiLCJjcmVhdGVSZXF1ZXN0IiwiYXNQb3N0Iiwid2l0aENvbnRlbnQiLCJzZW5kIiwidGhlbiIsInNldFJlc3BvbnNlT2JqZWN0IiwicmVzcG9uc2UiLCJjb250ZW50IiwiZXJyIiwiY29uZmlnIiwic3RhcnQiLCJFcnJvciIsIm1lIiwiZm4iLCJjb25zb2xlIiwibG9nIiwiY2xlYXJJbnRlcnZhbCIsImludmVydmFsIiwic2V0SW50ZXJ2YWwiLCJyZXN0YXJ0Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7QUFBUUEsa0IscUJBQUFBLE07O0FBQ0FDLHNCLHNCQUFBQSxVOztBQUNBQyx1QiwwQkFBQUEsVzs7QUFDQUMsMkIsMkJBQUFBLGU7OzsyQ0FHS0MsbUIsV0FEWkosT0FBT0MsVUFBUCxFQUFtQkMsV0FBbkIsRUFBZ0NDLGVBQWhDLEM7QUFHRyw2Q0FBWUUsSUFBWixFQUFrQkMsV0FBbEIsRUFBK0JDLEtBQS9CLEVBQXFD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VDs7QUFFQSx3QkFBSUMsS0FBSyxTQUFMQSxFQUFLLEdBQU07QUFDWCw0QkFBRyxDQUFDRCxHQUFHdkMsS0FBUCxFQUFhOztBQUVUdUMsK0JBQUczQyxTQUFIOztBQUVBNkMsb0NBQVFDLEdBQVIsQ0FBWSxrQkFBWixFQUFnQ0gsR0FBRzNDLFNBQW5DOztBQUVBLGdDQUFHLENBQUMyQyxHQUFHM0MsU0FBUCxFQUNBO0FBQ0kyQyxtQ0FBR3RCLE9BQUg7QUFDQTBCLDhDQUFjQyxRQUFkO0FBQ0FMLG1DQUFHM0MsU0FBSCxHQUFlMkMsR0FBRzFDLFdBQWxCO0FBQ0ErQywyQ0FBV0MsWUFBWUwsRUFBWixFQUFnQkQsR0FBR3pDLE9BQW5CLENBQVg7QUFDSDtBQUVKO0FBRUoscUJBakJEOztBQW1CQSx3QkFBSThDLFdBQVdDLFlBQVlMLEVBQVosRUFBaUIsS0FBSzFDLE9BQXRCLENBQWY7QUFDSCxpQjs7OENBRURnRCxPLHNCQUFTO0FBQ0wseUJBQUtsRCxTQUFMLEdBQWlCLEtBQUtDLFdBQXRCO0FBQ0gsaUIiLCJmaWxlIjoic2VydmljZXMvc2VydmljZS1yZWZyZXNoLXRva2VuLmpzIiwic291cmNlUm9vdCI6Ii9zcmMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3NlcnZpY2UtcmVmcmVzaC10b2tlbi5qcyJdLCJuYW1lcyI6WyJpbmplY3QiLCJjb21wdXRlZEZyb20iLCJIdHRwQ2xpZW50IiwiQXV0aFNlcnZpY2UiLCJTZXJ2aWNlUmVmcmVzaFRva2VuIiwiaHR0cCIsImF1dGhTZXJ2aWNlIiwiZXhwaXJlc0luIiwicmVzdGFydFRpbWUiLCJzYW5kYm94Iiwic3RvcCIsIl9wYXVzZSIsImNvbmZpZ3VyZSIsIngiLCJ3aXRoQmFzZVVybCIsImNsaWVudCIsImJhc2VVcmwiLCJ3aXRoSGVhZGVyIiwicGF1c2UiLCJjb250aW51ZSIsInJlc3RhcnQiLCJyZWZyZXNoIiwiZGF0YSIsImVuY29kZVVSSUNvbXBvbmVudCIsImdldFJlZnJlc2hUb2tlbiIsImF1dGgiLCJ1cmwiLCJwcm9taXNlIiwiUHJvbWlzZSIsInJlc29sdmUiLCJyZWplY3QiLCJjcmVhdGVSZXF1ZXN0IiwiYXNQb3N0Iiwid2l0aENvbnRlbnQiLCJzZW5kIiwidGhlbiIsInNldFJlc3BvbnNlT2JqZWN0IiwicmVzcG9uc2UiLCJjb250ZW50IiwiZXJyIiwiY29uZmlnIiwic3RhcnQiLCJFcnJvciIsIm1lIiwiZm4iLCJjbGVhckludGVydmFsIiwiaW52ZXJ2YWwiLCJzZXRJbnRlcnZhbCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7O0FBQVFBLGtCLHFCQUFBQSxNO0FBQVFDLHdCLHFCQUFBQSxZOztBQUNSQyxzQixzQkFBQUEsVTs7QUFDQUMsdUIsMEJBQUFBLFc7OzsyQ0FHS0MsbUIsV0FEWkosT0FBT0UsVUFBUCxFQUFtQkMsV0FBbkIsQztBQUdHLDZDQUFZRSxJQUFaLEVBQWtCQyxXQUFsQixFQUE4QjtBQUFBOztBQUFBOztBQUMxQix5QkFBS0QsSUFBTCxHQUFZQSxJQUFaO0FBQ0EseUJBQUtDLFdBQUwsR0FBbUJBLFdBQW5CO0FBQ0EseUJBQUtDLFNBQUwsR0FBaUIsQ0FBakI7QUFDQSx5QkFBS0MsV0FBTCxHQUFtQixDQUFu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

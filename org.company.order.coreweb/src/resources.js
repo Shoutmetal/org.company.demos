@@ -7,6 +7,7 @@
         'common/components/fancybox-detail-view',
         'common/components/fancybox-image-view',
         'common/attributes/slim-scroll',
-        'common/components/spinner'
+        'common/components/spinner',
+        'common/components/idle-timeout'
     );
 }

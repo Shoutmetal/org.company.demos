@@ -13,12 +13,7 @@
     }
 
     responseError(error){
-        if (error.statusCode == 401) {
-
-        }
         throw error;
     }
-
-
 
 }

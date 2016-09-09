@@ -32,7 +32,6 @@ System.register([], function (_export, _context) {
                 };
 
                 ServiceInterceptor.prototype.responseError = function responseError(error) {
-                    if (error.statusCode == 401) {}
                     throw error;
                 };
 
@@ -43,4 +42,4 @@ System.register([], function (_export, _context) {
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3NlcnZpY2UtaW50ZXJjZXB0b3IuanMiXSwibmFtZXMiOlsiU2VydmljZUludGVyY2VwdG9yIiwicmVxdWVzdCIsInJlcXVlc3RFcnJvciIsImVycm9yIiwicmVzcG9uc2UiLCJyZXNwb25zZUVycm9yIiwic3RhdHVzQ29kZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7OzswQ0FBYUEsa0I7Ozs7OzZDQUVUQyxPLG9CQUFRQSxRLEVBQVM7QUFDYiwyQkFBT0EsUUFBUDtBQUNILGlCOzs2Q0FFREMsWSx5QkFBYUMsSyxFQUFNO0FBQ2YsMEJBQU1BLEtBQU47QUFDSCxpQjs7NkNBRURDLFEscUJBQVNBLFMsRUFBVTtBQUNmLDJCQUFPQSxTQUFQO0FBQ0gsaUI7OzZDQUVEQyxhLDBCQUFjRixLLEVBQU07QUFDaEIsd0JBQUlBLE1BQU1HLFVBQU4sSUFBb0IsR0FBeEIsRUFBNkIsQ0FFNUI7QUFDRCwwQkFBTUgsS0FBTjtBQUNILGlCIiwiZmlsZSI6InNlcnZpY2VzL3NlcnZpY2UtaW50ZXJjZXB0b3IuanMiLCJzb3VyY2VSb290IjoiL3NyYyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3NlcnZpY2UtaW50ZXJjZXB0b3IuanMiXSwibmFtZXMiOlsiU2VydmljZUludGVyY2VwdG9yIiwicmVxdWVzdCIsInJlcXVlc3RFcnJvciIsImVycm9yIiwicmVzcG9uc2UiLCJyZXNwb25zZUVycm9yIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7OzBDQUFhQSxrQjs7Ozs7NkNBRVRDLE8sb0JBQVFBLFEsRUFBUztBQUNiLDJCQUFPQSxRQUFQO0FBQ0gsaUI7OzZDQUVEQyxZLHlCQUFhQyxLLEVBQU07QUFDZiwwQkFBTUEsS0FBTjtBQUNILGlCOzs2Q0FFREMsUSxxQkFBU0EsUyxFQUFVO0FBQ2YsMkJBQU9BLFNBQVA7QUFDSCxpQjs7NkNBRURDLGEsMEJBQWNGLEssRUFBTTtBQUNoQiwwQkFBTUEsS0FBTjtBQUNILGlCIiwiZmlsZSI6InNlcnZpY2VzL3NlcnZpY2UtaW50ZXJjZXB0b3IuanMiLCJzb3VyY2VSb290IjoiL3NyYyJ9

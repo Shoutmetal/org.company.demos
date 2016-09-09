@@ -1,20 +1,18 @@
-﻿import {inject} from 'aurelia-framework';
+﻿import {inject, computedFrom} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {AuthService} from 'aurelia-authentication';
-import {EventAggregator} from 'aurelia-event-aggregator'
 
-@inject(HttpClient, AuthService, EventAggregator)
+@inject(HttpClient, AuthService)
 export class ServiceRefreshToken
 {
-    constructor(http, authService, event){
+    constructor(http, authService){
         this.http = http;
         this.authService = authService;
-        this.event = event;
         this.expiresIn = 0;
         this.restartTime = 0;
         this.sandbox = 1000;
         this.stop = false;
-        this.pause = false;
+        this._pause = false;
 
         this.http.configure(x => {
             x.withBaseUrl(this.authService.client.client.baseUrl);
@@ -22,27 +20,18 @@ export class ServiceRefreshToken
             x.withHeader('Content-Type', 'application/x-www-form-urlencoded');
         });
 
-        let $countdown;
+    }
 
-        this.event.subscribe("event::inactivity", () => {
-            this.pause = true;
-            $('body').append('<div class="modal fade" id="idle-timeout-dialog" data-backdrop="static"><div class="modal-dialog modal-small"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Your session is about to expire.</h4></div><div class="modal-body"><p><i class="fa fa-warning"></i> You session will be locked in <span id="idle-timeout-counter"></span> seconds.</p><p>Do you want to continue your session?</p></div><div class="modal-footer"><button id="idle-timeout-dialog-logout" type="button" class="btn btn-default">No, Logout</button><button id="idle-timeout-dialog-keepalive" type="button" class="btn btn-primary" data-dismiss="modal">Yes, Keep Working</button></div></div></div></div>');
+    pause(){
+        this._pause = true;
+    }
 
-            $('#idle-timeout-dialog').modal('show');
+    continue(){
+        this._pause = false;
+    }
 
-            $countdown = $('#idle-timeout-counter');
-
-            $('#idle-timeout-dialog-keepalive').on('click', function () { 
-                $('#idle-timeout-dialog').modal('hide');
-            });
-
-            $('#idle-timeout-dialog-logout').on('click', function () { 
-                $('#idle-timeout-dialog').modal('hide');
-                $.idleTimeout.options.onTimeout.call(this);
-            });
-
-
-        });
+    restart(){
+        this.expiresIn = this.restartTime;
     }
 
     refresh(){
@@ -57,9 +46,7 @@ export class ServiceRefreshToken
 				.asPost()
 				.withContent(data)
 				.send()
-				.then( response =>{ 
-				    auth.setResponseObject(response.content)
-				})
+				.then( response => auth.setResponseObject(response.content))
                 , err => reject(err);
         });
 
@@ -79,11 +66,9 @@ export class ServiceRefreshToken
         let me = this;
 
         let fn = () => {
-            if(!me.pause){
+            if(!me._pause){
 
                 me.expiresIn--;
-
-                console.log("refresh token : ", me.expiresIn);
 
                 if(!me.expiresIn)
                 {
@@ -100,7 +85,5 @@ export class ServiceRefreshToken
         let inverval = setInterval(fn , this.sandbox)
     }
 
-    restart(){
-        this.expiresIn = this.restartTime;
-    }
+    
 }

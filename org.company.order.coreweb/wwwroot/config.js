@@ -25,6 +25,7 @@ System.config({
     "bootstrap-switch": "npm:bootstrap-switch@3.3.2",
     "bootstrap-touchspin": "npm:bootstrap-touchspin@3.1.1",
     "core-js": "npm:core-js@1.2.7",
+    "ehynds/jquery-idle-timeout": "github:ehynds/jquery-idle-timeout@master",
     "fancybox": "npm:fancybox@3.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
     "idle-timeout": "npm:idle-timeout@0.1.0",
