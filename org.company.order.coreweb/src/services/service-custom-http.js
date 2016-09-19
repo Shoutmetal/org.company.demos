@@ -15,9 +15,9 @@ export class CustomHttp
 
         this.http.configure(x => {
             x.withBaseUrl( this.authService.client.client.baseUrl + "/api/" );
-            x.withHeader('Accept', 'application/json');
+            x.withHeader('Content-Type', 'application/json');
             x.withHeader('Authorization', 'bearer ' + this.authService.getAccessToken());
-            x.withInterceptor(new ServiceInterceptor());
+            //x.withInterceptor(new ServiceInterceptor());
         });
     }
 

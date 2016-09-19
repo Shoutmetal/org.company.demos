@@ -6,17 +6,23 @@ namespace org.company.order.entities
 {
     public class Order : Aggregate
     {
+        public enum OrderStatus
+        {
+            Created = 1,
+            Completed = 2
+        }
+
         public Order()
         {
             this.OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public Order(Guid customerId, int statusId)
+        public Order(Guid customerId, OrderStatus statusId)
         {
             this.OrderDetail = new HashSet<OrderDetail>();
             this.CustomerId = customerId;
             this.Number = GenerateOrderNumber();
-            this.StatusId = statusId;
+            this.StatusId = (int)statusId;
             this.OrderDate = DateTime.Now;
             this.Active = true;
         }

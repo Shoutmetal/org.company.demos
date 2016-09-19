@@ -6,6 +6,7 @@ using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static org.company.order.entities.Order;
 
 namespace org.company.order.application.implementation
 {
@@ -34,31 +35,34 @@ namespace org.company.order.application.implementation
         public void AddOrder(OrderDTO orderDTO)
         {
             //1) create an order
-            Order order = new Order(orderDTO.CustomerId, (int)OrderStatus.Created);
+            Order order = new Order(orderDTO.CustomerId, OrderStatus.Created);
             _orderRepository.Add(order);
 
-            //2) add details to the order
+
             orderDTO.Products.ForEach(prod =>
-           {
-               OrderDetail orderDetail = new OrderDetail()
-               {
-                   Order = order,
-                   ProductId = prod.ProductId,
-                   Quantity = prod.Quantity
-               };
+            {
+                //2) add details to the order
+                this.AddOrderDetail(order, prod.ProductId, prod.Quantity);
 
-               _orderDetailRepository.Add(orderDetail);
-
-               //3) Adjust the Stock
-               Product product = _productRepository.GetSingle(p => p.ProductId == prod.ProductId, i => i.Inventories);
-               Inventory inventory = product.AdjustStock(prod.Quantity);
-               _inventoryRepository.Update(inventory);
-
-           });
-
+                //3) Adjust the Stock
+                this.AdjustStock(prod.ProductId, prod.Quantity);
+            });
 
             _uof.Commit();
+        }
 
+        internal void AddOrderDetail(Order order, int productId, int quantity)
+        {
+            OrderDetail orderDetail = new OrderDetail(order, productId, quantity);
+
+            _orderDetailRepository.Add(orderDetail);
+        }
+
+        internal void AdjustStock(int productId, int quantity)
+        {
+            Product product = _productRepository.GetSingle(p => p.ProductId == productId, i => i.Inventories);
+            Inventory inventory = product.AdjustStock(quantity);
+            _inventoryRepository.Update(inventory);
         }
 
         public IEnumerable<Order> GetOrdersByCustomerId(Guid customerId)
@@ -76,10 +80,6 @@ namespace org.company.order.application.implementation
             return _productRepository.GetAll(p => p.Inventories);
         }
 
-        public enum OrderStatus
-        {
-            Created = 1,
-            Completed = 2
-        }
+       
     }
 }
