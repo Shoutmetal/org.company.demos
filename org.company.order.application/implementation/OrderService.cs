@@ -1,12 +1,12 @@
 ﻿using org.company.order.application.contracts;
-using org.company.order.domain.contracts.repository;
-using org.company.order.domain.generic;
-using org.company.order.entities;
+using org.company.order.contract.repository;
+using org.company.order.contract.generic;
+using org.company.order.domain;
 using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static org.company.order.entities.Order;
+using static org.company.order.domain.Order;
 
 namespace org.company.order.application.implementation
 {

@@ -1,4 +1,4 @@
-﻿using org.company.order.entities;
+﻿using org.company.order.domain;
 using org.company.order.service.model;
 using System;
 using System.Collections.Generic;

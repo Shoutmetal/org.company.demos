@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using org.company.order.communication;
+using org.company.communication;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using org.company.security.core.Configuration;
