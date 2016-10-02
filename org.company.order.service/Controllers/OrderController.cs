@@ -1,13 +1,10 @@
-﻿
-using AspNet.Security.OpenIdConnect.Extensions;
-using AspNet.Security.OpenIdConnect.Server;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using org.company.order.application.contracts;
-using org.company.order.service.model;
+using org.company.order.messages;
+using org.company.order.query;
+using RawRabbit;
 using System;
-using System.Linq;
-using System.Security.Claims;
+
 
 namespace org.company.order.service.Controllers
 {
@@ -15,25 +12,26 @@ namespace org.company.order.service.Controllers
     [Authorize]
     public class OrderController : BaseController
     {
-        
-        private readonly IOrderService _service;
-        
-        public OrderController(IOrderService service)
+        private readonly IBusClient _bus;
+        private readonly IOrderQuery _orderQuery;
+
+        public OrderController(IBusClient bus, IOrderQuery orderQuery)
         {
-            _service = service;
+            _bus = bus;
+            _orderQuery = orderQuery;
         }
 
         [HttpGet("orders/{id}")]
         public IActionResult GetOrdersByCustomer(Guid id)
         {
-            var result = _service.GetOrdersByCustomerId(id);
+            var result = _orderQuery.GetOrdersByCustomerId(id);
             return Ok(result);
         }
 
         [HttpGet("order/{id}")]
         public IActionResult GetOrderById(int id)
         {
-            var result = _service.GetOrderById(id);
+            var result = _orderQuery.GetOrderById(id);
 
             return Ok(result);
         }
@@ -41,15 +39,16 @@ namespace org.company.order.service.Controllers
         [HttpGet("products")]
         public IActionResult GetProducts()
         {
-            var result = _service.GetProducts();
+            var result = _orderQuery.GetProducts();
             return Ok(result);
         }
 
         [HttpPost("save")]
-        public void Post([FromBody]OrderDTO order)
+        public void Post([FromBody]PlaceOrder order)
         {
-            _service.AddOrder(order);
+            _bus.PublishAsync(order);
         }
 
     }
 }
+

@@ -23,16 +23,15 @@ export function configure(aurelia){
     aurelia.start().then(a => 
     {
         let authService = aurelia.container.get(AuthService);
-        let root = authService.isAuthenticated() ? 'main/init' : 'account/login';
 
-        if(authService.isAuthenticated()){
-
+        if(authService.isAuthenticated())
             authService.getMe().then(profile => {
                 sessionStorage.setItem("profile", JSON.stringify(profile));
-            });
-        }
 
-        a.setRoot(root, document.body);
+                a.setRoot('main/init', document.body);
+            });
+        else
+            a.setRoot('account/login', document.body);
         
     })
 

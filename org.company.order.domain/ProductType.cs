@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace org.company.order.domain
 {
-    public partial class ProductType
+    public class ProductType
     {
         [Key]
         public int ProductTypeId { get; set; }

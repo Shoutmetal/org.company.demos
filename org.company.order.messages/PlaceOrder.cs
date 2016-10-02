@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace org.company.order.messages
 {
-    public class PlaceOrder
+    public class PlaceOrder : ICommand
     {
-
+        public int OrderId { get; set; }
+        public Guid CustomerId { get; set; }
+        public List<PickProducts> Products { get; set; }
+        public string OrderNumber { get; set; }
     }
 }

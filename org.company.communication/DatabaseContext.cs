@@ -17,11 +17,12 @@ namespace org.company.communication
             Action<SqlServerDbContextOptionsBuilder> action = (options) =>
             {
                 //options.UseRelationalNulls();
+                
             };
 
             services
              .AddDbContext<DemoDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action));
+                    options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action), ServiceLifetime.Scoped);
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

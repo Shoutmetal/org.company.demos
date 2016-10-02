@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>f79e2dbf-1b58-4f1a-8c2d-d49d266abe7c</ProjectGuid>
-    <RootNamespace>org.company.order.messaging</RootNamespace>
+    <ProjectGuid>d9dc7f87-3fc4-4df0-8e0d-513f9025d2cb</ProjectGuid>
+    <RootNamespace>org.company.order.query</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace org.company.order.domain
 {
-    public class Inventory : Aggregate
+    public class Inventory
     {
         public int WarehouseId { get; set; }
         public int ProductId { get; set; }

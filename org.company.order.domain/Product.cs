@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace org.company.order.domain
 {
-    public partial class Product : Aggregate
+    public partial class Product
     {
 
         public Product() {

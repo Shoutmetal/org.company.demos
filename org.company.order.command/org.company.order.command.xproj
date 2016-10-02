@@ -7,11 +7,11 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>3d2c4603-1fd8-447f-86ce-4b32b6df56e0</ProjectGuid>
-    <RootNamespace>org.company.order.application</RootNamespace>
+    <ProjectGuid>3f598f55-c821-4ded-ab63-4bee1387b951</ProjectGuid>
+    <RootNamespace>org.company.order.handler</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
 
   <PropertyGroup>

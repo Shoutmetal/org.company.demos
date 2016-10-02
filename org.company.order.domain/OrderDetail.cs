@@ -1,8 +1,9 @@
 ﻿
 namespace org.company.order.domain
 {
-    public class OrderDetail : Aggregate
+    public class OrderDetail
     {
+        public OrderDetail() { }
 
         public OrderDetail(Order order, int productId, int quantity) {
             Order = order;

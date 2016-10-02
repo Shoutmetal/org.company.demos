@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace org.company.order.handler
+namespace org.company.common
 {
-    public class PlaceOrderHandler
+    public interface IServiceBus : IDisposable
     {
+      
     }
 }

@@ -92,11 +92,29 @@ namespace org.company.repository.generic
                     _context.Entry(item).State = EntityState.Added;
         }
 
+        public virtual async void AddAsync(params T[] items)
+        {
+            foreach (T item in items)
+               _context.Entry(item).State = EntityState.Added;
+
+            await Task.CompletedTask;
+        }
+
+
+
         public virtual void Update(params T[] items)
         {
             foreach (T item in items)
                 _context.Entry(item).State = EntityState.Modified;
             
+        }
+
+        public virtual async void UpdateAsync(params T[] items)
+        {
+            foreach (T item in items)
+                _context.Entry(item).State = EntityState.Modified;
+
+            await Task.CompletedTask;
         }
 
         public virtual void Remove(params T[] items)

@@ -21,7 +21,7 @@ export class OrderCheckout
 
     confirm(){
         let order = { orderId:0, orderNumber:"", customerId: this.user.userid , products: this.products};
-
+        
         this.service.saveOrder(order).then((response) => {
             this.confirmed = response.isSuccess;
             if(response) this.service.cleanStorage("cart");

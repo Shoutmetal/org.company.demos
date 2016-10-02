@@ -1,16 +1,14 @@
 ﻿using org.company.order.domain;
-using org.company.order.service.model;
 using System;
 using System.Collections.Generic;
 
-namespace org.company.order.application.contracts
+namespace org.company.order.query
 {
-    public interface IOrderService
+    public interface IOrderQuery
     {
-        void AddOrder(OrderDTO order);
-
         IEnumerable<Order> GetOrdersByCustomerId(Guid customerId);
-        Order GetOrderById(int orderId);
+
+        Order GetOrderById(int id);
 
         IEnumerable<Product> GetProducts();
     }

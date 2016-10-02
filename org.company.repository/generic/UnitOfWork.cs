@@ -15,14 +15,9 @@ namespace org.company.repository.generic
             this.context = context;
         }
 
-        public void Commit()
-        {
-            context.SaveChanges();
-        }
+        public void Commit() => context.SaveChanges();
 
-        public async Task CommitAsync() {
-            await context.SaveChangesAsync();
-        }
+        public async Task CommitAsync() => await context.SaveChangesAsync();
 
         private bool disposed = false;
 

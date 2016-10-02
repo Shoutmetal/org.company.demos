@@ -4,7 +4,6 @@
   "dependencies": {
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "NETStandard.Library": "1.6.0",
-    "org.company.order.application": "1.0.0-*",
     "org.company.order.contract": "1.0.0-*",
     "org.company.repository": "1.0.0-*"
   },

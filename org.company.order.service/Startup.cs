@@ -3,30 +3,37 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using org.company.communication;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using org.company.security.core.Configuration;
 using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
 using Microsoft.AspNetCore.Identity;
+using RawRabbit.vNext;
+using org.company.order.query;
+using org.company.order.contract.repository;
+using org.company.communication;
 
 namespace org.company.order.service
 {
     public class Startup
     {
+        private IHostingEnvironment environment;
+
         public Startup(IHostingEnvironment env)
         {
+            environment = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                
+                
 
             if (env.IsEnvironment("Development"))
-            {
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
-            }
+            
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -40,14 +47,19 @@ namespace org.company.order.service
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            // Add Dependency Resolver
+            services.AddScoped<IOrderQuery, OrderQuery>();
+
             DatabaseContext.RegisterServices(services, Configuration);
             RepositoryDependencyResolver.RegisterServices(services);
             DomainDependencyResolver.RegisterServices(services);
-            ApplicationDependencyResolver.RegisterServices(services);
 
             //Add ASOS service
             AuthServiceConfiguration.Add(services, Configuration);
+
+            services.AddRawRabbit(
+              cfg => cfg.SetBasePath(environment.ContentRootPath).AddJsonFile("rawrabbit.json", optional: true)
+                
+            );
 
             services.AddMvc()
                 .AddJsonOptions(options =>
@@ -73,6 +85,8 @@ namespace org.company.order.service
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
             });
+
+            
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
