@@ -20,10 +20,6 @@ namespace org.company.order.communication
             services
              .AddDbContext<QueryDbContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action), ServiceLifetime.Scoped);
-
-
-
-            
         }
     }
 }
