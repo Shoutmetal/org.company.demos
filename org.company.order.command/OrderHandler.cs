@@ -1,21 +1,18 @@
-﻿using org.company.order.messages;
-using System.Threading.Tasks;
-using RawRabbit;
-using RawRabbit.Common;
-using org.company.order.contract.repository;
+﻿using org.company.order.contract.command;
 using org.company.order.contract.generic;
 using org.company.order.domain;
+using org.company.order.handler;
+using org.company.order.messages;
+using RawRabbit;
+using RawRabbit.Common;
+using System.Threading.Tasks;
 using static org.company.order.domain.Order;
 
 namespace org.company.order.command
 {
-    public interface IOrderHandler
-    {
-        void start();
-    }
 
     public class OrderHandler :
-        IOrderHandler,
+        IStartHandler,
         ICommandHandle<PlaceOrder>
     {
 
@@ -24,7 +21,7 @@ namespace org.company.order.command
         private readonly IProductRepository _productRepository;
         private readonly IInventoryRepository _inventoryRepository;
         private readonly IUnitOfWork _uof;
-        
+
         private readonly IBusClient _bus;
 
         public OrderHandler(
@@ -61,7 +58,6 @@ namespace org.company.order.command
             placeOrder.Products.ForEach(prod =>
             {
                 this.AddOrderDetail(order, prod.ProductId, prod.Quantity);
-
                 this.AdjustStock(prod.ProductId, prod.Quantity);
             });
 
@@ -70,18 +66,13 @@ namespace org.company.order.command
             return Task.CompletedTask;
         }
 
-        internal void AddOrderDetail(Order order, int productId, int quantity)
-        {
-            OrderDetail orderDetail = new OrderDetail(order, productId, quantity);
-            _orderDetailRepository.Add(orderDetail);
-        }
+        internal void AddOrderDetail(Order order, int productId, int quantity) =>
+            _orderDetailRepository.Add(new OrderDetail(order, productId, quantity));
 
-        internal void AdjustStock(int productId, int quantity)
-        {
-            Product product = _productRepository.GetSingle(p => p.ProductId == productId, i => i.Inventories);
-            Inventory inventory = product.AdjustStock(quantity);
-            _inventoryRepository.Update(inventory);
-        }
+
+        internal void AdjustStock(int productId, int quantity) =>
+            _inventoryRepository.AdjustStock(productId, quantity);
+
 
 
     }

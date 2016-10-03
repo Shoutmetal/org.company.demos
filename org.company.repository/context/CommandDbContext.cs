@@ -4,9 +4,9 @@ using org.company.order.domain;
 namespace org.company.repository
 {
 
-    public partial class DemoDbContext : DbContext
+    public partial class CommandDbContext : DbContext
     {
-        public DemoDbContext(DbContextOptions<DemoDbContext> options)
+        public CommandDbContext(DbContextOptions<CommandDbContext> options)
             : base(options)
         {
            

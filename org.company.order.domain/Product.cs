@@ -23,26 +23,7 @@ namespace org.company.order.domain
 
         public ICollection<Inventory> Inventories { get; set; }
 
-        public Inventory AdjustStock(int quantity) {
-            var inventory = Inventories.Where(i => i.Stock >= quantity).FirstOrDefault();
-
-            if (inventory == null) throw new EmptyStockException();
-
-            inventory.Stock = inventory.Stock - quantity;
-
-            return inventory;
-        }
-
-        public class EmptyStockException : Exception
-        {
-            public override string Message
-            {
-                get
-                {
-                    return "Stock Exceeded";
-                }
-            }
-        }
+       
     }
 
 }

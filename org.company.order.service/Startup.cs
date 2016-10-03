@@ -11,8 +11,7 @@ using org.company.security.IdentityModels;
 using Microsoft.AspNetCore.Identity;
 using RawRabbit.vNext;
 using org.company.order.query;
-using org.company.order.contract.repository;
-using org.company.communication;
+using org.company.order.communication;
 
 namespace org.company.order.service
 {
@@ -49,9 +48,8 @@ namespace org.company.order.service
 
             services.AddScoped<IOrderQuery, OrderQuery>();
 
-            DatabaseContext.RegisterServices(services, Configuration);
-            RepositoryDependencyResolver.RegisterServices(services);
-            DomainDependencyResolver.RegisterServices(services);
+            QueryContext.RegisterServices(services, Configuration);
+            QueryRepositoryDependencyResolver.RegisterServices(services);
 
             //Add ASOS service
             AuthServiceConfiguration.Add(services, Configuration);
@@ -70,7 +68,6 @@ namespace org.company.order.service
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SecurityUserManager<User> userManager, SignInManager<User> signInManager)
         {
             if (env.IsEnvironment("Development"))
@@ -85,8 +82,6 @@ namespace org.company.order.service
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
             });
-
-            
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

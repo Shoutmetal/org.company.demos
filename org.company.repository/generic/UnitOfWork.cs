@@ -8,9 +8,9 @@ namespace org.company.repository.generic
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public DemoDbContext context;
+        public CommandDbContext context;
 
-        public UnitOfWork(DemoDbContext context)
+        public UnitOfWork(CommandDbContext context)
         {
             this.context = context;
         }
@@ -23,13 +23,8 @@ namespace org.company.repository.generic
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
+            if (!this.disposed && disposing)
+                context.Dispose();
 
             this.disposed = true;
         }

@@ -27,7 +27,6 @@ export function configure(aurelia){
         if(authService.isAuthenticated())
             authService.getMe().then(profile => {
                 sessionStorage.setItem("profile", JSON.stringify(profile));
-
                 a.setRoot('main/init', document.body);
             });
         else

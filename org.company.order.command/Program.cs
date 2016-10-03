@@ -1,10 +1,5 @@
-﻿using RawRabbit;
-using RawRabbit.vNext;
-using System;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using Microsoft.Extensions.DependencyInjection;
-using org.company.order.messages;
+﻿using Microsoft.Extensions.DependencyInjection;
+using org.company.order.handler;
 
 namespace org.company.order.command
 {
@@ -17,7 +12,7 @@ namespace org.company.order.command
             var services = new ServiceCollection();
             var provider = startup.ConfigureServices(services);
 
-            var service = provider.GetService<IOrderHandler>();
+            var service = provider.GetService<IStartHandler>();
 
             service.start();
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using org.company.communication;
+using org.company.order.handler;
 using RawRabbit.vNext;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,10 @@ namespace org.company.order.command
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            DatabaseContext.RegisterServices(services, Configuration);
-            RepositoryDependencyResolver.RegisterServices(services);
-            DomainDependencyResolver.RegisterServices(services);
+            CommandContext.RegisterServices(services, Configuration);
+            CommandRepositoryDependencyResolver.RegisterServices(services);
 
-            services.AddSingleton<IOrderHandler, OrderHandler>();
+            services.AddSingleton<IStartHandler, OrderHandler>();
 
             services.AddRawRabbit(
               cfg => cfg.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("rawrabbit.json", optional: true)

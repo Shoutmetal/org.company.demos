@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace org.company.order.contract.repository
+namespace org.company.order.contract.command
 {
-    public interface IOrderDetailRepository : IGenericRepository<OrderDetail>
+    public interface IOrderRepository : ICommandRepository<Order>
     {
+        IList<Order> GetOrderByCustomerId(Guid customerId);
     }
 }

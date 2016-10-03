@@ -1,11 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using RawRabbit;
-using RawRabbit.Configuration;
-using RawRabbit.vNext;
+﻿using RawRabbit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace org.company.messaging
 {
@@ -25,12 +19,12 @@ namespace org.company.messaging
 
         public void Publish(IEvent eventMessage)
         {
-            _bus.PublishAsync(eventMessage, eventMessage.Id, null);
+            _bus.PublishAsync(eventMessage);
         }
 
         public void Send(ICommand commandMessage)
         {
-            _bus.PublishAsync(commandMessage, commandMessage.Id);
+            _bus.PublishAsync(commandMessage);
         }
     }
 }

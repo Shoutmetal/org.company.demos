@@ -1,10 +1,10 @@
-﻿using org.company.repository;
-using org.company.order.contract.repository;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using org.company.order.contract.query;
+using org.company.repository.query;
 
-namespace org.company.communication
+namespace org.company.order.communication
 {
-    public class RepositoryDependencyResolver
+    public class QueryRepositoryDependencyResolver
     {
         public static void RegisterServices(IServiceCollection services)
         {

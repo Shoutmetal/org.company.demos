@@ -2,31 +2,28 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using org.company.order.contract.generic;
-using org.company.repository;
-using org.company.repository.generic;
+using org.company.order.repository.context;
 using System;
 
-namespace org.company.communication
+namespace org.company.order.communication
 {
-    public class DatabaseContext
+    public class QueryContext
     {
-
         public static void RegisterServices(IServiceCollection services, IConfigurationRoot configuration)
         {
             Action<SqlServerDbContextOptionsBuilder> action = (options) =>
             {
                 //options.UseRelationalNulls();
-                
+
             };
 
             services
-             .AddDbContext<DemoDbContext>(options =>
+             .AddDbContext<QueryDbContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action), ServiceLifetime.Scoped);
 
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-        }
 
+            
+        }
     }
 }

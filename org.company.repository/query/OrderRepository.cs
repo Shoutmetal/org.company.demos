@@ -1,16 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using org.company.order.contract.repository;
+using org.company.order.contract.query;
 using org.company.order.domain;
+using org.company.order.repository.context;
+using org.company.order.repository.generic;
 using org.company.repository.generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace org.company.repository
+namespace org.company.repository.query
 {
-    public class OrderRepository : GenericRepository<Order>, IOrderRepository
+    public class OrderRepository : QueryRepository<Order>, IOrderRepository
     {
-        public OrderRepository(DemoDbContext context) : base(context) { }
+        public OrderRepository(QueryDbContext context) : base(context) { }
 
         public IList<Order> GetOrderByCustomerId(Guid customerId) {
 

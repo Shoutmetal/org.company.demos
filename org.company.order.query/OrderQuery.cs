@@ -1,9 +1,7 @@
-﻿using org.company.order.contract.repository;
+﻿using org.company.order.contract.query;
 using org.company.order.domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace org.company.order.query
 {
