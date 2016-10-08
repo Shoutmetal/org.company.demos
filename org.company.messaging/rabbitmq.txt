@@ -1,0 +1,3 @@
+﻿to start service: rabbitmq-server — start
+
+to start plugin: rabbitmq-plugins enable rabbitmq_management

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using org.company.messaging;
 using org.company.order.messages;
-using org.company.order.query;
+using org.company.order.queryHandler;
 using RawRabbit;
 using System;
 
@@ -12,10 +13,10 @@ namespace org.company.order.service.Controllers
     [Authorize]
     public class OrderController : BaseController
     {
-        private readonly IBusClient _bus;
+        private readonly IServiceBus _bus;
         private readonly IOrderQuery _orderQuery;
 
-        public OrderController(IBusClient bus, IOrderQuery orderQuery)
+        public OrderController(IServiceBus bus, IOrderQuery orderQuery)
         {
             _bus = bus;
             _orderQuery = orderQuery;

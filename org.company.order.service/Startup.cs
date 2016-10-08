@@ -10,8 +10,8 @@ using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
 using Microsoft.AspNetCore.Identity;
 using RawRabbit.vNext;
-using org.company.order.query;
-using org.company.order.communication;
+using org.company.order.queryHandler;
+using org.company.messaging;
 
 namespace org.company.order.service
 {
@@ -27,12 +27,12 @@ namespace org.company.order.service
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-                
-                
+
+
 
             if (env.IsEnvironment("Development"))
                 builder.AddApplicationInsightsSettings(developerMode: true);
-            
+
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -55,8 +55,8 @@ namespace org.company.order.service
             AuthServiceConfiguration.Add(services, Configuration);
 
             services.AddRawRabbit(
-              cfg => cfg.SetBasePath(environment.ContentRootPath).AddJsonFile("rawrabbit.json", optional: true)
-                
+                cfg => cfg.SetBasePath(environment.ContentRootPath).AddJsonFile("rawrabbit.json", optional: true),
+                ioc => ioc.AddSingleton<IServiceBus, RawRabbitServiceBus>()
             );
 
             services.AddMvc()

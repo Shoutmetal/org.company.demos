@@ -1,5 +1,7 @@
 ﻿using RawRabbit;
+using RawRabbit.Common;
 using System;
+using System.Threading.Tasks;
 
 namespace org.company.messaging
 {
@@ -17,14 +19,16 @@ namespace org.company.messaging
             _bus.ShutdownAsync(TimeSpan.FromSeconds(10));
         }
 
-        public void Publish(IEvent eventMessage)
-        {
-            _bus.PublishAsync(eventMessage);
-        }
-
-        public void Send(ICommand commandMessage)
+        public void PublishAsync<T>(T commandMessage) where T : ICommand
         {
             _bus.PublishAsync(commandMessage);
+        }
+
+        public void SubscribeAsync<T>(Func<T,Task> fn) where T : ICommand
+        {
+            _bus.SubscribeAsync<T>(async (msg, context) => await fn(msg),
+                cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
+                .WithPrefetchCount(1));
         }
     }
 }

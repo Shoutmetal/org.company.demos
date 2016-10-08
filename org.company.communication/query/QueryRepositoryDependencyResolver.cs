@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using org.company.order.contract.query;
-using org.company.repository.query;
+using org.company.order.query.domain.query;
+using org.company.order.command.repository.query;
 
 namespace org.company.order.communication
 {
