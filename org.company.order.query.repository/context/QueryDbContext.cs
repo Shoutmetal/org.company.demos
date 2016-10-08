@@ -20,11 +20,8 @@ namespace org.company.order.query.repository.context
 
 
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
+
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductType> ProductType { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Warehouse> Warehouse { get; set; }
+
     }
 }

@@ -10,8 +10,7 @@ namespace org.company.order.queryHandler
         {
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
-            services.AddScoped<IInventoryRepository, InventoryRepository>();
+
         }
     }
 }
