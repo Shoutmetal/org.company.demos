@@ -243,3 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Ignore jfm from database
+org.company.database/org.company.database.jfm
