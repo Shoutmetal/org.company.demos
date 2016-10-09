@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using org.company.messaging;
 
-namespace org.company.order.commandHandler
+namespace org.company.order.command.handler
 {
     public class Program
     {

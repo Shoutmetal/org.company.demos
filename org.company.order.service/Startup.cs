@@ -10,7 +10,7 @@ using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
 using Microsoft.AspNetCore.Identity;
 using RawRabbit.vNext;
-using org.company.order.queryHandler;
+using org.company.order.query.handler;
 using org.company.messaging;
 
 namespace org.company.order.service

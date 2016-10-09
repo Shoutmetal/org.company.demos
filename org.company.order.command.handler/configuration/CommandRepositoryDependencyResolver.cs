@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using org.company.order.query.domain.query;
-using org.company.order.command.repository.query;
+﻿
+using Microsoft.Extensions.DependencyInjection;
+using org.company.order.command.domain;
+using org.company.order.command.repository;
 
-namespace org.company.order.communication
+namespace org.company.order.command.handler.configuration
 {
-    public class QueryRepositoryDependencyResolver
+    public class CommandRepositoryDependencyResolver
     {
         public static void RegisterServices(IServiceCollection services)
         {

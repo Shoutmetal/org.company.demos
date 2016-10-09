@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using org.company.messaging;
-using org.company.order.commandHandler.configuration;
+using org.company.order.command.handler.configuration;
 using RawRabbit;
 using RawRabbit.vNext;
 using System;
 using System.IO;
 
-namespace org.company.order.commandHandler
+namespace org.company.order.command.handler
 {
     public class Startup
     {

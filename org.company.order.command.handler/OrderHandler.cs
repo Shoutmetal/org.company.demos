@@ -7,7 +7,7 @@ using org.company.order.command.domain.generic;
 using static org.company.order.command.domain.Order;
 using org.company.messaging;
 
-namespace org.company.order.commandHandler
+namespace org.company.order.command.handler
 {
 
     public class OrderHandler :

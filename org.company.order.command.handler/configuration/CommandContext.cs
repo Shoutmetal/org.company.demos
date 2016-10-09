@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using org.company.order.command.repository.context;
 using Microsoft.EntityFrameworkCore;
-using org.company.order.command.repository.generic;
 using org.company.order.command.domain.generic;
+using org.company.order.command.repository.generic;
 
-namespace org.company.order.command.communication
+namespace org.company.order.command.handler.configuration
 {
     public class CommandContext
     {

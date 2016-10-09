@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using org.company.order.query.domain;
 using org.company.order.query.domain.repository;
 
-namespace org.company.order.queryHandler
+namespace org.company.order.query.handler
 {
     public class OrderQuery : IOrderQuery
     {

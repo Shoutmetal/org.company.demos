@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using org.company.messaging;
 using org.company.order.messages;
-using org.company.order.queryHandler;
+using org.company.order.query.handler;
 using RawRabbit;
 using System;
 

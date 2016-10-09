@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace org.company.order.queryHandler
+namespace org.company.order.query.handler
 {
     public interface IOrderQuery
     {
