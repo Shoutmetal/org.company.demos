@@ -1,0 +1,135 @@
+PUT /ecommerce
+{
+  "mappings": {
+    "product":{
+      "properties": {
+        "productId":{
+          "type": "integer"
+        },
+        "productType":{
+          "type": "nested",
+          "properties": {
+            "productTypeId":{
+              "type":"integer"
+            },
+            "name":{
+              "type":"string"
+            },
+            "active":{
+              "type":"boolean"
+            }
+          }
+        },
+        "name":{
+          "type": "string"
+        },
+        "description":{
+          "type": "string"
+        },
+        "imageUrl":{
+          "type": "string"
+        },
+        "price":{
+          "type": "double"
+        },
+        "active":{
+          "type": "boolean"
+        
+          
+        }
+      }
+    }
+  }
+}
+
+
+
+PUT /ecommerce/product/1
+{
+  "productId":1,
+  "productType":{
+    "productTypeId":1,
+    "name":"T-Shirt",
+    "active":true
+  },
+  "name":"ASF Jeep 2015",
+  "description":"Afs JEEP 2015 primavera hombres de moda otoño de algodón Vestido más del tamaño camisas Camisa Hombre blusa Vestido de Hombre ropa Casual 2XL 5XL",
+  "imageUrl":"../styles/assets/products/AFS-JEEP-2015.jpg",
+  "price":31.940000,
+  "active":true
+}
+
+PUT /ecommerce/product/2
+{
+  "productId":2,
+  "productType":{
+    "productTypeId":1,
+    "name":"T-Shirt",
+    "active":true
+  },
+  "name":"HanHent-Targaryen-Dragon",
+  "description":"HanHent Targaryen Dragón Camisetas Hombres de Fuego y sangre de Algodón Camisetas de Manga Corta de Juego de Tronos Moda Botín Ocasional Ropa de Hombre",
+  "imageUrl":"../styles/assets/products/HanHent-Targaryen-Dragon.jpg",
+  "price":6.950000,
+  "active":true
+}
+
+PUT /ecommerce/product/3
+{
+  "productId":3,
+  "productType":{
+    "productTypeId":1,
+    "name":"T-Shirt",
+    "active":true
+  },
+  "name":"2016 Summer Three Quarter",
+  "description":"2016 de Verano de Tres Cuartos Camisas Causales hombre Moda Slim Fit camisa de la vendimia Barato Ropa De Los Hombres de Gran Tamaño 5XL Popular P212",
+  "imageUrl":"../styles/assets/products/2016-Summer-Three-Quarter.jpg",
+  "price":9.890000,
+  "active":true
+}
+
+PUT /ecommerce/product/4
+{
+  "productId":4,
+  "productType":{
+    "productTypeId":1,
+    "name":"T-Shirt",
+    "active":true
+  },
+  "name":"M-4XL-Mens-dress-shirts",
+  "description":"M-4xl Mens visten camisas camisa de algodón camisas de hombre camisas hombre ropa hombre 2016 de verano del ejército militar reloj deportivo exterior",
+  "imageUrl":"../styles/assets/products/M-4XL-Mens-dress-shirts.jpg",
+  "price":29.980000,
+  "active":true
+}
+
+PUT /ecommerce/product/5
+{
+  "productId":5,
+  "productType":{
+    "productTypeId":1,
+    "name":"T-Shirt",
+    "active":true
+  },
+  "name":"KK Geezer T-Shirt",
+  "description":"Nuevo 2015 Marca Hombres Chaquetas Y Abrigos de Béisbol Deporte Al Aire Libre Soft Shell Hombre Invierno Casual Ropa Militar Chaqueta de Lana Clásicos",
+  "imageUrl":"../styles/assets/products/kk-geezer-t-shirt.jpg",
+  "price":14.250000,
+  "active":true
+}
+
+PUT /ecommerce/product/6
+{
+  "productId":6,
+  "productType":{
+    "productTypeId":2,
+    "name":"Jacket",
+    "active":true
+  },
+  "name":"Muls Windbreakers Jacket",
+  "description":"Cortavientos chaqueta de abrigo de los hombres de hip hop polo homme blouson cazadora ejército militar denim jeans hombre chaqueta de piel ropa 3XL15662",
+  "imageUrl":"../styles/assets/products/Windbreakers-coat.jpg",
+  "price":44.500000,
+  "active":true
+}

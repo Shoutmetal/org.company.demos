@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using RawRabbit.vNext;
 using org.company.order.query.handler;
 using org.company.messaging;
+using org.company.product.query.handler;
 
 namespace org.company.service
 {
@@ -47,6 +48,7 @@ namespace org.company.service
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddScoped<IOrderQuery, OrderQuery>();
+            services.AddScoped<IProductQuery, ProductQuery>();
 
             QueryContext.RegisterServices(services, Configuration);
             QueryRepositoryDependencyResolver.RegisterServices(services);

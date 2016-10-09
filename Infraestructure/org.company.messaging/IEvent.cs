@@ -4,6 +4,6 @@ namespace org.company.messaging
 {
     public interface IEvent
     {
-        Guid Id { get; set; }
+        Guid Id { get; }
     }
 }

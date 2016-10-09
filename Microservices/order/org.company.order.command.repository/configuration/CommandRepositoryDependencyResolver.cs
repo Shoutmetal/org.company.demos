@@ -9,10 +9,9 @@ namespace org.company.order.command.repository.configuration
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
-            services.AddScoped<IInventoryRepository, InventoryRepository>();
+
         }
     }
 }

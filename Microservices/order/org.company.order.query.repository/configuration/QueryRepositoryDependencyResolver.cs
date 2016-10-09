@@ -8,7 +8,6 @@ namespace org.company.order.query.handler
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
         }

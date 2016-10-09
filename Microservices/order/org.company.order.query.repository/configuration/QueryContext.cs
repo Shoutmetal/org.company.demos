@@ -19,7 +19,7 @@ namespace org.company.order.query.handler
 
             services
              .AddDbContext<QueryDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action), ServiceLifetime.Scoped);
+                    options.UseSqlServer(configuration.GetConnectionString("OrderDbContext"), action), ServiceLifetime.Scoped);
         }
     }
 }

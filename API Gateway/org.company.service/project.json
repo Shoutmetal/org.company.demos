@@ -21,8 +21,9 @@
     },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "org.company.messaging": "1.0.0-*",
-    "org.company.order.messages": "1.0.0-*",
+    "org.company.messages": "1.0.0-*",
     "org.company.order.query.handler": "1.0.0-*",
+    "org.company.product.query.handler": "1.0.0-*",
     "org.company.security": "1.0.0-*",
     "RawRabbit": "1.10.1",
     "RawRabbit.vNext": "1.10.1"

@@ -21,7 +21,7 @@ export class Service
     }   
 
     getProducts(param){
-        return this.service.get("order/products").then(response => response );
+        return this.service.get("product/products").then(response => response );
     } 
 
     getCustomerById(id){

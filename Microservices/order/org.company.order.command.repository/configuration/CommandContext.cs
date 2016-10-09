@@ -22,7 +22,7 @@ namespace org.company.order.command.repository.configuration
 
             services
              .AddDbContext<CommandDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("DemoDbContext"), action), ServiceLifetime.Scoped);
+                    options.UseSqlServer(configuration.GetConnectionString("OrderDbContext"), action), ServiceLifetime.Scoped);
 
 
 

@@ -9,14 +9,12 @@ namespace org.company.order.query.handler
     {
 
         private readonly IOrderRepository _orderRepository;
-        private readonly IProductRepository _productRepository;
+
 
         public OrderQuery(
-            IOrderRepository orderRepository,
-            IProductRepository productRepository)
+            IOrderRepository orderRepository)
         {
-            _orderRepository = orderRepository;
-            _productRepository = productRepository;            
+            _orderRepository = orderRepository;    
 
         }
 
@@ -28,11 +26,6 @@ namespace org.company.order.query.handler
         public Order GetOrderById(int id)
         {
             return _orderRepository.GetSingle(o => o.OrderId == id);
-        }
-
-        public IEnumerable<Product> GetProducts()
-        {
-            return _productRepository.GetAll(p => p.Inventories);
         }
 
     }

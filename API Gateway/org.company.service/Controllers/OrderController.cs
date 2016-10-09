@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using org.company.messaging;
-using org.company.order.messages;
+using org.company.messages;
 using org.company.order.query.handler;
-using RawRabbit;
 using System;
-
+using org.company.messages.commands;
 
 namespace org.company.service.Controllers
 {
@@ -37,17 +36,10 @@ namespace org.company.service.Controllers
             return Ok(result);
         }
 
-        [HttpGet("products")]
-        public IActionResult GetProducts()
-        {
-            var result = _orderQuery.GetProducts();
-            return Ok(result);
-        }
-
         [HttpPost("save")]
         public void Post([FromBody]PlaceOrder order)
         {
-            _bus.PublishAsync(order);
+            _bus.SendAsync(order);
         }
 
     }

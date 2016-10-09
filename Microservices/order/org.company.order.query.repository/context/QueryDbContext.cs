@@ -13,15 +13,12 @@ namespace org.company.order.query.repository.context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Inventory>().HasKey(e => new { e.WarehouseId, e.ProductId });
             modelBuilder.Entity<OrderDetail>().HasKey(e => new { e.OrderId, e.ProductId });
-
         }
 
 
         public virtual DbSet<Order> Order { get; set; }
 
-        public virtual DbSet<Product> Product { get; set; }
 
     }
 }

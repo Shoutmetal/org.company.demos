@@ -10,6 +10,5 @@ namespace org.company.order.query.handler
 
         Order GetOrderById(int id);
 
-        IEnumerable<Product> GetProducts();
     }
 }

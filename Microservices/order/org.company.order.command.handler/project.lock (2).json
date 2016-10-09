@@ -2776,17 +2776,17 @@
           "netstandard1.6/org.company.order.domain.dll": {}
         }
       },
-      "org.company.order.messages/1.0.0": {
+      "org.company.messages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
-          "netstandard1.6/org.company.order.messages.dll": {}
+          "netstandard1.6/org.company.messages.dll": {}
         },
         "runtime": {
-          "netstandard1.6/org.company.order.messages.dll": {}
+          "netstandard1.6/org.company.messages.dll": {}
         }
       },
       "org.company.order.command.repository/1.0.0": {
@@ -8140,10 +8140,10 @@
       "path": "../org.company.order.domain/project.json",
       "msbuildProject": "../org.company.order.domain/org.company.order.domain.xproj"
     },
-    "org.company.order.messages/1.0.0": {
+    "org.company.messages/1.0.0": {
       "type": "project",
-      "path": "../org.company.order.messages/project.json",
-      "msbuildProject": "../org.company.order.messages/org.company.order.messages.xproj"
+      "path": "../org.company.messages/project.json",
+      "msbuildProject": "../org.company.messages/org.company.messages.xproj"
     },
     "org.company.order.command.repository/1.0.0": {
       "type": "project",
@@ -8159,7 +8159,7 @@
       "RawRabbit >= 1.10.1",
       "RawRabbit.vNext >= 1.10.1",
       "org.company.communication >= 1.0.0-*",
-      "org.company.order.messages >= 1.0.0-*"
+      "org.company.messages >= 1.0.0-*"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

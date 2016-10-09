@@ -16,7 +16,6 @@ namespace org.company.order.command.repository.context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Inventory>().HasKey(e => new { e.WarehouseId, e.ProductId });
             modelBuilder.Entity<OrderDetail>().HasKey(e => new { e.OrderId, e.ProductId });
 
         }
@@ -25,10 +24,7 @@ namespace org.company.order.command.repository.context
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductType> ProductType { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Warehouse> Warehouse { get; set; }
+
 
 
     }

@@ -17,6 +17,6 @@ namespace org.company.order.query.domain
         public int Quantity { get; set; }
 
         public Order Order { get; set; }
-        public Product Product { get; set; }
+
     }
 }

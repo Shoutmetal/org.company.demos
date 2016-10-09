@@ -17,7 +17,6 @@ namespace org.company.order.query.repository
 
             var order = dbSet
                 .Include(od => od.OrderDetail)
-                .ThenInclude(p => p.Product)
                 .Where(o => o.CustomerId == customerId);
 
             return order.ToList();
