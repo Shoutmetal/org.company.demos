@@ -1,0 +1,10 @@
+﻿dotnet ef migrations add [name] --context [DbContextName]
+dotnet ef database update --context [DbContextName]
+
+Note:
+Check if DbContext has the MigrationsAssembry([AssemblyName]) if you have your logic in another assembly: i.e.
+
+ services.AddEntityFrameworkSqlServer()
+		 .AddDbContext<SecurityDbContext>(options =>
+					options.UseSqlServer(configuration.GetConnectionString("SecurityDbContext"), 
+                    b => b.MigrationsAssembly("org.company.service")));
