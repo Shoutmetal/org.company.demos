@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using org.company.order.command.domain;
 using org.company.order.command.repository;
 
-namespace org.company.order.command.handler.configuration
+namespace org.company.order.command.repository.configuration
 {
     public class CommandRepositoryDependencyResolver
     {

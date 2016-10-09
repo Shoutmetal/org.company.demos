@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using org.company.messaging;
-using org.company.order.command.handler.configuration;
-using RawRabbit;
+using org.company.order.command.repository.configuration;
 using RawRabbit.vNext;
 using System;
 using System.IO;
