@@ -3,16 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.handler", "..\Microservices\inventory\org.company.inventory.command.handler\org.company.inventory.command.handler.xproj", "{D0FED74D-FE6A-467A-B761-6972F2C858E3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.domain", "..\Microservices\inventory\org.company.inventory.command.domain\org.company.inventory.command.domain.xproj", "{DFF98946-AC67-4B22-B345-7038CCAC888A}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.repository", "..\Microservices\inventory\org.company.inventory.command.repository\org.company.inventory.command.repository.xproj", "{0807BD21-A833-4998-BCC5-0B57FD1A1807}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messages", "..\Infraestructure\org.company.messages\org.company.messages.xproj", "{9D25D6E7-023D-4078-A823-D789AE6A9322}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messaging", "..\Infraestructure\org.company.messaging\org.company.messaging.xproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Application", "1. Application", "{8EDAE091-A2D7-4EC0-BF96-05AD2DCAE963}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domain", "2. Domain", "{E162D865-C53E-4C58-B2C5-859B06FCE9A1}"
@@ -24,6 +14,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2. Cross Cutting", "3.2. Cross Cutting", "{3416E56A-0BE4-44C0-9704-C2F5D8BEBF1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2.1. Communication", "3.2.1. Communication", "{99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.handler", "Microservices\inventory\org.company.inventory.command.handler\org.company.inventory.command.handler.xproj", "{D0FED74D-FE6A-467A-B761-6972F2C858E3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.domain", "Microservices\inventory\org.company.inventory.command.domain\org.company.inventory.command.domain.xproj", "{DFF98946-AC67-4B22-B345-7038CCAC888A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.repository", "Microservices\inventory\org.company.inventory.command.repository\org.company.inventory.command.repository.xproj", "{0807BD21-A833-4998-BCC5-0B57FD1A1807}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messages", "Infraestructure\org.company.messages\org.company.messages.xproj", "{9D25D6E7-023D-4078-A823-D789AE6A9322}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messaging", "Infraestructure\org.company.messaging\org.company.messaging.xproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,13 +56,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{59B776A7-CE67-478D-BADC-551427173FB0} = {92CD8BB2-0A1C-4D54-907D-38A972014110}
+		{3416E56A-0BE4-44C0-9704-C2F5D8BEBF1B} = {92CD8BB2-0A1C-4D54-907D-38A972014110}
+		{99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473} = {3416E56A-0BE4-44C0-9704-C2F5D8BEBF1B}
 		{D0FED74D-FE6A-467A-B761-6972F2C858E3} = {8EDAE091-A2D7-4EC0-BF96-05AD2DCAE963}
 		{DFF98946-AC67-4B22-B345-7038CCAC888A} = {E162D865-C53E-4C58-B2C5-859B06FCE9A1}
 		{0807BD21-A833-4998-BCC5-0B57FD1A1807} = {59B776A7-CE67-478D-BADC-551427173FB0}
 		{9D25D6E7-023D-4078-A823-D789AE6A9322} = {99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473}
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8} = {99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473}
-		{59B776A7-CE67-478D-BADC-551427173FB0} = {92CD8BB2-0A1C-4D54-907D-38A972014110}
-		{3416E56A-0BE4-44C0-9704-C2F5D8BEBF1B} = {92CD8BB2-0A1C-4D54-907D-38A972014110}
-		{99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473} = {3416E56A-0BE4-44C0-9704-C2F5D8BEBF1B}
 	EndGlobalSection
 EndGlobal

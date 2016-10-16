@@ -9,7 +9,6 @@ using org.company.order.messages.commands;
 
 namespace org.company.order.command.handler
 {
-
     public class OrderHandler :
         IStartHandler,
         ICommandHandle<PlaceOrder>
