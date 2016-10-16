@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace org.company.messaging
 {
-    public interface IEventHandler<T> where T : Message
+    public interface ICanHandle<T> where T : Message
     {
         Task Handle(T message);
     }

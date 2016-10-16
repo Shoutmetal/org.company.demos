@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using org.company.messaging;
+using System;
 
 namespace org.company.order.command.handler
 {
@@ -8,6 +9,9 @@ namespace org.company.order.command.handler
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Microservicios: Order");
+            Console.WriteLine("----------------------------------");
             var startup = new Startup();
             var services = new ServiceCollection();
             var provider = startup.ConfigureServices(services);

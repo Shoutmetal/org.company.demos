@@ -20,5 +20,6 @@ namespace org.company.inventory.command.repository
 
             dbSet.Update(inventory);
         }
+
     }
 }

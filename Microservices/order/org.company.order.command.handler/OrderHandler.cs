@@ -5,6 +5,7 @@ using static org.company.order.command.domain.Order;
 using org.company.messaging;
 using org.company.messages.commands;
 using org.company.messages.events;
+using org.company.order.messages.commands;
 
 namespace org.company.order.command.handler
 {
@@ -42,13 +43,14 @@ namespace org.company.order.command.handler
 
         public Task Handle(PlaceOrder placeOrder)
         {
+            _bus.SendAsync(new AdjustStock(placeOrder.Products));
+
             Order order = new Order(placeOrder.CustomerId, OrderStatus.Created);
             _orderRepository.Add(order);
 
             placeOrder.Products.ForEach(prod => this.AddOrderDetail(order, prod.ProductId, prod.Quantity));
+
             _uof.Commit();
-            
-            _bus.PublishAsync(new PlacedOrder(placeOrder.Products));
 
             return Task.CompletedTask;
         }

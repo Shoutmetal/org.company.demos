@@ -3,13 +3,14 @@ using org.company.messaging;
 using org.company.inventory.command.domain;
 using org.company.inventory.command.domain.generic;
 using org.company.messages.events;
+using org.company.order.messages.commands;
 
 namespace org.company.inventory.command.handler
 {
 
     public class InventoryHandler :
         IStartHandler,
-        IEventHandler<PlacedOrder>
+        ICommandHandle<AdjustStock>
     {
 
         private readonly IInventoryRepository _inventoryRepository;
@@ -31,16 +32,14 @@ namespace org.company.inventory.command.handler
 
         public void start()
         {
-            _bus.SubscribeAsync<PlacedOrder>(async (msg) => await Handle(msg));
+            _bus.RecieveAsync<AdjustStock>(async (msg) => await Handle(msg));
         }
 
 
-        public Task Handle(PlacedOrder adjustStock)
+        public Task Handle(AdjustStock adjustStock)
         {
             adjustStock.Products.ForEach(prod =>
-            {
-                _inventoryRepository.AdjustStock(prod.ProductId, prod.Quantity);
-            });
+                _inventoryRepository.AdjustStock(prod.ProductId, prod.Quantity));
 
             _uof.Commit();
 

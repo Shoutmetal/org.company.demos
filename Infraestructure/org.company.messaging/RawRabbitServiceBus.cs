@@ -3,6 +3,7 @@ using RawRabbit.Common;
 using RawRabbit.Extensions.MessageSequence;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace org.company.messaging
 {
@@ -20,12 +21,12 @@ namespace org.company.messaging
             _bus.ShutdownAsync(TimeSpan.FromSeconds(10));
         }
 
-        public void PublishAsync<T>(T commandMessage) where T : IEvent
+        public void PublishAsync<T>(T commandMessage) where T : Event
         {
             _bus.PublishAsync(commandMessage);
         }
 
-        public void SubscribeAsync<T>(Func<T,Task> fn) where T : IEvent
+        public void SubscribeAsync<T>(Func<T, Task> fn) where T : Event
         {
             _bus.SubscribeAsync<T>(async (msg, context) => await fn(msg),
                 cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
@@ -33,17 +34,19 @@ namespace org.company.messaging
            );
         }
 
-        public void SendAsync<T>(T commandMessage) where T : ICommand
+        public void SendAsync<T>(T commandMessage) where T : Command
         {
             _bus.PublishAsync(commandMessage);
         }
 
-        public void RecieveAsync<T>(Func<T, Task> fn) where T : ICommand
+        public void RecieveAsync<T>(Func<T, Task> fn) where T : Command
         {
             _bus.SubscribeAsync<T>(async (msg, context) => await fn(msg),
                cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
                .WithPrefetchCount(1)
           );
+
+            
         }
     }
 }
