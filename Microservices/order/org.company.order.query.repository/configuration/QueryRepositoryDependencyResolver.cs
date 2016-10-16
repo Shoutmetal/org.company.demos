@@ -2,7 +2,7 @@
 using org.company.order.query.domain.repository;
 using org.company.order.query.repository;
 
-namespace org.company.order.query.handler
+namespace org.company.order.query.repository.configuration
 {
     public class QueryRepositoryDependencyResolver
     {

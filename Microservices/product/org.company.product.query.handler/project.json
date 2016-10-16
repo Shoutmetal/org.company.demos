@@ -3,8 +3,7 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "org.company.product.query.domain": "1.0.0-*",
-    "NEST":"2.4.6" 
+    "org.company.product.query.repository": "1.0.0-*"
   },
 
   "frameworks": {

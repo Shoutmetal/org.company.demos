@@ -5,7 +5,7 @@ using org.company.order.query.repository.context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace org.company.order.query.handler
+namespace org.company.order.query.repository.configuration
 {
     public class QueryContext
     {

@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using Microsoft.AspNetCore.Http;
+using org.company.messaging;
+using org.company.order.query.handler;
+using Order = org.company.order.query.repository.configuration;
+using Product = org.company.product.query.repository.configuration;
+using org.company.product.query.handler;
 using org.company.security.Configuration;
 using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
-using Microsoft.AspNetCore.Identity;
 using RawRabbit.vNext;
-using org.company.order.query.handler;
-using org.company.messaging;
-using org.company.product.query.handler;
 
 namespace org.company.service
 {
@@ -50,8 +52,10 @@ namespace org.company.service
             services.AddScoped<IOrderQuery, OrderQuery>();
             services.AddScoped<IProductQuery, ProductQuery>();
 
-            QueryContext.RegisterServices(services, Configuration);
-            QueryRepositoryDependencyResolver.RegisterServices(services);
+            Order.QueryContext.RegisterServices(services, Configuration);
+            Order.QueryRepositoryDependencyResolver.RegisterServices(services);
+
+            Product.QueryRepositoryDependencyResolver.RegisterServices(services);
 
             //Add ASOS service
             AuthServiceConfiguration.Add(services, Configuration);
