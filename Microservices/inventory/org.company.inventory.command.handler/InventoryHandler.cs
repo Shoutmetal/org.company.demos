@@ -3,7 +3,8 @@ using org.company.messaging;
 using org.company.inventory.command.domain;
 using org.company.inventory.command.domain.generic;
 using org.company.messages.events;
-using org.company.order.messages.commands;
+using System.Linq;
+using org.company.messages.commands;
 
 namespace org.company.inventory.command.handler
 {
@@ -39,7 +40,26 @@ namespace org.company.inventory.command.handler
         public Task Handle(AdjustStock adjustStock)
         {
             adjustStock.Products.ForEach(prod =>
-                _inventoryRepository.AdjustStock(prod.ProductId, prod.Quantity));
+            {
+                var inventories = _inventoryRepository.GetInventoryByProduct(prod.ProductId);
+                int totalStock = inventories.Sum(i => i.Stock);
+
+                if (prod.Quantity > totalStock) _bus.PublishAsync(new NotEnoughStock());
+
+                int quantity = prod.Quantity;
+
+                inventories.ToList().ForEach(i =>
+                {
+                    int stock = i.Stock;
+
+                    i.Stock = i.Stock >= quantity ? (i.Stock - quantity) : 0;
+
+                    quantity = quantity > stock ? prod.Quantity - stock : quantity;
+
+                    _inventoryRepository.Update(i);
+                });
+
+            });
 
             _uof.Commit();
 

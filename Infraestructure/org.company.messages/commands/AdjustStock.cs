@@ -3,7 +3,7 @@ using org.company.messaging;
 using System;
 using System.Collections.Generic;
 
-namespace org.company.order.messages.commands
+namespace org.company.messages.commands
 {
     public class AdjustStock : Command
     {

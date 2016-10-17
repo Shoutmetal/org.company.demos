@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using org.company.inventory.command.domain;
 using org.company.inventory.command.repository.context;
+using System.Collections.Generic;
 
 namespace org.company.inventory.command.repository
 {
@@ -10,15 +11,11 @@ namespace org.company.inventory.command.repository
     {
         public InventoryRepository(CommandDbContext context) : base(context) { }
 
-        public void AdjustStock(int productId, int quantity) {
 
-            Inventory inventory = dbSet.Where(x => x.ProductId == productId && x.Stock > 0).FirstOrDefault();
+        public IList<Inventory> GetInventoryByProduct(int productId)
+        {
+            return dbSet.Where(p => p.ProductId == productId).ToList();
 
-            if (inventory == null) throw new Exception("Stock Exceeded");
-
-            inventory.Stock = inventory.Stock - quantity;
-
-            dbSet.Update(inventory);
         }
 
     }

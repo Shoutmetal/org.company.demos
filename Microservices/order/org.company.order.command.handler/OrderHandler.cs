@@ -4,8 +4,6 @@ using org.company.order.command.domain.generic;
 using static org.company.order.command.domain.Order;
 using org.company.messaging;
 using org.company.messages.commands;
-using org.company.messages.events;
-using org.company.order.messages.commands;
 
 namespace org.company.order.command.handler
 {
@@ -33,7 +31,6 @@ namespace org.company.order.command.handler
             _uof = uof;
         }
 
-
         public void start()
         {
             _bus.RecieveAsync<PlaceOrder>(async (msg) => await Handle(msg));
@@ -42,7 +39,7 @@ namespace org.company.order.command.handler
 
         public Task Handle(PlaceOrder placeOrder)
         {
-            _bus.SendAsync(new AdjustStock(placeOrder.Products));
+            var adjustStockResult = _bus.SendAsync(new AdjustStock(placeOrder.Products));
 
             Order order = new Order(placeOrder.CustomerId, OrderStatus.Created);
             _orderRepository.Add(order);
@@ -52,6 +49,7 @@ namespace org.company.order.command.handler
             _uof.Commit();
 
             return Task.CompletedTask;
+
         }
 
         internal void AddOrderDetail(Order order, int productId, int quantity) =>

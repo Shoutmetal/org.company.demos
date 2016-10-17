@@ -21,32 +21,37 @@ namespace org.company.messaging
             _bus.ShutdownAsync(TimeSpan.FromSeconds(10));
         }
 
-        public void PublishAsync<T>(T commandMessage) where T : Event
+        public Task PublishAsync<T>(T commandMessage) where T : Event
         {
             _bus.PublishAsync(commandMessage);
+
+            return Task.CompletedTask;
         }
 
-        public void SubscribeAsync<T>(Func<T, Task> fn) where T : Event
+        public Task SubscribeAsync<T>(Func<T, Task> fn) where T : Event
         {
             _bus.SubscribeAsync<T>(async (msg, context) => await fn(msg),
                 cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
                 .WithPrefetchCount(1)
            );
+
+            return Task.CompletedTask;
         }
 
-        public void SendAsync<T>(T commandMessage) where T : Command
+        public Task SendAsync<T>(T commandMessage) where T : Command
         {
             _bus.PublishAsync(commandMessage);
+
+            return Task.CompletedTask;
         }
 
-        public void RecieveAsync<T>(Func<T, Task> fn) where T : Command
+        public Task RecieveAsync<T>(Func<T, Task> fn) where T : Command
         {
             _bus.SubscribeAsync<T>(async (msg, context) => await fn(msg),
                cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
-               .WithPrefetchCount(1)
-          );
+               .WithPrefetchCount(1));
 
-            
+            return Task.CompletedTask;
         }
     }
 }
