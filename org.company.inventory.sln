@@ -25,6 +25,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messages", "Inf
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messaging", "Infraestructure\org.company.messaging\org.company.messaging.xproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.application", "Microservices\inventory\org.company.inventory.application\org.company.inventory.application.xproj", "{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{0807BD21-A833-4998-BCC5-0B57FD1A1807} = {59B776A7-CE67-478D-BADC-551427173FB0}
 		{9D25D6E7-023D-4078-A823-D789AE6A9322} = {99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473}
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8} = {99F1EA6D-26CA-4B4E-AEB1-23EAA5C35473}
+		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A} = {8EDAE091-A2D7-4EC0-BF96-05AD2DCAE963}
 	EndGlobalSection
 EndGlobal
