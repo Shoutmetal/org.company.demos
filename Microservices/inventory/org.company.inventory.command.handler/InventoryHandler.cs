@@ -54,7 +54,7 @@ namespace org.company.inventory.command.handler
 
                     i.Stock = i.Stock >= quantity ? (i.Stock - quantity) : 0;
 
-                    quantity = quantity > stock ? prod.Quantity - stock : quantity;
+                    quantity = quantity > stock ? prod.Quantity - stock : 0;
 
                     _inventoryRepository.Update(i);
                 });
