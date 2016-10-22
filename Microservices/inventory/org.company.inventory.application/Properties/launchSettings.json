@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "org.company.inventory.application": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "development"
+      }
+    }
+  }
+}

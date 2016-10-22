@@ -7,10 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using org.company.messaging;
-using org.company.order.query.handler;
-using Order = org.company.order.query.repository.configuration;
-using Product = org.company.product.query.repository.configuration;
-using org.company.product.query.handler;
 using org.company.security.Configuration;
 using org.company.security.IdentityManagers;
 using org.company.security.IdentityModels;
@@ -49,20 +45,14 @@ namespace org.company.service
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddScoped<IOrderQuery, OrderQuery>();
-            services.AddScoped<IProductQuery, ProductQuery>();
-
-            Order.QueryContext.RegisterServices(services, Configuration);
-            Order.QueryRepositoryDependencyResolver.RegisterServices(services);
-
-            Product.QueryRepositoryDependencyResolver.RegisterServices(services);
-
             //Add ASOS service
             AuthServiceConfiguration.Add(services, Configuration);
 
             services.AddRawRabbit(
                 cfg => cfg.SetBasePath(environment.ContentRootPath).AddJsonFile("rawrabbit.json", optional: true),
-                ioc => ioc.AddSingleton<IServiceBus, RawRabbitServiceBus>()
+                ioc => ioc
+                    .AddSingleton<ICommandServiceBus, RawRabbitCommandServiceBus>()
+                    .AddSingleton<IQueryServiceBus, RawRabbitQueryServiceBus>()
             );
 
             services.AddMvc()

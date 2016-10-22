@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using org.company.product.query.handler;
 using Microsoft.AspNetCore.Authorization;
-
+using org.company.messaging;
+using org.company.messages.queries;
+using System.Threading.Tasks;
 
 namespace org.company.order.service.Controllers
 {
@@ -10,20 +11,19 @@ namespace org.company.order.service.Controllers
     public class ProductController : Controller
     {
 
-        
-        private readonly IProductQuery _productQuery;
 
-        public ProductController(IProductQuery productQuery)
+        private readonly IQueryServiceBus _queryBus;
+
+        public ProductController(IQueryServiceBus queryBus)
         {
-            _productQuery = productQuery;
+            _queryBus = queryBus;
         }
 
         [HttpGet("products")]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            var products = _productQuery.GetProducts();
-
-            return Ok(products);
+            var response = await _queryBus.RequestAsync<GetAllProducts>();
+            return Ok(response);
         }
     }
 }

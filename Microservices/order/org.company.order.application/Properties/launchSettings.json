@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "org.company.order.handler": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "development"
+      }
+    }
+  }
+}

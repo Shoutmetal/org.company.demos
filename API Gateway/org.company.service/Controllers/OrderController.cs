@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using org.company.messaging;
-using org.company.messages;
-using org.company.order.query.handler;
 using System;
 using org.company.messages.commands;
+using org.company.messages.queries;
+using System.Threading.Tasks;
+using System.Collections;
 
 namespace org.company.service.Controllers
 {
@@ -12,34 +13,33 @@ namespace org.company.service.Controllers
     [Authorize]
     public class OrderController : BaseController
     {
-        private readonly IServiceBus _bus;
-        private readonly IOrderQuery _orderQuery;
+        private readonly ICommandServiceBus _commandBus;
+        private readonly IQueryServiceBus _queryBus;
 
-        public OrderController(IServiceBus bus, IOrderQuery orderQuery)
+        public OrderController(ICommandServiceBus commandBus, IQueryServiceBus queryBus)
         {
-            _bus = bus;
-            _orderQuery = orderQuery;
+            _commandBus = commandBus;
+            _queryBus = queryBus;
         }
 
         [HttpGet("orders/{id}")]
-        public IActionResult GetOrdersByCustomer(Guid id)
+        public async Task<IActionResult> GetOrdersByCustomer(Guid id)
         {
-            var result = _orderQuery.GetOrdersByCustomerId(id);
-            return Ok(result);
+            var response = await _queryBus.RequestAsync<GetOrderByCustomerId>(new GetOrderByCustomerId() { CustomerId = id });
+            return Ok(response);
         }
 
         [HttpGet("order/{id}")]
-        public IActionResult GetOrderById(int id)
+        public async Task<IActionResult> GetOrderById(int id)
         {
-            var result = _orderQuery.GetOrderById(id);
-
-            return Ok(result);
+            var response = await _queryBus.RequestSingleAsync<GetOrderById>(new GetOrderById() { OrderId = id });
+            return Ok(response);
         }
 
         [HttpPost("save")]
         public void Post([FromBody]PlaceOrder order)
         {
-            _bus.SendAsync(order);
+            _commandBus.SendAsync(order);
         }
 
     }

@@ -4,6 +4,8 @@
   "dependencies": {
     "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
     "NETStandard.Library": "1.6.0",
+    "org.company.messages": "1.0.0-*",
+    "org.company.messaging": "1.0.0-*",
     "org.company.order.query.repository": "1.0.0-*"
   },
 

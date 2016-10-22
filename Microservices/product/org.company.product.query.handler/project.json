@@ -3,6 +3,8 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
+    "org.company.messages": "1.0.0-*",
+    "org.company.messaging": "1.0.0-*",
     "org.company.product.query.repository": "1.0.0-*"
   },
 

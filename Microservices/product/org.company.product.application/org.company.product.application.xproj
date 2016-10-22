@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>7de2cbb0-2eb8-4e2d-ab9d-cc5a56f3cc7a</ProjectGuid>
-    <RootNamespace>org.company.order.command.handler</RootNamespace>
+    <ProjectGuid>762ca480-c46c-4963-946a-4026ac84a471</ProjectGuid>
+    <RootNamespace>org.company.product.application</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
