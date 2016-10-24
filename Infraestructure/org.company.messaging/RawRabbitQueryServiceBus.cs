@@ -18,24 +18,24 @@ namespace org.company.messaging
             _bus = bus;
         }
 
-        public async Task<IEnumerable> RequestAsync<T>(T queryRequest) where T : Query
+        public async Task<IEnumerable<T>> RequestAsync<T>(T queryRequest) where T : Query
         {
-            return await _bus.RequestAsync<T, IEnumerable>(queryRequest);
+            return await _bus.RequestAsync<T, IEnumerable<T>>(queryRequest);
         }
 
-        public async Task<IEnumerable> RequestAsync<T>() where T : Query
+        public async Task<IEnumerable<T>> RequestAsync<T>() where T : Query
         {
-            return await _bus.RequestAsync<T, IEnumerable>();
+            return await _bus.RequestAsync<T, IEnumerable<T>>();
         }
 
-        public async Task<Object> RequestSingleAsync<T>(T queryRequest) where T : Query
+        public async Task<T> RequestSingleAsync<T>(T queryRequest) where T : Query
         {
-            return await _bus.RequestAsync<T, Object>(queryRequest);
+            return await _bus.RequestAsync<T, T>(queryRequest);
         }
 
-        public Task RespondAsync<T>(Func<T, IEnumerable> fn) where T : Query
+        public Task RespondAsync<T>(Func<T, IEnumerable<T>> fn) where T : Query
         {
-            _bus.RespondAsync<T, IEnumerable>(async (msg, context) => await Task.FromResult(fn(msg)),
+            _bus.RespondAsync<T, IEnumerable<T>>(async (msg, context) => await Task.FromResult(fn(msg)),
                 cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
                 .WithPrefetchCount(1)
            );
@@ -43,9 +43,9 @@ namespace org.company.messaging
             return Task.CompletedTask;
         }
 
-        public Task RespondSingleAsync<T>(Func<T, Object> fn) where T : Query
+        public Task RespondSingleAsync<T>(Func<T, T> fn) where T : Query
         {
-            _bus.RespondAsync<T, Object>(async (msg, context) => await Task.FromResult(fn(msg)),
+            _bus.RespondAsync<T, T>(async (msg, context) => await Task.FromResult(fn(msg)),
                 cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
                 .WithPrefetchCount(1)
            );
@@ -53,14 +53,16 @@ namespace org.company.messaging
             return Task.CompletedTask;
         }
 
-        public Task RespondSingleAsync<T>(Func<Object> fn) where T : Query
+        public Task RespondSingleAsync<T>(Func<T> fn) where T : Query
         {
-            _bus.RespondAsync<T, Object>(async (msg, context) => await Task.FromResult(fn()),
+            _bus.RespondAsync<T, T>(async (msg, context) => await Task.FromResult(fn()),
                 cfg => cfg.WithQueue(q => q.WithArgument(QueueArgument.QueueMode, "lazy"))
                 .WithPrefetchCount(1)
            );
 
             return Task.CompletedTask;
         }
+
+      
     }
 }

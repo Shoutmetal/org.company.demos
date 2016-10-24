@@ -7,6 +7,6 @@ namespace org.company.messaging
 {
     public class Query
     {
-        public string Name { get; protected set; }
+        public Guid Id = Guid.NewGuid();
     }
 }

@@ -18,9 +18,9 @@ export class OrderSearch
         }
 
         let orderByDesc = (orders) => {
+            console.log(orders);
             this.orders = orders.sort((a,b) => b.orderId - a.orderId );
         }
-
 
         this.service.getUserProfile()
                .then(getOrders)

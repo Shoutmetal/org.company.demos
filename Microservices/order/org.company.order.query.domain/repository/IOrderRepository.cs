@@ -6,6 +6,5 @@ namespace org.company.order.query.domain.repository
 {
     public interface IOrderRepository : IQueryRepository<Order>
     {
-        IList<Order> GetOrderByCustomerId(Guid customerId);
     }
 }

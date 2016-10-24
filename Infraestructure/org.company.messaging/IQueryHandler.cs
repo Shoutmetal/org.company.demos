@@ -8,6 +8,12 @@ namespace org.company.messaging
 {
     public interface IQueryHandler<T> where T : Query
     {
-        IEnumerable Handle(T message);
+        IEnumerable<T> GetAll();
+
+        IEnumerable<T> GetList(T query);
+
+        T GetOne(T query);
     }
+
+
 }

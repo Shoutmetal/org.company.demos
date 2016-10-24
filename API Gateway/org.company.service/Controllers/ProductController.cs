@@ -22,7 +22,7 @@ namespace org.company.order.service.Controllers
         [HttpGet("products")]
         public async Task<IActionResult> GetProducts()
         {
-            var response = await _queryBus.RequestAsync<GetAllProducts>();
+            var response = await _queryBus.RequestAsync<Product>();
             return Ok(response);
         }
     }

@@ -25,14 +25,14 @@ namespace org.company.service.Controllers
         [HttpGet("orders/{id}")]
         public async Task<IActionResult> GetOrdersByCustomer(Guid id)
         {
-            var response = await _queryBus.RequestAsync<GetOrderByCustomerId>(new GetOrderByCustomerId() { CustomerId = id });
+            var response = await _queryBus.RequestAsync(new Order() { CustomerId = id });
             return Ok(response);
         }
 
         [HttpGet("order/{id}")]
         public async Task<IActionResult> GetOrderById(int id)
         {
-            var response = await _queryBus.RequestSingleAsync<GetOrderById>(new GetOrderById() { OrderId = id });
+            var response = await _queryBus.RequestSingleAsync(new Order() { OrderId = id });
             return Ok(response);
         }
 

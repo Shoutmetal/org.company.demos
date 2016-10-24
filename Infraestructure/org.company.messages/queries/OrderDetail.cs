@@ -1,10 +1,10 @@
 ﻿
-namespace org.company.order.query.domain
+using org.company.messaging;
+
+namespace org.company.messages.queries
 {
-    public class OrderDetail
+    public class OrderDetail : Query
     {
-        public OrderDetail() { }
-   
         public int OrderId { get; set; }
       
         public int ProductId { get; set; }

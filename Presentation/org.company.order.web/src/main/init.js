@@ -20,7 +20,8 @@ export class Menu
         ]
 
         let demoInfo = [
-         { route: "general-information", moduleId: 'demo/general-information', name:"general-information", title:"General Information", nav:true, icon:"icon-paper-plane", parentName:"demo" }
+         { route: "general-information", moduleId: 'demo/general-information', name:"general-information", title:"General Information", nav:true, icon:"icon-paper-plane", parentName:"demo" },
+         { route: "examples", moduleId: 'demo/examples', name:"examples", title:"Examples", nav:true, icon:"icon-folder", parentName:"demo" }
         ]
 
         let routes = [

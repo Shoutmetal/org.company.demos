@@ -12,14 +12,5 @@ namespace org.company.order.query.repository
     public class OrderRepository : QueryRepository<Order>, IOrderRepository
     {
         public OrderRepository(QueryDbContext context) : base(context) { }
-
-        public IList<Order> GetOrderByCustomerId(Guid customerId) {
-
-            var order = dbSet
-                .Include(od => od.OrderDetail)
-                .Where(o => o.CustomerId == customerId);
-
-            return order.ToList();
-        }
     }
 }

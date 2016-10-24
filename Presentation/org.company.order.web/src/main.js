@@ -28,6 +28,8 @@ export function configure(aurelia){
             authService.getMe().then(profile => {
                 sessionStorage.setItem("profile", JSON.stringify(profile));
                 a.setRoot('main/init', document.body);
+            }, error => {
+                a.setRoot('account/login', document.body);
             });
         else
             a.setRoot('account/login', document.body);

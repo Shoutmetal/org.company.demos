@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using org.company.product.query.domain;
 using org.company.product.query.domain.repository;
 using org.company.messaging;
 using System;
 using org.company.messages.queries;
-using System.Collections;
+using Domain = org.company.product.query.domain;
+using AutoMapper;
 
 namespace org.company.product.query.handler
 {
     public class ProductQueryHandler : 
         IQueryStartHandler,
-        IQueryHandler<GetAllProducts>
+        IQueryHandler<Product>
     {
 
         private readonly IProductRepository _productRepository;
@@ -19,22 +19,32 @@ namespace org.company.product.query.handler
         public ProductQueryHandler(IProductRepository productRepository, IQueryServiceBus bus) {
             _productRepository = productRepository;
             _bus = bus;
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<Domain.Product, Product>();
+                cfg.CreateMap<Domain.ProductType, ProductType>();
+            });
         }
 
         public void start()
         {
-            _bus.RespondAsync<GetAllProducts>((msg) => Handle(msg));
+            _bus.RespondAsync<Product>((msg) => GetList(msg));
         }
 
-        public IEnumerable<Product> GetProducts()
+
+        public IEnumerable<Product> GetAll()
         {
-            return _productRepository.GetAll("ecommerce", "product");
+            throw new NotImplementedException();
         }
 
-        public IEnumerable Handle(GetAllProducts message)
+        public IEnumerable<Product> GetList(Product query)
         {
             var products = _productRepository.GetAll("ecommerce", "product");
-            return products;
+            return (IList<Product>)Mapper.Map<IList<Product>>(products);
+        }
+
+        public Product GetOne(Product query)
+        {
+            throw new NotImplementedException();
         }
     }
 }

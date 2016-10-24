@@ -1,13 +1,16 @@
 ﻿using org.company.order.query.domain.repository;
 using org.company.messaging;
 using org.company.messages.queries;
-using System.Collections;
+using System;
+using System.Collections.Generic;
+using Domain = org.company.order.query.domain;
+using AutoMapper;
 
 namespace org.company.order.query.handler
 {
     public class OrderQueryHandler : 
         IQueryStartHandler,
-        IQueryHandler<GetOrderByCustomerId>
+        IQueryHandler<Order>
     {
 
 
@@ -22,25 +25,38 @@ namespace org.company.order.query.handler
             _orderRepository = orderRepository;
             _bus = bus;
 
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<Domain.Order, Order>();
+                cfg.CreateMap<Domain.Status, Status>();
+                cfg.CreateMap<Domain.OrderDetail, OrderDetail>();
+            });
+
         }
 
         public void start()
         {
-            _bus.RespondAsync<GetOrderByCustomerId>((msg) => Handle(msg));
-            _bus.RespondSingleAsync<GetOrderById>((msg) => Handle(msg));
+            _bus.RespondAsync<Order>((msg) => GetList(msg));
+            _bus.RespondSingleAsync<Order>((msg) => GetOne(msg));
 
         }
 
-        private object Handle(GetOrderById msg)
+        public IEnumerable<Order> GetList(Order message)
         {
-            return _orderRepository.GetSingle(o => o.OrderId == msg.OrderId);
+            var orders = _orderRepository.GetList(o => o.CustomerId == message.CustomerId);
+            return (IList<Order>)Mapper.Map<IList<Order>>(orders);
         }
 
-        public IEnumerable Handle(GetOrderByCustomerId msg)
+        public Order GetOne(Order message)
         {
-            return _orderRepository.GetOrderByCustomerId(msg.CustomerId);
+            var order = _orderRepository.GetSingle(o => o.OrderId == message.OrderId);
+            return (Order)Mapper.Map<Order>(order);
         }
 
-       
+        public IEnumerable<Order> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

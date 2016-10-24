@@ -2,6 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "AutoMapper": "5.1.1",
     "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
     "NETStandard.Library": "1.6.0",
     "org.company.messages": "1.0.0-*",
