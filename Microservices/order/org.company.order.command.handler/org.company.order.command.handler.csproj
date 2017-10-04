@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>org.company.order.command.handler</AssemblyName>
+    <PackageId>org.company.order.command.handler</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Infraestructure\org.company.messages\org.company.messages.csproj" />
+    <ProjectReference Include="..\..\..\Infraestructure\org.company.messaging\org.company.messaging.csproj" />
+    <ProjectReference Include="..\org.company.order.command.repository\org.company.order.command.repository.csproj" />
+  </ItemGroup>
+
+</Project>

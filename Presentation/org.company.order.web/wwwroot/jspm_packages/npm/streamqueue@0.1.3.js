@@ -1,0 +1,1 @@
+module.exports = require("npm:streamqueue@0.1.3/src/index.js");

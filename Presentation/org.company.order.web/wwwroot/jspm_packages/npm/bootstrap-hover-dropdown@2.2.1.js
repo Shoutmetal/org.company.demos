@@ -1,0 +1,1 @@
+module.exports = require("npm:bootstrap-hover-dropdown@2.2.1/bootstrap-hover-dropdown.js");

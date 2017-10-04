@@ -1,0 +1,1 @@
+module.exports = require("npm:owl.carousel@2.1.4/dist/owl.carousel.js");

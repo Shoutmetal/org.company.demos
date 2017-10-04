@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>org.company.inventory.command.handler</AssemblyName>
+    <PackageId>org.company.inventory.command.handler</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Infraestructure\org.company.messaging\org.company.messaging.csproj" />
+    <ProjectReference Include="..\org.company.inventory.command.repository\org.company.inventory.command.repository.csproj" />
+    <ProjectReference Include="..\..\..\Infraestructure\org.company.messages\org.company.messages.csproj" />
+  </ItemGroup>
+
+</Project>

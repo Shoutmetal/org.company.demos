@@ -1,0 +1,1 @@
+module.exports = require("npm:fancybox@3.0.0/dist/js/jquery.fancybox.cjs.js");

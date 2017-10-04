@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Modeling", "0. Modeling", "{2C071EDA-50C2-45C3-B565-DAEA2D2295A0}"
 EndProject
@@ -35,64 +35,61 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2. Product", "4.2. Produc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.1. Order", "5.1.1. Order", "{304C91E8-31BB-446C-BDE2-51843ED646EA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.web", "Presentation\org.company.order.web\org.company.order.web.xproj", "{B72982F0-8789-4F7C-9626-638070BD83E7}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.service", "API Gateway\org.company.service\org.company.service.xproj", "{567973E5-CA62-4776-93DE-679AA72CC1C5}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.command.domain", "Microservices\order\org.company.order.command.domain\org.company.order.command.domain.xproj", "{33528A22-2029-4AAE-B893-878465BA9690}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.query.handler", "Microservices\order\org.company.order.query.handler\org.company.order.query.handler.xproj", "{D9DC7F87-3FC4-4DF0-8E0D-513F9025D2CB}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.query.domain", "Microservices\order\org.company.order.query.domain\org.company.order.query.domain.xproj", "{69458408-B1CE-4623-9B8D-35647F105E25}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.query.repository", "Microservices\order\org.company.order.query.repository\org.company.order.query.repository.xproj", "{47567EA2-7350-4728-B8D7-E5B34CC2B31E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.command.repository", "Microservices\order\org.company.order.command.repository\org.company.order.command.repository.xproj", "{D9681221-D9EC-4077-BEF6-563B17113080}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.security", "Infraestructure\org.company.security\org.company.security.xproj", "{1CDD16E4-8902-4D77-A855-F334F672D072}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messaging", "Infraestructure\org.company.messaging\org.company.messaging.xproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3.1. Order", "5.3.1. Order", "{CAE91441-6712-4E50-8FA1-7BA15535E553}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "org.company.order.database", "Microservices\order\org.company.order.database\org.company.order.database.sqlproj", "{5E1FADB6-0953-4267-B080-2D8A926AFEE7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1ACEDB3B-E298-430B-BEE6-B0544CDA3E44}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.3. Inventory", "5.1.3. Inventory", "{DC28A719-74AC-4F15-913C-CCF570BFA03E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.product.query.handler", "Microservices\product\org.company.product.query.handler\org.company.product.query.handler.xproj", "{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.product.query.domain", "Microservices\product\org.company.product.query.domain\org.company.product.query.domain.xproj", "{2B1E2D1D-E8FE-4DE1-8BE5-5EE8C86FAC3F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3. Inventory", "3.3. Inventory", "{C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.handler", "Microservices\inventory\org.company.inventory.command.handler\org.company.inventory.command.handler.xproj", "{D0FED74D-FE6A-467A-B761-6972F2C858E3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.repository", "Microservices\inventory\org.company.inventory.command.repository\org.company.inventory.command.repository.xproj", "{0807BD21-A833-4998-BCC5-0B57FD1A1807}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3. Inventory", "4.3. Inventory", "{4039EEC0-484B-4D5A-9442-DAACF1353EAD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.command.domain", "Microservices\inventory\org.company.inventory.command.domain\org.company.inventory.command.domain.xproj", "{DFF98946-AC67-4B22-B345-7038CCAC888A}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.messages", "Infraestructure\org.company.messages\org.company.messages.xproj", "{9D25D6E7-023D-4078-A823-D789AE6A9322}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3.2. Inventory", "5.3.2. Inventory", "{0D811DA0-EE71-4A01-9D6B-D72D6D8B3A78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.2. Product", "5.1.2. Product", "{81A5D8BB-5241-4B5E-BF7C-13C1B807968B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.product.query.repository", "Microservices\product\org.company.product.query.repository\org.company.product.query.repository.xproj", "{8D62AD23-3B6E-4A5B-B373-089F1EE7090A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.web", "Presentation\org.company.order.web\org.company.order.web.csproj", "{B72982F0-8789-4F7C-9626-638070BD83E7}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.application", "Microservices\order\org.company.order.application\org.company.order.application.xproj", "{CD856317-1C7F-4A6C-AB8A-E60E4D95B5AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.service", "API Gateway\org.company.service\org.company.service.csproj", "{567973E5-CA62-4776-93DE-679AA72CC1C5}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.order.command.handler", "Microservices\order\org.company.order.command.handler\org.company.order.command.handler.xproj", "{7DE2CBB0-2EB8-4E2D-AB9D-CC5A56F3CC7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.command.domain", "Microservices\order\org.company.order.command.domain\org.company.order.command.domain.csproj", "{33528A22-2029-4AAE-B893-878465BA9690}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.product.application", "Microservices\product\org.company.product.application\org.company.product.application.xproj", "{762CA480-C46C-4963-946A-4026AC84A471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.query.handler", "Microservices\order\org.company.order.query.handler\org.company.order.query.handler.csproj", "{D9DC7F87-3FC4-4DF0-8E0D-513F9025D2CB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "org.company.inventory.application", "Microservices\inventory\org.company.inventory.application\org.company.inventory.application.xproj", "{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.query.domain", "Microservices\order\org.company.order.query.domain\org.company.order.query.domain.csproj", "{69458408-B1CE-4623-9B8D-35647F105E25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.query.repository", "Microservices\order\org.company.order.query.repository\org.company.order.query.repository.csproj", "{47567EA2-7350-4728-B8D7-E5B34CC2B31E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.command.repository", "Microservices\order\org.company.order.command.repository\org.company.order.command.repository.csproj", "{D9681221-D9EC-4077-BEF6-563B17113080}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.security", "Infraestructure\org.company.security\org.company.security.csproj", "{1CDD16E4-8902-4D77-A855-F334F672D072}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.messaging", "Infraestructure\org.company.messaging\org.company.messaging.csproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "org.company.order.database", "Microservices\order\org.company.order.database\org.company.order.database.sqlproj", "{5E1FADB6-0953-4267-B080-2D8A926AFEE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.product.query.handler", "Microservices\product\org.company.product.query.handler\org.company.product.query.handler.csproj", "{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.product.query.domain", "Microservices\product\org.company.product.query.domain\org.company.product.query.domain.csproj", "{2B1E2D1D-E8FE-4DE1-8BE5-5EE8C86FAC3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.inventory.command.handler", "Microservices\inventory\org.company.inventory.command.handler\org.company.inventory.command.handler.csproj", "{D0FED74D-FE6A-467A-B761-6972F2C858E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.inventory.command.repository", "Microservices\inventory\org.company.inventory.command.repository\org.company.inventory.command.repository.csproj", "{0807BD21-A833-4998-BCC5-0B57FD1A1807}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.inventory.command.domain", "Microservices\inventory\org.company.inventory.command.domain\org.company.inventory.command.domain.csproj", "{DFF98946-AC67-4B22-B345-7038CCAC888A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.messages", "Infraestructure\org.company.messages\org.company.messages.csproj", "{9D25D6E7-023D-4078-A823-D789AE6A9322}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.product.query.repository", "Microservices\product\org.company.product.query.repository\org.company.product.query.repository.csproj", "{8D62AD23-3B6E-4A5B-B373-089F1EE7090A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.application", "Microservices\order\org.company.order.application\org.company.order.application.csproj", "{CD856317-1C7F-4A6C-AB8A-E60E4D95B5AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.order.command.handler", "Microservices\order\org.company.order.command.handler\org.company.order.command.handler.csproj", "{7DE2CBB0-2EB8-4E2D-AB9D-CC5A56F3CC7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.product.application", "Microservices\product\org.company.product.application\org.company.product.application.csproj", "{762CA480-C46C-4963-946A-4026AC84A471}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.inventory.application", "Microservices\inventory\org.company.inventory.application\org.company.inventory.application.csproj", "{88F6E83A-A3F1-49A5-8ADE-3109A01D970A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,6 +198,12 @@ Global
 		{14D7C610-1A99-4003-AEAB-9636906EB342} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
 		{0EA89AA9-9118-420C-8424-B6C532F5CA7C} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
 		{304C91E8-31BB-446C-BDE2-51843ED646EA} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
+		{CAE91441-6712-4E50-8FA1-7BA15535E553} = {F90EA994-BB95-4F59-8C13-7093BD9B0BBE}
+		{DC28A719-74AC-4F15-913C-CCF570BFA03E} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
+		{C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B} = {4A1BBF80-D399-490A-B2F5-0B4B562D1432}
+		{4039EEC0-484B-4D5A-9442-DAACF1353EAD} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
+		{0D811DA0-EE71-4A01-9D6B-D72D6D8B3A78} = {F90EA994-BB95-4F59-8C13-7093BD9B0BBE}
+		{81A5D8BB-5241-4B5E-BF7C-13C1B807968B} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
 		{B72982F0-8789-4F7C-9626-638070BD83E7} = {574E440C-369E-4228-A964-4B31F5D1B6A8}
 		{567973E5-CA62-4776-93DE-679AA72CC1C5} = {36D52940-681C-4C3F-A048-883ADB587BAD}
 		{33528A22-2029-4AAE-B893-878465BA9690} = {14D7C610-1A99-4003-AEAB-9636906EB342}
@@ -210,23 +213,20 @@ Global
 		{D9681221-D9EC-4077-BEF6-563B17113080} = {304C91E8-31BB-446C-BDE2-51843ED646EA}
 		{1CDD16E4-8902-4D77-A855-F334F672D072} = {38116A84-9DEA-46AB-9748-B07644DD0AC9}
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8} = {824319AC-CC07-4B56-BA3F-2B510FE01B24}
-		{CAE91441-6712-4E50-8FA1-7BA15535E553} = {F90EA994-BB95-4F59-8C13-7093BD9B0BBE}
 		{5E1FADB6-0953-4267-B080-2D8A926AFEE7} = {CAE91441-6712-4E50-8FA1-7BA15535E553}
-		{DC28A719-74AC-4F15-913C-CCF570BFA03E} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
 		{DDD4831F-19B8-4ECB-903A-03EB17DA90F6} = {2C4E480B-68A6-4FE4-91D2-F127A7B47E22}
 		{2B1E2D1D-E8FE-4DE1-8BE5-5EE8C86FAC3F} = {0EA89AA9-9118-420C-8424-B6C532F5CA7C}
-		{C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B} = {4A1BBF80-D399-490A-B2F5-0B4B562D1432}
 		{D0FED74D-FE6A-467A-B761-6972F2C858E3} = {C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B}
 		{0807BD21-A833-4998-BCC5-0B57FD1A1807} = {DC28A719-74AC-4F15-913C-CCF570BFA03E}
-		{4039EEC0-484B-4D5A-9442-DAACF1353EAD} = {CE306DE1-1A64-4874-A536-A59164C6BE5A}
 		{DFF98946-AC67-4B22-B345-7038CCAC888A} = {4039EEC0-484B-4D5A-9442-DAACF1353EAD}
 		{9D25D6E7-023D-4078-A823-D789AE6A9322} = {824319AC-CC07-4B56-BA3F-2B510FE01B24}
-		{0D811DA0-EE71-4A01-9D6B-D72D6D8B3A78} = {F90EA994-BB95-4F59-8C13-7093BD9B0BBE}
-		{81A5D8BB-5241-4B5E-BF7C-13C1B807968B} = {5EDABF14-61A7-4C52-9CF5-37FA04CC9C1B}
 		{8D62AD23-3B6E-4A5B-B373-089F1EE7090A} = {81A5D8BB-5241-4B5E-BF7C-13C1B807968B}
 		{CD856317-1C7F-4A6C-AB8A-E60E4D95B5AE} = {1ACAD017-E78D-44F0-95B2-D20451572C4F}
 		{7DE2CBB0-2EB8-4E2D-AB9D-CC5A56F3CC7A} = {1ACAD017-E78D-44F0-95B2-D20451572C4F}
 		{762CA480-C46C-4963-946A-4026AC84A471} = {2C4E480B-68A6-4FE4-91D2-F127A7B47E22}
 		{88F6E83A-A3F1-49A5-8ADE-3109A01D970A} = {C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A061310-6C11-4B6D-A4CD-488E797E2BD7}
 	EndGlobalSection
 EndGlobal

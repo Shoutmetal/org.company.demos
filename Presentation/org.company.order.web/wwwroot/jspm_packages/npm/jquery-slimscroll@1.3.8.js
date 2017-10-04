@@ -1,0 +1,1 @@
+module.exports = require("npm:jquery-slimscroll@1.3.8/jquery.slimscroll.js");
