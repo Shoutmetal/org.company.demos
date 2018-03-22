@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Microservices/inventory/org.company.inventory.application/org.company.inventory.application.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

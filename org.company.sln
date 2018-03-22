@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Modeling", "0. Modeling", "{2C071EDA-50C2-45C3-B565-DAEA2D2295A0}"
 EndProject
@@ -36,6 +36,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.1. Order", "5.1.1. Order", "{304C91E8-31BB-446C-BDE2-51843ED646EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3.1. Order", "5.3.1. Order", "{CAE91441-6712-4E50-8FA1-7BA15535E553}"
+	ProjectSection(SolutionItems) = preProject
+		Infraestructure\org.company.scripts\org_company_order_script.sql = Infraestructure\org.company.scripts\org_company_order_script.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1ACEDB3B-E298-430B-BEE6-B0544CDA3E44}"
 EndProject
@@ -46,6 +49,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3. Inventory", "4.3. Inventory", "{4039EEC0-484B-4D5A-9442-DAACF1353EAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3.2. Inventory", "5.3.2. Inventory", "{0D811DA0-EE71-4A01-9D6B-D72D6D8B3A78}"
+	ProjectSection(SolutionItems) = preProject
+		Infraestructure\org.company.scripts\org_company_inventory_script.sql = Infraestructure\org.company.scripts\org_company_inventory_script.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.2. Product", "5.1.2. Product", "{81A5D8BB-5241-4B5E-BF7C-13C1B807968B}"
 EndProject
@@ -66,8 +72,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.security", "Infraestructure\org.company.security\org.company.security.csproj", "{1CDD16E4-8902-4D77-A855-F334F672D072}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.messaging", "Infraestructure\org.company.messaging\org.company.messaging.csproj", "{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "org.company.order.database", "Microservices\order\org.company.order.database\org.company.order.database.sqlproj", "{5E1FADB6-0953-4267-B080-2D8A926AFEE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "org.company.product.query.handler", "Microservices\product\org.company.product.query.handler\org.company.product.query.handler.csproj", "{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}"
 EndProject
@@ -133,12 +137,6 @@ Global
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDD4831F-19B8-4ECB-903A-03EB17DA90F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -213,7 +211,6 @@ Global
 		{D9681221-D9EC-4077-BEF6-563B17113080} = {304C91E8-31BB-446C-BDE2-51843ED646EA}
 		{1CDD16E4-8902-4D77-A855-F334F672D072} = {38116A84-9DEA-46AB-9748-B07644DD0AC9}
 		{572E618F-2C8C-4036-A3E7-06CCEE3DBBD8} = {824319AC-CC07-4B56-BA3F-2B510FE01B24}
-		{5E1FADB6-0953-4267-B080-2D8A926AFEE7} = {CAE91441-6712-4E50-8FA1-7BA15535E553}
 		{DDD4831F-19B8-4ECB-903A-03EB17DA90F6} = {2C4E480B-68A6-4FE4-91D2-F127A7B47E22}
 		{2B1E2D1D-E8FE-4DE1-8BE5-5EE8C86FAC3F} = {0EA89AA9-9118-420C-8424-B6C532F5CA7C}
 		{D0FED74D-FE6A-467A-B761-6972F2C858E3} = {C2E78B7C-B836-4FF7-9902-3BAAEDC33E7B}
