@@ -13,7 +13,7 @@ PUT /ecommerce
               "type":"integer"
             },
             "name":{
-              "type":"string"
+              "type":"text"
             },
             "active":{
               "type":"boolean"
@@ -21,13 +21,13 @@ PUT /ecommerce
           }
         },
         "name":{
-          "type": "string"
+          "type": "text"
         },
         "description":{
-          "type": "string"
+          "type": "text"
         },
         "imageUrl":{
-          "type": "string"
+          "type": "text"
         },
         "price":{
           "type": "double"

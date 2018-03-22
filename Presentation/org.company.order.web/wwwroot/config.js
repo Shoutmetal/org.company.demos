@@ -6,6 +6,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
     "aurelia-api": "npm:aurelia-api@3.0.0-rc8",
     "aurelia-auth": "npm:aurelia-auth@3.0.2",
